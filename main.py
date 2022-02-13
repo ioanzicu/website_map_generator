@@ -19,12 +19,14 @@ class ArgumentNotProvided(ValueError):
 
 class WebpageParser():
     def __init__(self, root_link: str) -> None:
+
         if not isinstance(root_link, str):
             raise ValueError(
                 f'root_link is of type {root_link}, expected to be str')
 
         self.root_link: str = root_link
-        self.root_host: str = root_link.split('.')[1] if self.root_link else ''
+        self.root_domain: str = root_link.split(
+            '.')[1] if self.root_link else ''
         self.map_dict: dict = {}
         self.graph_dict: dict = {}
 
@@ -32,20 +34,42 @@ class WebpageParser():
         return f'WebpageParser(root_link={self.root_link})'
 
     def perform_get_request(self, url: str = ''):
-        # print('-----------', url)
+        '''
+        Perform HTTP get request and return response object.
+        '''
+
         if not url:
             raise ArgumentNotProvided('url was not provided')
         response: Response = get(url=url)
 
         if response.status_code != 200:
-            raise Exception(f'Status code is not 200: {response.status_code}')
+            # @TODO Fix bug when code is not 200
+            return ''
+            # raise Exception(f'Status code is not 200: {response.status_code}')
         return response.text
 
     def get_links_from_web_page(self, web_page, parser='html.parser'):
+        '''
+        Extract all links form given html web page.
+        '''
+
         soup: BeautifulSoup = BeautifulSoup(web_page, parser)
         return soup.find_all('a')
 
     def extract_hrefs(self, links: list, root: str = '') -> dict:
+        '''
+        Extract the links from html href attribute and return a dictionary with
+        links in the format:
+
+        {'internal_links':   Counter({'https://www.globalapptesting.com/product': 7,
+                                      'https://www.globalapptesting.com/platform/integrations': 5}),
+         'external_links':   Counter({'https://www.leadingqualitybook.com/': 2,
+                                     'https://testathon.co/': 2}),
+         'dead_links':       Counter(),
+         'phone_links':      Counter(),
+         'email_links':      Counter()}
+        '''
+
         if not isinstance(links, list):
             raise ValueError(
                 f'The links type is {type(links)}, expected to be of type list')
@@ -67,7 +91,7 @@ class WebpageParser():
 
             # print(link_host, link_host.split('.'))
 
-            if link_host.startswith('javascript:;'):
+            if not link_host or link_host.startswith('javascript:;'):
                 continue
             elif link_host.startswith('/'):
                 if root.endswith('/'):
@@ -81,7 +105,7 @@ class WebpageParser():
             elif 'mailto' in link_host:
                 email_links.append(link_host)
             # check only if the hosts are the same
-            elif len(link_host.split('.')) > 1 and self.root_host in link_host.split('.')[1]:
+            elif len(link_host.split('.')) > 1 and link_host.startswith('https://www') and self.root_domain in link_host.split('.')[1]:
                 internal_links.append(link_host)
             else:
                 external_links.append(link_host)
@@ -93,12 +117,41 @@ class WebpageParser():
                 'email_links':      Counter(email_links)}
 
     def extract_links_from_counter(self, counter_obj: Counter) -> list:
+        '''
+        Extract links from the given Counter object in format:
+
+        Counter({'https://www.globalapptesting.com/product': 7,
+                 'https://www.globalapptesting.com/platform/integrations': 5})
+
+        and return a list of links like:
+
+        ['https://www.globalapptesting.com/product', 'https://www.globalapptesting.com/platform/integrations']
+        '''
+
         if not isinstance(counter_obj, Counter):
             raise ValueError(
                 f'Argument obj is of type {type(counter_obj)}, expected obj to be of type Counter')
         return [link for link, _ in counter_obj.items()]
 
     def build_dict_map(self) -> dict:
+        '''
+        Crawl links from webpages and build dictionary map from the obtained links.
+
+        Example of returned dict:
+        {'https://www.globalapptesting.com/': {'internal_links': Counter({'https://www.globalapptesting.com/product': 7,
+                                                                          'https://www.globalapptesting.com/platform/integrations': 5,
+                                                                          'https://www.globalapptesting.com/resources/resource-library': 4,
+                                                                          'https://www.globalapptesting.com/about-us': 4}),
+                                               'external_links': Counter({'https://www.leadingqualitybook.com/': 2,
+                                                                          'https://testathon.co/': 2,
+                                                                          'https://www.facebook.com/globalapptesting/': 1}),
+                                               'dead_links': Counter(),
+                                               'phone_links': Counter(),
+                                               'email_links': Counter()}
+         }
+        '''
+        # @TODO REFACTOR
+
         # Perform get request
         response = self.perform_get_request(url=self.root_link)
         # Extract links from html root page
@@ -112,16 +165,34 @@ class WebpageParser():
         # Add to the map_dict the first key value
         self.map_dict = {self.root_link: clean_links}
 
-        # Repeat the above steps for the local
+        # Repeat the above steps for the internal links
         for internal_link in only_internal_links:
             response = self.perform_get_request(url=internal_link)
             page_links = self.get_links_from_web_page(web_page=response)
             counter_links = self.extract_hrefs(
                 links=page_links, root=internal_link)
             self.map_dict[internal_link] = counter_links
+
+            # add the non-existing nodes from the counter links
+            counter_internal_links = self.extract_links_from_counter(
+                counter_links['internal_links'])
+            for destination_link in counter_internal_links:
+                if destination_link not in self.map_dict:
+                    dest_response = self.perform_get_request(
+                        url=destination_link)
+                    page_links = self.get_links_from_web_page(
+                        web_page=dest_response)
+                    dest_counter_links = self.extract_hrefs(
+                        links=page_links, root=destination_link)
+
+                    self.map_dict[destination_link] = dest_counter_links
+
         return self.map_dict
 
     def convert_counters_to_graph_edges(self) -> dict:
+        '''
+        Convert Counters objects to graph edges in tuple datatype.
+        '''
 
         if not self.map_dict:
             self.build_dict_map()
@@ -132,6 +203,9 @@ class WebpageParser():
         return self.graph_dict
 
     def write_graph_dict_to_json_file(self, file_name: str = 'graph_dict') -> None:
+        '''
+        Write / Dump the graph dict into json file.
+        '''
 
         if not self.graph_dict:
             raise ValueError('The graph_dict is empty')
@@ -144,7 +218,9 @@ class WebpageParser():
                     f'Exception occured when trying to write to json file with name={file_name}: {exc}')
 
     def load_graph_dict_from_json(self, file_name: str) -> None:
-
+        '''
+        Load the graph dictionary from a json file.
+        '''
         with open(f'{file_name}.json', 'r') as fhandle:
             try:
                 self.graph_dict = json.loads(fhandle.read())
@@ -159,16 +235,19 @@ if __name__ == '__main__':
     root: str = 'https://www.globalapptesting.com'
 
     webparser = WebpageParser(root_link=root)
-    # response = webparser.perform_get_request(url=root)
-    # links = webparser.get_links_from_web_page(web_page=response)
-    # hrefs = webparser.extract_hrefs(links=links, root=root)
-    # webparser.build_dict_map()
-    # graph_dict = webparser.convert_counters_to_graph_edges()
+    response = webparser.perform_get_request(url=root)
+    links = webparser.get_links_from_web_page(web_page=response)
+    hrefs = webparser.extract_hrefs(links=links, root=root)
+    map_dict = webparser.build_dict_map()
+    # print('map_dict', map_dict)
+    graph_dict = webparser.convert_counters_to_graph_edges()
 
-    # webparser.write_graph_dict_to_json_file()
-    loaded_graph_dict = webparser.load_graph_dict_from_json('graph_dict')
+    # print('graph_dict', graph_dict)
+
+    webparser.write_graph_dict_to_json_file()
 
     # VISUALISATION
+    loaded_graph_dict = webparser.load_graph_dict_from_json('graph_dict')
     plt.rcParams.update({'font.size': 5})
     G = nx.Graph()
     nt = Network(height='1000px', width='100%', directed=True)
@@ -177,7 +256,7 @@ if __name__ == '__main__':
     for key_root, value_edges in loaded_graph_dict.items():
         edges_len = len(value_edges) if len(value_edges) > 20 else 20
         nx_graph.add_node(key_root, label='', width=20,
-                          title=key_root,  size=0.8 * edges_len, group=key_root)
+                          title=key_root,  size=0.9 * edges_len, group=key_root)
 
         nx_graph.add_weighted_edges_from([(src, dest, weight*5)
                                           for (src, dest, weight) in value_edges], arrowStrikethrough=True)
@@ -185,6 +264,6 @@ if __name__ == '__main__':
     nx.draw_shell(G, with_labels=False, font_size=4, font_weight='bold')
     nt.from_nx(nx_graph)
     nt.show_buttons(filter_=['nodes', 'edges', 'physics'])
-    nt.barnes_hut(gravity=-40000, central_gravity=0, spring_length=400,
+    nt.barnes_hut(gravity=-200000, central_gravity=0, spring_length=400,
                   spring_strength=0.001, damping=0.49, overlap=0)
     nt.show(f'{root.split(".")[1]}_map.html')
