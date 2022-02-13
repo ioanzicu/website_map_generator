@@ -1,6 +1,6 @@
 import json
-from typing import Any
 import pprint
+import sys
 from requests import get
 from bs4 import BeautifulSoup
 from httplib2 import Response
@@ -32,6 +32,12 @@ class WebpageParser():
 
     def __str__(self) -> str:
         return f'WebpageParser(root_link={self.root_link})'
+
+    def get_map_dict(self) -> dict:
+        return self.map_dict
+
+    def get_graph_dict(self) -> dict:
+        return self.graph_dict
 
     def perform_get_request(self, url: str = ''):
         '''
@@ -89,8 +95,6 @@ class WebpageParser():
         for link in links:
             link_host: str = link.get('href')
 
-            # print(link_host, link_host.split('.'))
-
             if not link_host or link_host.startswith('javascript:;'):
                 continue
             elif link_host.startswith('/'):
@@ -125,7 +129,8 @@ class WebpageParser():
 
         and return a list of links like:
 
-        ['https://www.globalapptesting.com/product', 'https://www.globalapptesting.com/platform/integrations']
+        ['https://www.globalapptesting.com/product',
+            'https://www.globalapptesting.com/platform/integrations']
         '''
 
         if not isinstance(counter_obj, Counter):
@@ -202,6 +207,29 @@ class WebpageParser():
                                          for destination_link, weight in value_dict['internal_links'].items()]
         return self.graph_dict
 
+    def write_to_file(self, file_name: str = 'file', format: str = 'json', data: dict = {}) -> None:
+        '''
+        Write data to a file.
+        '''
+        if not data:
+            raise ValueError('The data is empty')
+
+        with open(f'{file_name}.{format}', 'w') as fhandle:
+            try:
+                json.dump(data, fhandle, indent=4)
+            except Exception as exc:
+                print(
+                    f'Exception occured when trying to write to json file with name={file_name}.{format}: {exc}')
+
+    def write_map_dict_to_json_file(self, file_name: str = 'map_dict') -> None:
+        '''
+        Write / Dump the map dict into json file.
+        '''
+
+        if not self.map_dict:
+            raise ValueError('The map_dict is empty')
+        self.write_to_file(file_name=file_name, data=self.map_dict)
+
     def write_graph_dict_to_json_file(self, file_name: str = 'graph_dict') -> None:
         '''
         Write / Dump the graph dict into json file.
@@ -209,54 +237,100 @@ class WebpageParser():
 
         if not self.graph_dict:
             raise ValueError('The graph_dict is empty')
+        self.write_to_file(file_name=file_name, data=self.graph_dict)
 
-        with open(f'{file_name}.json', 'w') as fhandle:
-            try:
-                json.dump(self.graph_dict, fhandle, indent=4)
-            except Exception as exc:
-                print(
-                    f'Exception occured when trying to write to json file with name={file_name}: {exc}')
-
-    def load_graph_dict_from_json(self, file_name: str) -> None:
+    def load_from_json(self, file_name: str) -> dict:
         '''
-        Load the graph dictionary from a json file.
+        Load the dictionary from a json file.
         '''
         with open(f'{file_name}.json', 'r') as fhandle:
             try:
-                self.graph_dict = json.loads(fhandle.read())
+                return json.loads(fhandle.read())
             except Exception as exc:
                 print(
                     f'Exception occured when trying to read from the json file with name={file_name}: {exc}')
 
         return self.graph_dict
 
+    def load_map_dict_from_json(self, file_name: str) -> dict:
+        '''
+        Load the map dictionary from a json file.
+        '''
+        self.map_dict = self.load_from_json(file_name=file_name)
+        return self.map_dict
+
+    def load_graph_dict_from_json(self, file_name: str) -> dict:
+        '''
+        Load the graph dictionary from a json file.
+        '''
+        self.graph_dict = self.load_from_json(file_name=file_name)
+        return self.graph_dict
+
+    def get_link_info(self, link: str) -> dict:
+        '''
+        Return information about link like: 
+            internal_links - number of internal links
+            external_links - number of external links
+            dead_links     - number of dead links
+            phone_links    - number of phone links
+            email_links    - number of email links
+        '''
+
+        if not link in self.map_dict:
+            raise KeyError(f'There was not found key={link} in the map_dict')
+
+        for key in ['internal_links', 'external_links', 'dead_links', 'phone_links', 'email_links']:
+            if not key in self.map_dict[link]:
+                raise KeyError(
+                    f'There was not found key={key} in the map_dict[{link}]')
+
+        return {
+            'internal_links': len(self.map_dict[link]['internal_links']),
+            'external_links': len(self.map_dict[link]['external_links']),
+            'dead_links':  len(self.map_dict[link]['dead_links']),
+            'phone_links':  len(self.map_dict[link]['phone_links']),
+            'email_links':  len(self.map_dict[link]['email_links']),
+        }
+
+    def get_link_info_formatted_string(self, link: str) -> str:
+        link_info: dict = self.get_link_info(link)
+        # return f"<b>{link}</b>\n\nInternal links: {link_info['internal_links']} <br/>External links: {link_info['external_links']}\nDead links: {link_info['dead_links']}\nPhone links: {link_info['phone_links']}\nEmail links: {link_info['email_links']}"
+        return f"<b>{link}</b><hr/><br/>Internal links: {link_info['internal_links']} <br/>External links: {link_info['external_links']} <br/>Dead links: {link_info['dead_links']} <br/>Phone links: {link_info['phone_links']} <br/>Email links: {link_info['email_links']}"
+
 
 if __name__ == '__main__':
-    root: str = 'https://www.globalapptesting.com'
 
+    local_data = True
+
+    root: str = 'https://www.globalapptesting.com/'
     webparser = WebpageParser(root_link=root)
-    response = webparser.perform_get_request(url=root)
-    links = webparser.get_links_from_web_page(web_page=response)
-    hrefs = webparser.extract_hrefs(links=links, root=root)
-    map_dict = webparser.build_dict_map()
-    # print('map_dict', map_dict)
-    graph_dict = webparser.convert_counters_to_graph_edges()
 
-    # print('graph_dict', graph_dict)
+    if not local_data:
+        # Geather data from the internet
+        response = webparser.perform_get_request(url=root)
+        links = webparser.get_links_from_web_page(web_page=response)
+        hrefs = webparser.extract_hrefs(links=links, root=root)
+        map_dict = webparser.build_dict_map()
+        graph_dict = webparser.convert_counters_to_graph_edges()
 
-    webparser.write_graph_dict_to_json_file()
+        webparser.write_graph_dict_to_json_file()
+        webparser.write_map_dict_to_json_file()
+
+    else:
+        # Load data from local files
+        graph_dict = webparser.load_graph_dict_from_json('graph_dict')
+        webparser.load_map_dict_from_json('map_dict')
 
     # VISUALISATION
-    loaded_graph_dict = webparser.load_graph_dict_from_json('graph_dict')
     plt.rcParams.update({'font.size': 5})
     G = nx.Graph()
     nt = Network(height='1000px', width='100%', directed=True)
     nx_graph = nx.Graph()
     nx_graph.add_node(root)
-    for key_root, value_edges in loaded_graph_dict.items():
+    for key_root, value_edges in graph_dict.items():
         edges_len = len(value_edges) if len(value_edges) > 20 else 20
-        nx_graph.add_node(key_root, label='', width=20,
-                          title=key_root,  size=0.9 * edges_len, group=key_root)
+        nx_graph.add_node(key_root, label=key_root, width=20,
+                          title=f'{webparser.get_link_info_formatted_string(key_root)}',  size=0.9 * edges_len, group=key_root)
 
         nx_graph.add_weighted_edges_from([(src, dest, weight*5)
                                           for (src, dest, weight) in value_edges], arrowStrikethrough=True)
