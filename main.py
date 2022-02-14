@@ -1,5 +1,7 @@
 import json
 import pprint
+from numpy import gradient
+from datetime import datetime
 from requests import get
 from bs4 import BeautifulSoup
 from httplib2 import Response
@@ -80,7 +82,11 @@ class WebpageParser():
                 f'The links type is {type(links)}, expected to be of type list')
 
         if not links:
-            return {'internal_links': Counter(), 'external_links': Counter(), 'dead_links': Counter(), 'phone_links': Counter(), 'email_links': Counter()}
+            return {'internal_links': Counter(),
+                    'external_links': Counter(),
+                    'dead_links': Counter(),
+                    'phone_links': Counter(),
+                    'email_links': Counter()}
 
         if not root:
             raise ValueError(
@@ -213,7 +219,7 @@ class WebpageParser():
         if not data:
             raise ValueError('The data is empty')
 
-        with open(f'{file_name}.{format}', 'w', encoding="utf8") as fhandle:
+        with open(f'{file_name}.{format}', mode='w', encoding="utf8") as fhandle:
             try:
                 json.dump(data, fhandle, indent=4)
             except Exception as exc:
@@ -242,7 +248,7 @@ class WebpageParser():
         '''
         Load the dictionary from a json file.
         '''
-        with open(f'{file_name}.json', 'r', encoding="utf8") as fhandle:
+        with open(f'{file_name}.json', mode='r', encoding="utf8") as fhandle:
             try:
                 return json.loads(fhandle.read())
             except Exception as exc:
@@ -293,8 +299,60 @@ class WebpageParser():
 
     def get_link_info_formatted_string(self, link: str) -> str:
         link_info: dict = self.get_link_info(link)
-        # return f"<b>{link}</b>\n\nInternal links: {link_info['internal_links']} <br/>External links: {link_info['external_links']}\nDead links: {link_info['dead_links']}\nPhone links: {link_info['phone_links']}\nEmail links: {link_info['email_links']}"
         return f"<b>{link}</b><hr/><br/>Internal links: {link_info['internal_links']} <br/>External links: {link_info['external_links']} <br/>Dead links: {link_info['dead_links']} <br/>Phone links: {link_info['phone_links']} <br/>Email links: {link_info['email_links']}"
+
+    def get_webpage_statistics(self) -> str:
+        if not self.map_dict:
+            return 'The map_dict is empty'
+
+        total_internal_links = sum([len(counter_page_links['internal_links'])
+                                    for _, counter_page_links in self.map_dict.items()])
+        total_external_links = sum([len(counter_page_links['external_links'])
+                                    for _, counter_page_links in self.map_dict.items()])
+        total_dead_links = sum([len(counter_page_links['dead_links'])
+                                for _, counter_page_links in self.map_dict.items()])
+        total_phone_links = sum([len(counter_page_links['phone_links'])
+                                for _, counter_page_links in self.map_dict.items()])
+        total_email_links = sum([len(counter_page_links['email_links'])
+                                for _, counter_page_links in self.map_dict.items()])
+
+        statistic_info = f'\nTotal internal links: {total_internal_links}\n'
+        statistic_info += f'Total external links: {total_external_links}\n'
+        statistic_info += f'Total dead links:     {total_dead_links}\n'
+        statistic_info += f'Total phone links:    {total_phone_links}\n'
+        statistic_info += f'Total email links:    {total_email_links}'
+        return statistic_info
+
+
+def show_graph(graph_dict: dict) -> None:
+    '''
+    Generate a html page with representation of the graph.
+    '''
+
+    if not isinstance(graph_dict, dict):
+        raise ValueError(
+            f'The graph_dict type is {type(graph_dict)}, expected to be of type dict')
+
+    # VISUALISATION
+    plt.rcParams.update({'font.size': 5})
+    G = nx.Graph()
+    nt = Network(height='1000px', width='100%', directed=True)
+    nx_graph = nx.Graph()
+    nx_graph.add_node(root)
+    for key_root, value_edges in graph_dict.items():
+        edges_len = len(value_edges) if len(value_edges) > 20 else 20
+        nx_graph.add_node(key_root, label=key_root, width=20,
+                          title=f'{webparser.get_link_info_formatted_string(key_root)}',  size=0.9 * edges_len, group=key_root)
+
+        nx_graph.add_weighted_edges_from([(src, dest, weight*5)
+                                          for (src, dest, weight) in value_edges], arrowStrikethrough=True)
+
+    nx.draw_shell(G, with_labels=False, font_size=4, font_weight='bold')
+    nt.from_nx(nx_graph)
+    nt.show_buttons(filter_=['nodes', 'edges', 'physics'])
+    nt.barnes_hut(gravity=-200000, central_gravity=0, spring_length=400,
+                  spring_strength=0.001, damping=0.49, overlap=0)
+    nt.show(f'{root.split(".")[1]}_map.html')
 
 
 if __name__ == '__main__':
@@ -320,23 +378,6 @@ if __name__ == '__main__':
         graph_dict = webparser.load_graph_dict_from_json('graph_dict')
         webparser.load_map_dict_from_json('map_dict')
 
-    # VISUALISATION
-    plt.rcParams.update({'font.size': 5})
-    G = nx.Graph()
-    nt = Network(height='1000px', width='100%', directed=True)
-    nx_graph = nx.Graph()
-    nx_graph.add_node(root)
-    for key_root, value_edges in graph_dict.items():
-        edges_len = len(value_edges) if len(value_edges) > 20 else 20
-        nx_graph.add_node(key_root, label=key_root, width=20,
-                          title=f'{webparser.get_link_info_formatted_string(key_root)}',  size=0.9 * edges_len, group=key_root)
-
-        nx_graph.add_weighted_edges_from([(src, dest, weight*5)
-                                          for (src, dest, weight) in value_edges], arrowStrikethrough=True)
-
-    nx.draw_shell(G, with_labels=False, font_size=4, font_weight='bold')
-    nt.from_nx(nx_graph)
-    nt.show_buttons(filter_=['nodes', 'edges', 'physics'])
-    nt.barnes_hut(gravity=-200000, central_gravity=0, spring_length=400,
-                  spring_strength=0.001, damping=0.49, overlap=0)
-    nt.show(f'{root.split(".")[1]}_map.html')
+    show_graph(graph_dict=graph_dict)
+    # stat = webparser.get_webpage_statistics()
+    # print(stat, end='\n\n')

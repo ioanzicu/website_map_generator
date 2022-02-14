@@ -5,9 +5,6 @@ from typing import Callable, Counter, Optional
 import main
 
 
-root: str = 'https://www.globalapptesting.com'
-
-
 @pytest.fixture
 def web_parser() -> main.WebpageParser:
     '''Returns a WebpageParser object with root link'''
@@ -21,12 +18,33 @@ def web_parser_without_root() -> main.WebpageParser:
 
 
 @pytest.fixture
+def root_link() -> str:
+    return 'https://www.globalapptesting.com'
+
+
+@pytest.fixture
 def build_path() -> Callable[[], str]:
     '''Build path to the file in the directory with test data'''
     def builder_func(file_name: str, format: Optional[str] = None) -> str:
         file = f'{file_name}.{format}' if format else f'{file_name}'
-        return os.path.join('test_data', file) 
+        return os.path.join('test_data', file)
     return builder_func
+
+
+@pytest.fixture
+def graph_edges() -> list:
+    return [('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/product', 7), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/platform/integrations', 5), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/resources/resource-library', 4), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/about-us', 4), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/security', 4), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/platform/test-management', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/platform/test-execution', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/platform/test-results-analysis', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/solutions', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/on-demand-test-case-execution-jira-integration', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/on-demand-test-case-execution-github-integration', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/on-demand-test-case-execution-testrail-integration', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/on-demand-test-case-execution-zephyr-squad-integration', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/on-demand-test-case-execution-slack-integration', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/how-we-help/cio-cto', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/how-we-help/engineering-teams', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/how-we-help/qa-teams', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/how-we-help/increase-release-velocity', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/how-we-help/improve-product-quality', 2),
+            ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/how-we-help/localise-qa-coverage', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/how-we-help/maximise-team-productivity', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/functional-testing/exploratory-tests', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/functional-testing/test-case-execution', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/solutions/usability-testing', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/functional-testing/mobile', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/functional-testing/web', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/pricing', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/blog', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/customers', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/engineering', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/careers', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/company/partners', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/our-testers', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/contact', 2), ('https://www.globalapptesting.com/', 'https://go.globalapptesting.com/speak-to-us', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com', 1), ('https://www.globalapptesting.com/', 'https://app.globalapptesting.com', 1), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/news', 1), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/privacy-policy', 1), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/terms-and-conditions', 1), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/code-of-conduct', 1)]
+
+
+@pytest.fixture
+def small_map_sample() -> dict:
+    return {'https://www.globalapptesting.com/': {'internal_links': Counter({'https://www.globalapptesting.com/product': 70, 'https://www.globalapptesting.com/platform/integrations': 5, 'https://www.globalapptesting.com/resources/resource-library': 4, 'https://www.globalapptesting.com/about-us': 4}),
+                                                  'external_links': Counter({'https://www.leadingqualitybook.com/': 2, 'https://testathon.co/': 2, 'https://www.facebook.com/globalapptesting/': 1}),
+                                                  'dead_links': Counter(),
+                                                  'phone_links': Counter(),
+                                                  'email_links': Counter()}}
+
 
 @pytest.fixture
 def temp_map_dict() -> dict:
@@ -86,6 +104,7 @@ def temp_map_dict() -> dict:
             'https://www.globalapptesting.com/terms-and-conditions': {'internal_links': Counter({'https://www.globalapptesting.com/product': 4, 'https://www.globalapptesting.com/platform/integrations': 4, 'https://www.globalapptesting.com/resources/resource-library': 4, 'https://www.globalapptesting.com/about-us': 4, 'https://www.globalapptesting.com/platform/test-management': 2, 'https://www.globalapptesting.com/platform/test-execution': 2, 'https://www.globalapptesting.com/platform/test-results-analysis': 2, 'https://www.globalapptesting.com/solutions': 2, 'https://www.globalapptesting.com/on-demand-test-case-execution-jira-integration': 2, 'https://www.globalapptesting.com/on-demand-test-case-execution-github-integration': 2, 'https://www.globalapptesting.com/on-demand-test-case-execution-testrail-integration': 2, 'https://www.globalapptesting.com/on-demand-test-case-execution-zephyr-squad-integration': 2, 'https://www.globalapptesting.com/on-demand-test-case-execution-slack-integration': 2, 'https://www.globalapptesting.com/how-we-help/cio-cto': 2, 'https://www.globalapptesting.com/how-we-help/engineering-teams': 2, 'https://www.globalapptesting.com/how-we-help/qa-teams': 2, 'https://www.globalapptesting.com/how-we-help/increase-release-velocity': 2, 'https://www.globalapptesting.com/how-we-help/improve-product-quality': 2, 'https://www.globalapptesting.com/how-we-help/localise-qa-coverage': 2, 'https://www.globalapptesting.com/how-we-help/maximise-team-productivity': 2, 'https://www.globalapptesting.com/functional-testing/exploratory-tests': 2, 'https://www.globalapptesting.com/functional-testing/test-case-execution': 2, 'https://www.globalapptesting.com/solutions/usability-testing': 2, 'https://www.globalapptesting.com/functional-testing/mobile': 2, 'https://www.globalapptesting.com/functional-testing/web': 2, 'https://www.globalapptesting.com/pricing': 2, 'https://www.globalapptesting.com/blog': 2, 'https://www.globalapptesting.com/customers': 2, 'https://www.globalapptesting.com/engineering': 2, 'https://www.globalapptesting.com/careers': 2, 'https://www.globalapptesting.com/company/partners': 2, 'https://www.globalapptesting.com/security': 2, 'https://www.globalapptesting.com/our-testers': 2, 'https://www.globalapptesting.com/contact': 2, 'https://www.globalapptesting.com': 1, 'https://app.globalapptesting.com': 1, 'https://go.globalapptesting.com/speak-to-us': 1, 'https://www.globalapptesting.com/news': 1, 'https://www.globalapptesting.com/terms-and-conditions/security': 1, 'https://www.globalapptesting.com/privacy-policy': 1, 'https://www.globalapptesting.com/terms-and-conditions': 1, 'https://www.globalapptesting.com/code-of-conduct': 1}), 'external_links': Counter({'https://www.leadingqualitybook.com/': 2, 'https://testathon.co/': 2, 'https://www.facebook.com/globalapptesting/': 1, 'https://www.linkedin.com/company/global-app-testing': 1, 'https://twitter.com/qaops?lang=en': 1, 'https://www.g2.com/products/global-app-testing/reviews?utm_source=review-widget': 1}), 'dead_links': Counter(), 'phone_links': Counter(), 'email_links': Counter()},
             'https://www.globalapptesting.com/code-of-conduct': {'internal_links': Counter({'https://www.globalapptesting.com/product': 4, 'https://www.globalapptesting.com/platform/integrations': 4, 'https://www.globalapptesting.com/resources/resource-library': 4, 'https://www.globalapptesting.com/about-us': 4, 'https://www.globalapptesting.com/platform/test-management': 2, 'https://www.globalapptesting.com/platform/test-execution': 2, 'https://www.globalapptesting.com/platform/test-results-analysis': 2, 'https://www.globalapptesting.com/solutions': 2, 'https://www.globalapptesting.com/on-demand-test-case-execution-jira-integration': 2, 'https://www.globalapptesting.com/on-demand-test-case-execution-github-integration': 2, 'https://www.globalapptesting.com/on-demand-test-case-execution-testrail-integration': 2, 'https://www.globalapptesting.com/on-demand-test-case-execution-zephyr-squad-integration': 2, 'https://www.globalapptesting.com/on-demand-test-case-execution-slack-integration': 2, 'https://www.globalapptesting.com/how-we-help/cio-cto': 2, 'https://www.globalapptesting.com/how-we-help/engineering-teams': 2, 'https://www.globalapptesting.com/how-we-help/qa-teams': 2, 'https://www.globalapptesting.com/how-we-help/increase-release-velocity': 2, 'https://www.globalapptesting.com/how-we-help/improve-product-quality': 2, 'https://www.globalapptesting.com/how-we-help/localise-qa-coverage': 2, 'https://www.globalapptesting.com/how-we-help/maximise-team-productivity': 2, 'https://www.globalapptesting.com/functional-testing/exploratory-tests': 2,
                                                                                             'https://www.globalapptesting.com/functional-testing/test-case-execution': 2, 'https://www.globalapptesting.com/solutions/usability-testing': 2, 'https://www.globalapptesting.com/functional-testing/mobile': 2, 'https://www.globalapptesting.com/functional-testing/web': 2, 'https://www.globalapptesting.com/pricing': 2, 'https://www.globalapptesting.com/blog': 2, 'https://www.globalapptesting.com/customers': 2, 'https://www.globalapptesting.com/engineering': 2, 'https://www.globalapptesting.com/careers': 2, 'https://www.globalapptesting.com/company/partners': 2, 'https://www.globalapptesting.com/security': 2, 'https://www.globalapptesting.com/our-testers': 2, 'https://www.globalapptesting.com/contact': 2, 'https://www.globalapptesting.com': 1, 'https://app.globalapptesting.com': 1, 'https://go.globalapptesting.com/speak-to-us': 1, 'https://www.globalapptesting.com/news': 1, 'https://www.globalapptesting.com/code-of-conduct/security': 1, 'https://www.globalapptesting.com/privacy-policy': 1, 'https://www.globalapptesting.com/terms-and-conditions': 1, 'https://www.globalapptesting.com/code-of-conduct': 1}), 'external_links': Counter({'https://www.leadingqualitybook.com/': 2, 'https://testathon.co/': 2, 'https://www.facebook.com/globalapptesting/': 1, 'https://www.linkedin.com/company/global-app-testing': 1, 'https://twitter.com/qaops?lang=en': 1, 'https://www.g2.com/products/global-app-testing/reviews?utm_source=review-widget': 1}), 'dead_links': Counter(), 'phone_links': Counter(), 'email_links': Counter()}}
+
 
 @pytest.fixture
 def expected_json():
@@ -327,21 +346,21 @@ def test_get_links_from_web_page(web_parser: main.WebpageParser, build_path: Cal
         assert len(links) == links_len
 
 
-def test_extract_hrefs_invalid_type_for_links(web_parser: main.WebpageParser):
+def test_extract_hrefs_invalid_type_for_links(web_parser: main.WebpageParser, root_link: str):
     '''
     Test the exception when invalid data types for links are provided.
     '''
 
     with pytest.raises(ValueError):
-        web_parser.extract_hrefs(links=1, root=root)
+        web_parser.extract_hrefs(links=1, root=root_link)
 
 
-def test_extract_hrefs_empty_links_list(web_parser: main.WebpageParser):
+def test_extract_hrefs_empty_links_list(web_parser: main.WebpageParser, root_link: str):
     '''
     Test when the links list is empty - returns an dict with empty Counter objects.
     '''
 
-    hrefs = web_parser.extract_hrefs(links=[], root=root)
+    hrefs = web_parser.extract_hrefs(links=[], root=root_link)
 
     assert 'internal_links' in hrefs
     assert 'external_links' in hrefs
@@ -356,7 +375,7 @@ def test_extract_hrefs_empty_links_list(web_parser: main.WebpageParser):
     assert not hrefs['email_links']
 
 
-def test_extract_hrefs(web_parser: main.WebpageParser, build_path: Callable[[], str]):
+def test_extract_hrefs(web_parser: main.WebpageParser, build_path: Callable[[], str], root_link: str):
     '''
     Test the correct extraction of hrefs.
     '''
@@ -367,7 +386,7 @@ def test_extract_hrefs(web_parser: main.WebpageParser, build_path: Callable[[], 
     file_path = build_path('global_test_app', 'html')
     with open(file=file_path, mode='r', encoding='utf8') as fhandle:
         links = web_parser.get_links_from_web_page(fhandle)
-        hrefs = web_parser.extract_hrefs(links=links, root=root)
+        hrefs = web_parser.extract_hrefs(links=links, root=root_link)
 
         assert 'internal_links' in hrefs
         assert 'external_links' in hrefs
@@ -400,7 +419,7 @@ def test_extract_links_from_counter_empty_object(web_parser: main.WebpageParser)
     assert not links
 
 
-def test_extract_links_from_counter(web_parser: main.WebpageParser, build_path: Callable[[], str]):
+def test_extract_links_from_counter(web_parser: main.WebpageParser, build_path: Callable[[], str], root_link: str):
     '''
     Test the correct extraction of links from the Counter object.
     '''
@@ -408,7 +427,7 @@ def test_extract_links_from_counter(web_parser: main.WebpageParser, build_path: 
     file_path = build_path('global_test_app', 'html')
     with open(file=file_path, mode='r', encoding='utf8') as fhandle:
         links = web_parser.get_links_from_web_page(fhandle)
-        hrefs = web_parser.extract_hrefs(links=links, root=root)
+        hrefs = web_parser.extract_hrefs(links=links, root=root_link)
         local_links_extraction = [link for link,
                                   _ in hrefs['internal_links'].items()]
 
@@ -417,104 +436,84 @@ def test_extract_links_from_counter(web_parser: main.WebpageParser, build_path: 
         assert extracted_internal_links == local_links_extraction
 
 
-# def test_build_dict_map(web_parser: main.WebpageParser):
+'''
+This test is commented because the current 
+implementation will query the real website
+and it takes too much time to finish.
+'''
+# def test_build_dict_map(web_parser: main.WebpageParser, root_link: str):
 #     '''
 #     Test the correct generation of dict map.
 #     '''
 
 #     actual_obj_map = web_parser.build_dict_map()
 
-#     response = web_parser.perform_get_request(url=root)
+#     response = web_parser.perform_get_request(url=root_link)
 #     links = web_parser.get_links_from_web_page(web_page=response)
-#     hrefs = web_parser.extract_hrefs(links=links, root=root)
+#     hrefs = web_parser.extract_hrefs(links=links, root=root_link)
 #     extracted_internal_links = web_parser.extract_links_from_counter(
 #         hrefs['internal_links'])
 
-#     expected_map = {root: hrefs}
+#     expected_map = {root_link: hrefs}
 #     for url in extracted_internal_links:
-#         response = web_parser.perform_get_request(url=root)
+#         response = web_parser.perform_get_request(url=root_link)
 #         page_links = web_parser.get_links_from_web_page(web_page=response)
 #         counter_links = web_parser.extract_hrefs(links=page_links, root=url)
 #         expected_map[url] = counter_links
 
 #     assert type(expected_map) == type(actual_obj_map)
-#     for (key_map, value_map), (key_obj_map, value_obj_map) in zip(expected_map[root].items(), actual_obj_map[root].items()):
+#     for (key_map, value_map), (key_obj_map, value_obj_map) in zip(expected_map[root_link].items(), actual_obj_map[root_link].items()):
 #         assert key_map == key_obj_map
 #         assert value_map == value_obj_map
 
 
-def test_convert_counters_to_graph_edges_tuples(web_parser_without_root: main.WebpageParser, temp_map_dict: dict):
+def test_convert_counters_to_graph_edges_tuples(web_parser_without_root: main.WebpageParser, temp_map_dict: dict, graph_edges: list):
     '''
     Test convertion of Counter objects into tuples that represent the edges of a graph.
     '''
 
-    expected_edges = [('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/product', 7), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/platform/integrations', 5), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/resources/resource-library', 4), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/about-us', 4), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/security', 4), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/platform/test-management', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/platform/test-execution', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/platform/test-results-analysis', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/solutions', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/on-demand-test-case-execution-jira-integration', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/on-demand-test-case-execution-github-integration', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/on-demand-test-case-execution-testrail-integration', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/on-demand-test-case-execution-zephyr-squad-integration', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/on-demand-test-case-execution-slack-integration', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/how-we-help/cio-cto', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/how-we-help/engineering-teams', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/how-we-help/qa-teams', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/how-we-help/increase-release-velocity', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/how-we-help/improve-product-quality', 2),
-                      ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/how-we-help/localise-qa-coverage', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/how-we-help/maximise-team-productivity', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/functional-testing/exploratory-tests', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/functional-testing/test-case-execution', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/solutions/usability-testing', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/functional-testing/mobile', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/functional-testing/web', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/pricing', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/blog', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/customers', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/engineering', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/careers', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/company/partners', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/our-testers', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/contact', 2), ('https://www.globalapptesting.com/', 'https://go.globalapptesting.com/speak-to-us', 2), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com', 1), ('https://www.globalapptesting.com/', 'https://app.globalapptesting.com', 1), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/news', 1), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/privacy-policy', 1), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/terms-and-conditions', 1), ('https://www.globalapptesting.com/', 'https://www.globalapptesting.com/code-of-conduct', 1)]
-
     web_parser_without_root.map_dict = temp_map_dict
     obtained_graph_dict = web_parser_without_root.convert_counters_to_graph_edges()
 
-    for expected_tuple, obtained_tuple in zip(expected_edges, obtained_graph_dict['https://www.globalapptesting.com/']):
+    for expected_tuple, obtained_tuple in zip(graph_edges, obtained_graph_dict['https://www.globalapptesting.com/']):
         # the expected tuples contain \n added by vscode beacause of auto formating, for this reason the comparision is done by elements
         for exp_element, obt_element in zip(expected_tuple, obtained_tuple):
             assert exp_element == obt_element
 
 
-def test_write_to_file(web_parser_without_root: main.WebpageParser, build_path: Callable[[], str]):
+def test_write_to_file(web_parser_without_root: main.WebpageParser, build_path: Callable[[], str], small_map_sample: dict):
     '''
     Test the writing dict object to the json file.
     '''
 
-    expected_map = {'https://www.globalapptesting.com/': {'internal_links': Counter({'https://www.globalapptesting.com/product': 70,
-                                                                                     'https://www.globalapptesting.com/platform/integrations': 5,
-                                                                                     'https://www.globalapptesting.com/resources/resource-library': 4,
-                                                                                     'https://www.globalapptesting.com/about-us': 4}),
-                                                          'external_links': Counter({'https://www.leadingqualitybook.com/': 2,
-                                                                                     'https://testathon.co/': 2,
-                                                                                     'https://www.facebook.com/globalapptesting/': 1}),
-                                                          'dead_links': Counter(),
-                                                          'phone_links': Counter(),
-                                                          'email_links': Counter()}}
-
     file_name = 'test_file'
     file_path = build_path(file_name, 'json')
     web_parser_without_root.write_to_file(
-        data=expected_map, file_name=file_path)
+        data=small_map_sample, file_name=file_path)
 
     with open(file=file_path, mode='r', encoding='utf8') as fhandle:
         try:
             obtained_json = json.load(fhandle)
-            assert expected_map == obtained_json
+            assert small_map_sample == obtained_json
         except Exception as exc:
             print(
                 f'Exception occured when trying to read from the json file with name={file_name}: {exc}')
 
 
-def test_write_map_dict_to_json_file(web_parser_without_root: main.WebpageParser, build_path: Callable[[], str]):
+def test_write_map_dict_to_json_file(web_parser_without_root: main.WebpageParser, build_path: Callable[[], str], small_map_sample: dict):
     '''
     Test the writing map+dict object to the json file.
     '''
 
-    expected_map = {'https://www.globalapptesting.com/': {'internal_links': Counter({'https://www.globalapptesting.com/product': 70,
-                                                                                     'https://www.globalapptesting.com/platform/integrations': 5,
-                                                                                     'https://www.globalapptesting.com/resources/resource-library': 4,
-                                                                                     'https://www.globalapptesting.com/about-us': 4}),
-                                                          'external_links': Counter({'https://www.leadingqualitybook.com/': 2,
-                                                                                     'https://testathon.co/': 2,
-                                                                                     'https://www.facebook.com/globalapptesting/': 1}),
-                                                          'dead_links': Counter(),
-                                                          'phone_links': Counter(),
-                                                          'email_links': Counter()}}
-
-    web_parser_without_root.map_dict = expected_map
+    web_parser_without_root.map_dict = small_map_sample
     file_name = 'test_map_dict'
     file_path = build_path(file_name, 'json')
     web_parser_without_root.write_map_dict_to_json_file(file_name=file_path)
 
-    with open(file=file_path, mode='r',encoding='utf8') as fhandle:
+    with open(file=file_path, mode='r', encoding='utf8') as fhandle:
         try:
             obtained_json = json.load(fhandle)
-            assert expected_map == obtained_json
+            assert small_map_sample == obtained_json
         except Exception as exc:
             print(
                 f'Exception occured when trying to read from the json file with name={file_name}: {exc}')
@@ -524,10 +523,11 @@ def test_write_graph_dict_to_json_file(web_parser_without_root: main.WebpagePars
     '''
     Test the writing graph_dict object to the json file.
     '''
-    
+
     web_parser_without_root.graph_dict = {'https://www.globalapptesting.com/': [('https://www.globalapptesting.com', 'https://www.globalapptesting.com', 1), ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/product', 7), ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/platform/test-management', 2), ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/platform/test-execution', 2), ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/platform/test-results-analysis', 2), ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/platform/integrations', 5), ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/solutions', 2), ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/on-demand-test-case-execution-jira-integration', 2), ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/on-demand-test-case-execution-github-integration', 2), ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/on-demand-test-case-execution-testrail-integration', 2), ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/on-demand-test-case-execution-zephyr-squad-integration', 2), ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/on-demand-test-case-execution-slack-integration', 2), ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/how-we-help/cio-cto', 2), ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/how-we-help/engineering-teams', 2), ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/how-we-help/qa-teams', 2), ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/how-we-help/increase-release-velocity', 2), ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/how-we-help/improve-product-quality', 2), ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/how-we-help/localise-qa-coverage', 2), ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/how-we-help/maximise-team-productivity', 2), (
         'https://www.globalapptesting.com', 'https://www.globalapptesting.com/functional-testing/exploratory-tests', 2), ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/functional-testing/test-case-execution', 2), ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/solutions/usability-testing', 2), ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/functional-testing/mobile', 2), ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/functional-testing/web', 2), ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/pricing', 2), ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/resources/resource-library', 4), ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/blog', 2), ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/customers', 2), ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/engineering', 2), ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/about-us', 4), ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/careers', 2), ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/company/partners', 2), ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/security', 4), ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/our-testers', 2), ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/contact', 2), ('https://www.globalapptesting.com', 'https://app.globalapptesting.com', 1), ('https://www.globalapptesting.com', 'https://go.globalapptesting.com/speak-to-us', 2), ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/news', 1), ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/privacy-policy', 1), ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/terms-and-conditions', 1), ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/code-of-conduct', 1)]}
-    web_parser_without_root.write_graph_dict_to_json_file('test_data\\test_graph_dict')
+    web_parser_without_root.write_graph_dict_to_json_file(
+        'test_data\\test_graph_dict')
 
     file_name = 'test_graph_dict'
     file_path = build_path(file_name, 'json')
@@ -566,7 +566,8 @@ def test_load_from_json(web_parser_without_root: main.WebpageParser, build_path:
             print(
                 f'Exception occured when trying to write to json file {file_path}: {exc}')
 
-    obtained_json = web_parser_without_root.load_from_json(file_name=build_path(file_name))
+    obtained_json = web_parser_without_root.load_from_json(
+        file_name=build_path(file_name))
     assert expected_json == obtained_json
 
 
@@ -596,7 +597,8 @@ def test_load_map_dict_from_json(web_parser_without_root: main.WebpageParser, bu
             print(
                 f'Exception occured when trying to write to json file {file_path}: {exc}')
 
-    obtained_json = web_parser_without_root.load_map_dict_from_json(file_name=build_path(file_name))
+    obtained_json = web_parser_without_root.load_map_dict_from_json(
+        file_name=build_path(file_name))
     assert expected_json == obtained_json
 
 
@@ -626,7 +628,8 @@ def test_load_graph_dict_from_json(web_parser_without_root: main.WebpageParser, 
             print(
                 f'Exception occured when trying to write to json file {file_path}: {exc}')
 
-    obtained_json = web_parser_without_root.load_graph_dict_from_json(file_name=build_path(file_name))
+    obtained_json = web_parser_without_root.load_graph_dict_from_json(
+        file_name=build_path(file_name))
     assert expected_json == obtained_json
 
 
@@ -642,3 +645,14 @@ def test_get_link_info(web_parser_without_root: main.WebpageParser,  temp_map_di
         'https://www.globalapptesting.com/')
 
     assert expected_dict == obtained_dict
+
+
+def test_get_webpage_statistics(web_parser_without_root: main.WebpageParser):
+    '''
+    Validate the webpage statistic values and format.
+    '''
+
+    web_parser_without_root.load_map_dict_from_json('map_dict')
+    expected_statistic = '\nTotal internal links: 4359\nTotal external links: 1358\nTotal dead links:     12\nTotal phone links:    4\nTotal email links:    32'
+    obtained_statistic = web_parser_without_root.get_webpage_statistics()
+    assert expected_statistic == obtained_statistic

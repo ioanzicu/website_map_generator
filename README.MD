@@ -56,5 +56,23 @@ Witht output in the terminal, verbose flags: `-v` (short logs)  or `-vv` (full l
 
 - `python -m pytest -vv`
 
+To show the time execution for each test use the `--durations` flag. 
+
+Example:
+- `--durations=0` Show the durations of all tests
+- `--durations=2` Show the slowest 2 tests
+
+
+- `pytest --durations=0 -vv`
+
 
 This code is not meant to be used in production (for commercial purpose). The author Ioan Zicu, does not allow it!
+
+
+## References
+
+1. [https://www.python.org/](https://www.python.org/)
+2. [https://beautiful-soup-4.readthedocs.io/en/latest/](https://beautiful-soup-4.readthedocs.io/en/latest/)
+3. [https://networkx.org/](https://networkx.org/)
+4. [https://docs.pytest.org/](https://docs.pytest.org/)
+5. [https://matplotlib.org/](https://matplotlib.org/)
