@@ -8,8 +8,22 @@ The motivation for this project is the [**Python engineer test**](https://gitlab
 - pip version 22.0.3
 
 
+## (Optional) Create virtual environment 
+It will isolate the environment of the project from the operating system
+- `python -m venv <virtual-environment-name>`
+- `python -m venv venv`
+
+The terminal should show `(venv)` at the beginning of the line - it means that the virtual environment was activated.
+
+Activate virtual environment
+- `.\venv\Scripts\activate`
+
+
+Deactivate virtual environment
+- `deactivate`
+
 ## Install packages
-- ```pip install -r requirements.txt```
+- `pip install -r requirements.txt`
 
 ## Run the script
 - `python main.py`
