@@ -3,7 +3,7 @@ The motivation for this project is the [**Python engineer test**](https://gitlab
 
 # Requirements
 
-- Operating System: Windows 10, MacOS or Linux
+- Operating System: Windows 10
 - Python version 3.9.7
 - pip version 22.0.3
 

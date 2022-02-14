@@ -1,6 +1,5 @@
 import json
 import pprint
-import sys
 from requests import get
 from bs4 import BeautifulSoup
 from httplib2 import Response
@@ -214,7 +213,7 @@ class WebpageParser():
         if not data:
             raise ValueError('The data is empty')
 
-        with open(f'{file_name}.{format}', 'w') as fhandle:
+        with open(f'{file_name}.{format}', 'w', encoding="utf8") as fhandle:
             try:
                 json.dump(data, fhandle, indent=4)
             except Exception as exc:
@@ -243,7 +242,7 @@ class WebpageParser():
         '''
         Load the dictionary from a json file.
         '''
-        with open(f'{file_name}.json', 'r') as fhandle:
+        with open(f'{file_name}.json', 'r', encoding="utf8") as fhandle:
             try:
                 return json.loads(fhandle.read())
             except Exception as exc:
