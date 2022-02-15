@@ -56,6 +56,7 @@
         "email_links": {},
         "HTTP_STATUS": 200
     },
+    "HTTP_STATUS": 200,
     "https://www.globalapptesting.com/product": {
         "internal_links": {
             "https://www.globalapptesting.com": 1,

@@ -1,7 +1,5 @@
 import json
 import pprint
-from numpy import gradient
-from datetime import datetime
 from requests import get
 from bs4 import BeautifulSoup
 from httplib2 import Response
@@ -40,7 +38,7 @@ class WebpageParser():
     def get_graph_dict(self) -> dict:
         return self.graph_dict
 
-    def perform_get_request(self, url: str = ''):
+    def perform_get_request(self, url: str = '') -> Response:
         '''
         Perform HTTP get request and return response object.
         '''
@@ -48,12 +46,7 @@ class WebpageParser():
         if not url:
             raise ArgumentNotProvided('url was not provided')
         response: Response = get(url=url)
-
-        if response.status_code != 200:
-            # @TODO Fix bug when code is not 200
-            return ''
-            # raise Exception(f'Status code is not 200: {response.status_code}')
-        return response.text
+        return (response.text, response.status_code)
 
     def get_links_from_web_page(self, web_page, parser='html.parser'):
         '''
@@ -163,7 +156,7 @@ class WebpageParser():
         # @TODO REFACTOR
 
         # Perform get request
-        response = self.perform_get_request(url=self.root_link)
+        response, status_code = self.perform_get_request(url=self.root_link)
         # Extract links from html root page
         links = self.get_links_from_web_page(web_page=response)
         # Categorize links
@@ -177,18 +170,20 @@ class WebpageParser():
 
         # Repeat the above steps for the internal links
         for internal_link in only_internal_links:
-            response = self.perform_get_request(url=internal_link)
-            page_links = self.get_links_from_web_page(web_page=response)
+            response, status_code = self.perform_get_request(url=internal_link)
+            page_links = self.get_links_from_web_page(
+                web_page=response)
             counter_links = self.extract_hrefs(
                 links=page_links, root=internal_link)
             self.map_dict[internal_link] = counter_links
+            self.map_dict[internal_link]['HTTP_STATUS'] = status_code
 
             # add the non-existing nodes from the counter links
             counter_internal_links = self.extract_links_from_counter(
                 counter_links['internal_links'])
             for destination_link in counter_internal_links:
                 if destination_link not in self.map_dict:
-                    dest_response = self.perform_get_request(
+                    dest_response, dest_status_code = self.perform_get_request(
                         url=destination_link)
                     page_links = self.get_links_from_web_page(
                         web_page=dest_response)
@@ -196,6 +191,7 @@ class WebpageParser():
                         links=page_links, root=destination_link)
 
                     self.map_dict[destination_link] = dest_counter_links
+                    self.map_dict[destination_link]['HTTP_STATUS'] = dest_status_code
 
         return self.map_dict
 
@@ -208,6 +204,8 @@ class WebpageParser():
             self.build_dict_map()
 
         for key_root, value_dict in self.map_dict.items():
+            if key_root == 'HTTP_STATUS':
+                continue
             self.graph_dict[key_root] = [(key_root, destination_link, weight)
                                          for destination_link, weight in value_dict['internal_links'].items()]
         return self.graph_dict
@@ -273,7 +271,7 @@ class WebpageParser():
 
     def get_link_info(self, link: str) -> dict:
         '''
-        Return information about link like: 
+        Return information about link like:
             internal_links - number of internal links
             external_links - number of external links
             dead_links     - number of dead links
@@ -281,11 +279,11 @@ class WebpageParser():
             email_links    - number of email links
         '''
 
-        if not link in self.map_dict:
+        if link not in self.map_dict:
             raise KeyError(f'There was not found key={link} in the map_dict')
 
         for key in ['internal_links', 'external_links', 'dead_links', 'phone_links', 'email_links']:
-            if not key in self.map_dict[link]:
+            if key not in self.map_dict[link]:
                 raise KeyError(
                     f'There was not found key={key} in the map_dict[{link}]')
 
@@ -295,32 +293,54 @@ class WebpageParser():
             'dead_links':  len(self.map_dict[link]['dead_links']),
             'phone_links':  len(self.map_dict[link]['phone_links']),
             'email_links':  len(self.map_dict[link]['email_links']),
+            'HTTP_STATUS': self.map_dict[link]['HTTP_STATUS']
         }
 
     def get_link_info_formatted_string(self, link: str) -> str:
         link_info: dict = self.get_link_info(link)
-        return f"<b>{link}</b><hr/><br/>Internal links: {link_info['internal_links']} <br/>External links: {link_info['external_links']} <br/>Dead links: {link_info['dead_links']} <br/>Phone links: {link_info['phone_links']} <br/>Email links: {link_info['email_links']}"
+        return f"<b>{link}</b><br/>HTTP STATUS: <b>{link_info['HTTP_STATUS']}</b><hr/><br/>Internal links: {link_info['internal_links']} <br/>External links: {link_info['external_links']} <br/>Dead links: {link_info['dead_links']} <br/>Phone links: {link_info['phone_links']} <br/>Email links: {link_info['email_links']}"
+
+    def get_link_status_code(self, link: str) -> int:
+        if not self.map_dict:
+            raise ValueError('The map_dict is empty')
+
+        if link not in self.map_dict:
+            raise KeyError(f'There was not found key={link} in the map_dict')
+
+        return self.map_dict[link].get('HTTP_STATUS', 0)
 
     def get_webpage_statistics(self) -> str:
         if not self.map_dict:
             return 'The map_dict is empty'
 
-        total_internal_links = sum([len(counter_page_links['internal_links'])
-                                    for _, counter_page_links in self.map_dict.items()])
-        total_external_links = sum([len(counter_page_links['external_links'])
-                                    for _, counter_page_links in self.map_dict.items()])
-        total_dead_links = sum([len(counter_page_links['dead_links'])
-                                for _, counter_page_links in self.map_dict.items()])
-        total_phone_links = sum([len(counter_page_links['phone_links'])
-                                for _, counter_page_links in self.map_dict.items()])
-        total_email_links = sum([len(counter_page_links['email_links'])
-                                for _, counter_page_links in self.map_dict.items()])
+        total_internal_links = 0
+        total_external_links = 0
+        total_dead_links = 0
+        total_phone_links = 0
+        total_email_links = 0
+        http_statuses = []
+        for key, value in self.map_dict.items():
+            if key == 'HTTP_STATUS':
+                continue
+
+            http_statuses.append(value['HTTP_STATUS'])
+
+            total_internal_links += len(value['internal_links'])
+            total_external_links += len(value['external_links'])
+            total_dead_links += len(value['dead_links'])
+            total_phone_links += len(value['phone_links'])
+            total_email_links += len(value['email_links'])
 
         statistic_info = f'\nTotal internal links: {total_internal_links}\n'
         statistic_info += f'Total external links: {total_external_links}\n'
         statistic_info += f'Total dead links:     {total_dead_links}\n'
         statistic_info += f'Total phone links:    {total_phone_links}\n'
-        statistic_info += f'Total email links:    {total_email_links}'
+        statistic_info += f'Total email links:    {total_email_links}\n\n'
+
+        http_counter = Counter(http_statuses)
+        for http_status, count in http_counter.items():
+            statistic_info += f'HTTP {http_status}:             {count}\n'
+
         return statistic_info
 
 
@@ -337,12 +357,14 @@ def show_graph(graph_dict: dict) -> None:
     plt.rcParams.update({'font.size': 5})
     G = nx.Graph()
     nt = Network(height='1000px', width='100%', directed=True)
+
     nx_graph = nx.Graph()
     nx_graph.add_node(root)
     for key_root, value_edges in graph_dict.items():
         edges_len = len(value_edges) if len(value_edges) > 20 else 20
-        nx_graph.add_node(key_root, label=key_root, width=20,
-                          title=f'{webparser.get_link_info_formatted_string(key_root)}',  size=0.9 * edges_len, group=key_root)
+        nx_graph.add_node(key_root, label=f'<b>{webparser.get_link_status_code(link=key_root)}</b>',
+                          title=f'{webparser.get_link_info_formatted_string(key_root)}',
+                          size=1.1 * edges_len, width=20, group=key_root)
 
         nx_graph.add_weighted_edges_from([(src, dest, weight*5)
                                           for (src, dest, weight) in value_edges], arrowStrikethrough=True)
@@ -357,14 +379,14 @@ def show_graph(graph_dict: dict) -> None:
 
 if __name__ == '__main__':
 
-    local_data = True
+    local_data = False
 
-    root: str = 'https://www.globalapptesting.com/'
+    root: str = 'https://www.globalapptesting.com'
     webparser = WebpageParser(root_link=root)
 
     if not local_data:
         # Geather data from the internet
-        response = webparser.perform_get_request(url=root)
+        response, status_code = webparser.perform_get_request(url=root)
         links = webparser.get_links_from_web_page(web_page=response)
         hrefs = webparser.extract_hrefs(links=links, root=root)
         map_dict = webparser.build_dict_map()
@@ -378,6 +400,6 @@ if __name__ == '__main__':
         graph_dict = webparser.load_graph_dict_from_json('graph_dict')
         webparser.load_map_dict_from_json('map_dict')
 
-    show_graph(graph_dict=graph_dict)
-    # stat = webparser.get_webpage_statistics()
-    # print(stat, end='\n\n')
+    # show_graph(graph_dict=graph_dict)
+    stat = webparser.get_webpage_statistics()
+    print(stat, end='\n\n')
