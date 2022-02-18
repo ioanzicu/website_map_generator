@@ -2,19 +2,19 @@ import os
 import pytest
 import json
 from typing import Callable, Counter, Optional
-import main
+from webpage_parser import WebpageParser, ArgumentNotProvided
 
 
 @pytest.fixture
-def web_parser() -> main.WebpageParser:
+def web_parser() -> WebpageParser:
     '''Returns a WebpageParser object with root link'''
-    return main.WebpageParser('https://www.globalapptesting.com/')
+    return WebpageParser('https://www.globalapptesting.com/')
 
 
 @pytest.fixture
-def web_parser_without_root() -> main.WebpageParser:
+def web_parser_without_root() -> WebpageParser:
     '''Returns a WebpageParser object without root link'''
-    return main.WebpageParser('')
+    return WebpageParser('')
 
 
 @pytest.fixture
@@ -100,7 +100,7 @@ def temp_map_dict() -> dict:
 
 
 @ pytest.fixture
-def expected_json():
+def expected_json() -> dict:
     return {
         "https://www.globalapptesting.com/": [
             [
@@ -141,17 +141,30 @@ def expected_json():
         ]
     }
 
+@pytest.fixture
+def write_to_json_file(build_path):
+
+    def inner_func(file_name: str, expected_json_sample: json):
+        file_path = build_path(file_name, 'json')
+        with open(file=file_path, mode='w', encoding='utf8') as fhandle:
+            try:
+                json.dump(expected_json_sample, fhandle, indent=4)
+            except Exception as exc:
+                print(
+                    f'Exception occured when trying to write to json file {file_path}: {exc}')
+    return inner_func
+
 
 def test_get_links_from_web_page_no_url(web_parser):
     '''
-    Test exception.
+    Test ArgumentNotProvided exception.
     '''
 
-    with pytest.raises(main.ArgumentNotProvided):
+    with pytest.raises(ArgumentNotProvided):
         web_parser.perform_get_request()
 
 
-def test_get_links_from_web_page(web_parser: main.WebpageParser, build_path: Callable[[], str]):
+def test_get_links_from_web_page(web_parser: WebpageParser, build_path: Callable[[], str]):
     '''
     Test if the obtained links are correct - with minimal attempts.
     '''
@@ -169,21 +182,21 @@ def test_get_links_from_web_page(web_parser: main.WebpageParser, build_path: Cal
         assert len(links) == links_len
 
 
-def test_extract_hrefs_invalid_type_for_links(web_parser: main.WebpageParser, root_link: str):
+def test_extract_hrefs_invalid_type_for_links(web_parser: WebpageParser, root_link: str):
     '''
     Test the exception when invalid data types for links are provided.
     '''
 
     with pytest.raises(ValueError):
-        web_parser.extract_hrefs(links=1, root=root_link)
+        web_parser.extract_hrefs(links=1)
 
 
-def test_extract_hrefs_empty_links_list(web_parser: main.WebpageParser, root_link: str):
+def test_extract_hrefs_empty_links_list(web_parser: WebpageParser, root_link: str):
     '''
     Test when the links list is empty - returns an dict with empty Counter objects.
     '''
 
-    hrefs = web_parser.extract_hrefs(links=[], root=root_link)
+    hrefs = web_parser.extract_hrefs(links=[])
 
     assert 'internal_links' in hrefs
     assert 'external_links' in hrefs
@@ -198,7 +211,7 @@ def test_extract_hrefs_empty_links_list(web_parser: main.WebpageParser, root_lin
     assert not hrefs['email_links']
 
 
-def test_extract_hrefs(web_parser: main.WebpageParser, build_path: Callable[[], str], root_link: str):
+def test_extract_hrefs(web_parser: WebpageParser, build_path: Callable[[], str], root_link: str):
     '''
     Test the correct extraction of hrefs.
     '''
@@ -209,7 +222,7 @@ def test_extract_hrefs(web_parser: main.WebpageParser, build_path: Callable[[], 
     file_path = build_path('global_test_app', 'html')
     with open(file=file_path, mode='r', encoding='utf8') as fhandle:
         links = web_parser.get_links_from_web_page(fhandle)
-        hrefs = web_parser.extract_hrefs(links=links, root=root_link)
+        hrefs = web_parser.extract_hrefs(links=links)
 
         assert 'internal_links' in hrefs
         assert 'external_links' in hrefs
@@ -224,7 +237,7 @@ def test_extract_hrefs(web_parser: main.WebpageParser, build_path: Callable[[], 
         assert not hrefs['email_links']
 
 
-def test_extract_links_from_counter_invalid_obj_type(web_parser: main.WebpageParser):
+def test_extract_links_from_counter_invalid_obj_type(web_parser: WebpageParser):
     '''
     Test the exceptin when the argument counter_obj is not of type Counter.
     '''
@@ -233,7 +246,7 @@ def test_extract_links_from_counter_invalid_obj_type(web_parser: main.WebpagePar
         web_parser.extract_links_from_counter(counter_obj=[])
 
 
-def test_extract_links_from_counter_empty_object(web_parser: main.WebpageParser):
+def test_extract_links_from_counter_empty_object(web_parser: WebpageParser):
     '''
     Test the exceptin when the argument counter_obj is empty - returns an empty list.
     '''
@@ -242,7 +255,7 @@ def test_extract_links_from_counter_empty_object(web_parser: main.WebpageParser)
     assert not links
 
 
-def test_extract_links_from_counter(web_parser: main.WebpageParser, build_path: Callable[[], str], root_link: str):
+def test_extract_links_from_counter(web_parser: WebpageParser, build_path: Callable[[], str], root_link: str):
     '''
     Test the correct extraction of links from the Counter object.
     '''
@@ -250,7 +263,7 @@ def test_extract_links_from_counter(web_parser: main.WebpageParser, build_path: 
     file_path = build_path('global_test_app', 'html')
     with open(file=file_path, mode='r', encoding='utf8') as fhandle:
         links = web_parser.get_links_from_web_page(fhandle)
-        hrefs = web_parser.extract_hrefs(links=links, root=root_link)
+        hrefs = web_parser.extract_hrefs(links=links)
         local_links_extraction = [link for link,
                                   _ in hrefs['internal_links'].items()]
 
@@ -264,7 +277,7 @@ This test is commented because the current
 implementation will query the real website
 and it takes too much time to finish.
 '''
-# def test_build_dict_map(web_parser: main.WebpageParser, root_link: str):
+# def test_build_dict_map(web_parser: WebpageParser, root_link: str):
 #     '''
 #     Test the correct generation of dict map.
 #     '''
@@ -290,7 +303,7 @@ and it takes too much time to finish.
 #         assert value_map == value_obj_map
 
 
-def test_convert_counters_to_graph_edges_tuples(web_parser_without_root: main.WebpageParser, temp_map_dict: dict, graph_edges: list):
+def test_convert_counters_to_graph_edges_tuples(web_parser_without_root: WebpageParser, temp_map_dict: dict, graph_edges: list):
     '''
     Test convertion of Counter objects into tuples that represent the edges of a graph.
 
@@ -306,7 +319,7 @@ def test_convert_counters_to_graph_edges_tuples(web_parser_without_root: main.We
             assert exp_element == obt_element
 
 
-def test_write_to_file(web_parser_without_root: main.WebpageParser, build_path: Callable[[], str], small_map_sample: dict):
+def test_write_to_file(web_parser_without_root: WebpageParser, build_path: Callable[[], str], small_map_sample: dict):
     '''
     Test the writing dict object to the json file.
     '''
@@ -325,7 +338,7 @@ def test_write_to_file(web_parser_without_root: main.WebpageParser, build_path: 
                 f'Exception occured when trying to read from the json file with name={file_name}: {exc}')
 
 
-def test_write_map_dict_to_json_file(web_parser_without_root: main.WebpageParser, build_path: Callable[[], str], small_map_sample: dict):
+def test_write_map_dict_to_json_file(web_parser_without_root: WebpageParser, build_path: Callable[[], str], small_map_sample: dict):
     '''
     Test the writing map+dict object to the json file.
     '''
@@ -344,14 +357,14 @@ def test_write_map_dict_to_json_file(web_parser_without_root: main.WebpageParser
                 f'Exception occured when trying to read from the json file with name={file_name}: {exc}')
 
 
-def test_write_graph_dict_to_json_file(web_parser_without_root: main.WebpageParser, expected_json, build_path: Callable[[], str], temp_graph_dict: dict):
+def test_write_graph_dict_to_json_file(web_parser_without_root: WebpageParser, expected_json, build_path: Callable[[], str], temp_graph_dict: dict):
     '''
     Test the writing graph_dict object to the json file.
     '''
 
     web_parser_without_root.graph_dict = temp_graph_dict
     web_parser_without_root.write_graph_dict_to_json_file(
-        'test_data\\test_graph_dict')
+        file_name=build_path('test_graph_dict'))
 
     file_name = 'test_graph_dict'
     file_path = build_path(file_name, 'json')
@@ -364,55 +377,34 @@ def test_write_graph_dict_to_json_file(web_parser_without_root: main.WebpagePars
                 f'Exception occured when trying to read from the json file with name={file_name}: {exc}')
 
 
-def test_load_from_json(web_parser_without_root: main.WebpageParser, build_path: Callable[[], str], expected_json_sample: json):
-
+def test_load_from_json(web_parser_without_root: WebpageParser, build_path: Callable[[], str], expected_json_sample: json, write_to_json_file: Callable[[str, ], None]):
+    
     file_name = 'test_load'
-    file_path = build_path(file_name, 'json')
-    with open(file=file_path, mode='w', encoding='utf8') as fhandle:
-        try:
-            json.dump(expected_json_sample, fhandle, indent=4)
-        except Exception as exc:
-            print(
-                f'Exception occured when trying to write to json file {file_path}: {exc}')
-
+    write_to_json_file(file_name, expected_json_sample)
     obtained_json = web_parser_without_root.load_from_json(
         file_name=build_path(file_name))
     assert expected_json_sample == obtained_json
 
 
-def test_load_map_dict_from_json(web_parser_without_root: main.WebpageParser, build_path: Callable[[], str], expected_json_sample: json):
+def test_load_map_dict_from_json(web_parser_without_root: WebpageParser, build_path: Callable[[], str], expected_json_sample: json, write_to_json_file: Callable[[str, ], None]):
 
     file_name = 'test_load_map_dict'
-    file_path = build_path(file_name, 'json')
-    with open(file=file_path, mode='w', encoding='utf8') as fhandle:
-        try:
-            json.dump(expected_json_sample, fhandle, indent=4)
-        except Exception as exc:
-            print(
-                f'Exception occured when trying to write to json file {file_path}: {exc}')
-
+    write_to_json_file(file_name, expected_json_sample)
     obtained_json = web_parser_without_root.load_map_dict_from_json(
         file_name=build_path(file_name))
     assert expected_json_sample == obtained_json
 
 
-def test_load_graph_dict_from_json(web_parser_without_root: main.WebpageParser, build_path: Callable[[], str], expected_json_sample: json):
+def test_load_graph_dict_from_json(web_parser_without_root: WebpageParser, build_path: Callable[[], str], expected_json_sample: json, write_to_json_file: Callable[[str, ], None]):
 
     file_name = 'test_load_graph_dict'
-    file_path = build_path(file_name, 'json')
-    with open(file=file_path, mode='w', encoding='utf8') as fhandle:
-        try:
-            json.dump(expected_json_sample, fhandle, indent=4)
-        except Exception as exc:
-            print(
-                f'Exception occured when trying to write to json file {file_path}: {exc}')
-
+    write_to_json_file(file_name, expected_json_sample)
     obtained_json = web_parser_without_root.load_graph_dict_from_json(
         file_name=build_path(file_name))
     assert expected_json_sample == obtained_json
 
 
-def test_get_link_info(web_parser_without_root: main.WebpageParser,  temp_map_dict: dict):
+def test_get_link_info(web_parser_without_root: WebpageParser,  temp_map_dict: dict):
     '''
     Test statistic info of a given link.
     '''
@@ -430,7 +422,7 @@ def test_get_link_info(web_parser_without_root: main.WebpageParser,  temp_map_di
     assert expected_dict == obtained_dict
 
 
-def test_get_webpage_statistics(web_parser_without_root: main.WebpageParser, build_path: Callable[[], str]):
+def test_get_webpage_statistics(web_parser_without_root: WebpageParser, build_path: Callable[[], str]):
     '''
     Validate the webpage statistic values and format.
     '''
@@ -443,7 +435,7 @@ def test_get_webpage_statistics(web_parser_without_root: main.WebpageParser, bui
     assert expected_statistic == obtained_statistic
 
 
-def test_get_link_status_code(web_parser_without_root: main.WebpageParser,  temp_map_dict: dict):
+def test_get_link_status_code(web_parser_without_root: WebpageParser,  temp_map_dict: dict):
     web_parser_without_root.map_dict = temp_map_dict
     obtained_status_code = web_parser_without_root.get_link_status_code(
         'https://www.globalapptesting.com/')
