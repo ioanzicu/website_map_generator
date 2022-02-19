@@ -75,7 +75,8 @@ def small_map_sample() -> dict:
                                                   'external_links': Counter({'https://www.leadingqualitybook.com/': 2, 'https://testathon.co/': 2, 'https://www.facebook.com/globalapptesting/': 1}),
                                                   'dead_links': Counter(),
                                                   'phone_links': Counter(),
-                                                  'email_links': Counter()}}
+                                                  'email_links': Counter(),
+                                                  'image_links': Counter(),}}
 
 
 @ pytest.fixture
@@ -85,18 +86,18 @@ def temp_map_dict() -> dict:
                                                                              'https://www.globalapptesting.com/terms-and-conditions': 1, 'https://www.globalapptesting.com/code-of-conduct': 1}),
                                                   'external_links': Counter({'https://www.leadingqualitybook.com/': 2, 'https://testathon.co/': 2, 'https://www.facebook.com/globalapptesting/': 1, 'https://www.linkedin.com/company/global-app-testing': 1, 'https://twitter.com/qaops?lang=en': 1,
                                                                              'https://www.g2.com/products/global-app-testing/reviews?utm_source=review-widget': 1}),
-                                                  'dead_links': Counter(), 'phone_links': Counter(), 'email_links': Counter(),
+                                                  'dead_links': Counter(), 'phone_links': Counter(), 'email_links': Counter(), 'image_links': Counter(),
                                                   'HTTP_STATUS': 200},
             'https://www.globalapptesting.com/product': {'internal_links': Counter({'https://www.globalapptesting.com/product': 4, 'https://www.globalapptesting.com/platform/integrations': 4, 'https://www.globalapptesting.com/resources/resource-library': 4, 'https://www.globalapptesting.com/about-us': 4,
                                                                                     'https://www.globalapptesting.com/on-demand-test-case-execution-jira-integration': 2, 'https://www.globalapptesting.com/on-demand-test-case-execution-github-integration': 2, 'https://www.globalapptesting.com/on-demand-test-case-execution-testrail-integration': 2}),
                                                          'external_links': Counter({'https://www.leadingqualitybook.com/': 2, 'https://testathon.co/': 2, 'https://cta-redirect.hubspot.com/cta/redirect/540930/33915d8b-4806-48e9-9756-29171861ac9c': 1, 'https://www.facebook.com/globalapptesting/': 1, 'https://www.linkedin.com/company/global-app-testing': 1,
                                                                                     'https://twitter.com/qaops?lang=en': 1, 'https://www.g2.com/products/global-app-testing/reviews?utm_source=review-widget': 1}),
-                                                         'dead_links': Counter(), 'phone_links': Counter(), 'email_links': Counter(), 'HTTP_STATUS': 200},
+                                                         'dead_links': Counter(), 'phone_links': Counter(), 'email_links': Counter(), 'image_links': Counter(), 'HTTP_STATUS': 200},
             'https://www.globalapptesting.com/platform/test-management': {'internal_links': Counter({'https://www.globalapptesting.com/product': 4, 'https://www.globalapptesting.com/platform/integrations': 4, 'https://www.globalapptesting.com/resources/resource-library': 4, 'https://www.globalapptesting.com/about-us': 4,
                                                                                                      'https://www.globalapptesting.com/code-of-conduct': 1}),
                                                                           'external_links': Counter({'https://www.leadingqualitybook.com/': 2, 'https://testathon.co/': 2, 'https://cta-redirect.hubspot.com/cta/redirect/540930/33915d8b-4806-48e9-9756-29171861ac9c': 1, 'https://www.facebook.com/globalapptesting/': 1,
                                                                                                      'https://www.linkedin.com/company/global-app-testing': 1, 'https://twitter.com/qaops?lang=en': 1, 'https://www.g2.com/products/global-app-testing/reviews?utm_source=review-widget': 1}),
-                                                                          'dead_links': Counter(), 'phone_links': Counter(), 'email_links': Counter(), 'HTTP_STATUS': 200}}
+                                                                          'dead_links': Counter(), 'phone_links': Counter(), 'email_links': Counter(), 'image_links': Counter(), 'HTTP_STATUS': 200}}
 
 
 @ pytest.fixture
@@ -340,15 +341,14 @@ def test_write_to_file(web_parser_without_root: WebpageParser, build_path: Calla
 
 def test_write_map_dict_to_json_file(web_parser_without_root: WebpageParser, build_path: Callable[[], str], small_map_sample: dict):
     '''
-    Test the writing map+dict object to the json file.
+    Test the writing map_dict object to the json file.
     '''
 
     web_parser_without_root.map_dict = small_map_sample
     file_name = 'test_map_dict'
-    file_path = build_path(file_name, 'json')
+    file_path = build_path(file_name)
     web_parser_without_root.write_map_dict_to_json_file(file_name=file_path)
-
-    with open(file=file_path, mode='r', encoding='utf8') as fhandle:
+    with open(file=build_path(file_name, 'json'), mode='r', encoding='utf8') as fhandle:
         try:
             obtained_json = json.load(fhandle)
             assert small_map_sample == obtained_json
@@ -415,6 +415,7 @@ def test_get_link_info(web_parser_without_root: WebpageParser,  temp_map_dict: d
                      'dead_links': 0,
                      'phone_links': 0,
                      'email_links': 0,
+                     'image_links': 0,
                      'HTTP_STATUS': 200}
     obtained_dict = web_parser_without_root.get_link_info(
         'https://www.globalapptesting.com/')
@@ -429,9 +430,9 @@ def test_get_webpage_statistics(web_parser_without_root: WebpageParser, build_pa
 
     web_parser_without_root.load_map_dict_from_json(
         file_name=build_path('test_map_data_full'))
-    expected_statistic = '\nTotal internal links: 7920\nTotal external links: 2070\nTotal dead links:     12\nTotal phone links:    4\nTotal email links:    32\n\nHTTP 200:             92\nHTTP 404:             90\n'
+    expected_statistic = '\nGeneral information about                  \n\nTotal web pages found:                     362\nHTTP 200:                                  355\nHTTP 404:                                  7\n\nTotal internal links:                      17410\nTotal external links:                      5228\nTotal dead links:                          86\nTotal phone links:                         25\nTotal email links:                         183\nTotal image links:                         14\n\nAverage number of internal links per page: 48\nAverage number of external links per page: 14\nAverage size (in bytes) of page:           99853\n'
     obtained_statistic = web_parser_without_root.get_webpage_statistics()
-    print(obtained_statistic)
+    print('OB', obtained_statistic)
     assert expected_statistic == obtained_statistic
 
 

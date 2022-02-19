@@ -1,13 +1,19 @@
+import webbrowser
 import networkx as nx
 import matplotlib.pyplot as plt
 from pyvis.network import Network
 from webpage_parser import WebpageParser
 
 
-def show_graph(graph_dict: dict, root_link: str, parser: WebpageParser) -> None:
+def show_graph(parser: WebpageParser, root_link: str) -> None:
     '''
     Generate a html page with representation of the graph.
     '''
+    if not isinstance(parser, WebpageParser):
+        raise ValueError(
+            f'The parser type is {type(parser)}, expected to be of type WebpageParser')
+
+    graph_dict = parser.get_graph_dict()
 
     if not isinstance(graph_dict, dict):
         raise ValueError(
