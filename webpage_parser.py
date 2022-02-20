@@ -23,6 +23,8 @@ class WebpageParser():
             '.')[1] if self.root_link else ''
         self.map_dict: dict = {}
         self.graph_dict: dict = {}
+        self.visited: dict = {}
+        self.node_dependencies: dict = {}
 
     def __str__(self) -> str:
         return f'WebpageParser(root_link={self.root_link})'
@@ -33,7 +35,7 @@ class WebpageParser():
     def get_graph_dict(self) -> dict:
         return self.graph_dict
 
-    def perform_get_request(self, url: str = '') -> Response:
+    def perform_get_request(self, url: str = '') -> tuple:
         '''
         Perform HTTP get request and return response object.
         returns a tuple with:
@@ -147,7 +149,7 @@ class WebpageParser():
                 f'Argument obj is of type {type(counter_obj)}, expected obj to be of type Counter')
         return [link for link, _ in counter_obj.items()]
 
-    def build_dict_map(self) -> dict:
+    def build_dict_map(self, recursive: bool = False) -> dict:
         '''
         Crawl links from webpages and build dictionary map from the obtained links.
 
@@ -167,9 +169,14 @@ class WebpageParser():
                                                'page_size_bytes': 116577}
         }
         '''
-        return self.build_dict_helper_iterative(self.root_link)
+        if recursive:
+            print('Build map dictionary recursively')
+            return self.__build_dict_helper_recursive(self.root_link)
+        else:
+            print('Build map dictionary iteratively')
+            return self.__build_dict_helper_iterative(self.root_link)
 
-    def build_dict_helper_recursive(self, link) -> dict:
+    def __build_dict_helper_recursive(self, link) -> dict:
         '''
         Does the same thing as iterative version but using recurion.
         '''
@@ -196,11 +203,11 @@ class WebpageParser():
         # Repeat the above steps for the internal links
         for internal_link in internal_links_only:
             if internal_link not in self.map_dict:
-                self.build_dict_helper_recursive(internal_link)
+                self.__build_dict_helper_recursive(internal_link)
 
         return self.map_dict
 
-    def build_dict_helper_iterative(self, link) -> dict:
+    def __build_dict_helper_iterative(self, link) -> dict:
         '''
         The iterative implementation uses a stack to track links that were not queried yet.
         At each iteration a new link (key) is popped from the stack, the links (value) are extracted and added to map_dict
@@ -289,7 +296,7 @@ class WebpageParser():
         if not self.graph_dict:
             raise ValueError('The graph_dict is empty')
 
-        incoming_links_counter = dict.fromkeys(self.map_dict, 0)
+        incoming_links_counter = dict.fromkeys(self.graph_dict, 0)
 
         for _, value_list in self.graph_dict.items():
             for (_, destination, _) in value_list:
@@ -298,7 +305,7 @@ class WebpageParser():
 
         return incoming_links_counter
 
-    def write_to_file(self, file_name: str = 'file', format: str = 'json', data: dict = {}) -> None:
+    def __write_to_file(self, file_name: str = 'file', format: str = 'json', data: dict = {}) -> None:
         '''
         Write data to a file.
         '''
@@ -319,7 +326,7 @@ class WebpageParser():
 
         if not self.map_dict:
             raise ValueError('The map_dict is empty')
-        self.write_to_file(file_name=file_name, data=self.map_dict)
+        self.__write_to_file(file_name=file_name, data=self.map_dict)
 
     def write_graph_dict_to_json_file(self, file_name: str = 'graph_dict') -> None:
         '''
@@ -328,9 +335,9 @@ class WebpageParser():
 
         if not self.graph_dict:
             raise ValueError('The graph_dict is empty')
-        self.write_to_file(file_name=file_name, data=self.graph_dict)
+        self.__write_to_file(file_name=file_name, data=self.graph_dict)
 
-    def load_from_json(self, file_name: str) -> dict:
+    def __load_from_json(self, file_name: str) -> dict:
         '''
         Load the dictionary from a json file.
         '''
@@ -347,14 +354,14 @@ class WebpageParser():
         '''
         Load the map dictionary from a json file.
         '''
-        self.map_dict = self.load_from_json(file_name=file_name)
+        self.map_dict = self.__load_from_json(file_name=file_name)
         return self.map_dict
 
     def load_graph_dict_from_json(self, file_name: str) -> dict:
         '''
         Load the graph dictionary from a json file.
         '''
-        self.graph_dict = self.load_from_json(file_name=file_name)
+        self.graph_dict = self.__load_from_json(file_name=file_name)
         return self.graph_dict
 
     def get_link_info(self, link: str) -> dict:
@@ -418,6 +425,7 @@ class WebpageParser():
             - average size (in bytes) per page
             - minimum incoming links count and list of pages
             - maximum incoming links count and list of pages
+            - distance between the most distant subpages (longest path)
         '''
 
         if not self.map_dict:
@@ -445,18 +453,21 @@ class WebpageParser():
             total_file_links += len(value_dict['file_links'])
             total_page_size_bytes += value_dict['page_size_bytes']
 
+        longest_path = self.get_longest_path()
         average_internal_links_per_page = total_internal_links // total_webpages
         average_external_links_per_page = total_external_links // total_webpages
         average_page_size_bytes = total_page_size_bytes // total_webpages
 
         statistic_info = f'\nGeneral information about                  {self.root_link}\n'
-        statistic_info += f'\nTotal web pages found:                     {total_webpages}\n'
+        statistic_info += f'\nTotal web pages found (unique links):      {total_webpages}\n'
 
         http_counter = Counter(http_statuses)
         for http_status, count in http_counter.items():
             statistic_info += f'HTTP {http_status}:                                  {count}\n'
 
-        statistic_info += f'\nTotal internal links:                      {total_internal_links}\n'
+        statistic_info += f'\nTotal internal links (non-unique links):   {total_internal_links}\n'
+        statistic_info += f'Distance between the most distant pages:   {longest_path}\n\n'
+
         statistic_info += f'Total external links:                      {total_external_links}\n'
         statistic_info += f'Total dead links:                          {total_dead_links}\n'
         statistic_info += f'Total phone links:                         {total_phone_links}\n'
@@ -496,3 +507,41 @@ class WebpageParser():
         self.write_graph_dict_to_json_file()
         self.write_map_dict_to_json_file()
         return graph
+
+    def get_longest_path(self) -> int:
+
+        if not self.graph_dict:
+            raise ValueError('The graph_dict is empty')
+
+        self.visited = dict.fromkeys(self.graph_dict, False)
+        # node connections
+        self.node_dependencies = dict.fromkeys(self.graph_dict, 0)
+
+        # Iterate over each node
+        for current_node in self.graph_dict.keys():
+            # call dfs if it was not visited yet
+            if not self.visited[current_node]:
+                self.dfs(current_node=current_node)
+
+        longest_path = 0
+        # find the longest path
+        for dependency in self.node_dependencies.values():
+            longest_path = max(dependency, longest_path)
+        return longest_path
+
+    def dfs(self, current_node: str) -> None:
+
+        # recursion base case
+        if self.visited[current_node]:
+            return
+
+        self.visited[current_node] = True
+
+        # recurrently check each neighbor
+        for _, neighbor_node, _ in self.graph_dict[current_node]:
+            if not self.visited[neighbor_node]:
+                self.dfs(current_node=neighbor_node)
+
+            # get the maximum value - the longest path between current and neighbor node
+            self.node_dependencies[current_node] = max(self.node_dependencies[current_node],
+                                                       self.node_dependencies[neighbor_node] + 1)

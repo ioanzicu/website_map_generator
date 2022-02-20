@@ -170,63 +170,6 @@ def write_to_json_file(build_path):
 
 
 @pytest.fixture
-def expected_min_max_links() -> dict:
-    return {
-        'minimum_incoming_links': {'links': ['https://www.globalapptesting.com/careers/privacy',
-                                             'https://www.globalapptesting.com/customers/facebook',
-                                             'https://www.globalapptesting.com/customers/acasa',
-                                             'https://www.globalapptesting.com//go.globalapptesting.com/ebook-ultimate-guide-to-crowdsourced-testing',
-                                             'https://www.globalapptesting.com/blog/author/tony-dolan/page/0',
-                                             'https://www.globalapptesting.com/blog/the-ultimate-guide-to-software-testing-when',
-                                             'https://www.globalapptesting.com/blog/topic/qaops/page/3',
-                                             'https://www.globalapptesting.com/blog/topic/growth-via-qa/page/3',
-                                             'https://www.globalapptesting.com/blog/topic/growth-via-qa/page/0',
-                                             'https://www.globalapptesting.com/blog/topic/improving-quality/page/4',
-                                             'https://www.globalapptesting.com/blog/topic/improving-quality/page/0',
-                                             'https://www.globalapptesting.com/company/events',
-                                             'https://www.globalapptesting.com/product/test-case-execution',
-                                             'https://www.globalapptesting.com//www.globalapptesting.com/contact-sales',
-                                             'https://www.globalapptesting.com/blog/author/wojtek-olearczyk',
-                                             'https://www.globalapptesting.com/blog/author/nishi-grover-garg',
-                                             'https://www.globalapptesting.com/products',
-                                             'https://www.globalapptesting.com//go.globalapptesting.com/industry/proptech',
-                                             'https://www.globalapptesting.com//go.globalapptesting.com/webinar-dont-ignore-qa',
-                                             'https://www.globalapptesting.com//go.globalapptesting.com/exploratory-testing-enterprise-guide',
-                                             'https://www.globalapptesting.com/blog/topic/qaops/page/0',
-                                             'https://www.globalapptesting.com//go.globalapptesting.com/ebook-ultimate-guide-to-crowdsourced-testing?hsCtaTracking=01c742d5-a6d1-4494-b7da-61ec123982e1%7Cfa58782c-fd94-4276-b957-f4d73210fc39',
-                                             'https://www.globalapptesting.com/blog/author/jeremy-palmer',
-                                             'https://www.globalapptesting.com/blog/author/nick-roberts/page/3',
-                                             'https://www.globalapptesting.com/blog/author/nick-roberts/page/0',
-                                             'https://www.globalapptesting.com/blog/author/fahim-sachedina/page/5',
-                                             'https://www.globalapptesting.com/blog/author/fahim-sachedina/page/0',
-                                             'https://www.globalapptesting.com/blog/the-ultimate-qa-testing-handbook-highlights',
-                                             'https://www.globalapptesting.com/blog/exploratory-testing-week-the-highlights',
-                                             'https://www.globalapptesting.com/blog/apples-surprise-update-causes-bug-fears',
-                                             'https://www.globalapptesting.com/blog/announcing-iso-27001-certification',
-                                             'https://www.globalapptesting.com/blog/top-tech-blogs-to-read-in-2020',
-                                             'https://www.globalapptesting.com/blog/using-qa-to-seek-and-destroy-technical-debt',
-                                             'https://www.globalapptesting.com/blog/why-your-releases-keep-getting-delayed-and-what-to-do-about-it',
-                                             'https://www.globalapptesting.com/blog/remote-tips-on-building-a-positive-company-culture',
-                                             'https://www.globalapptesting.com/blog/scale-your-qa-team-globally',
-                                             'https://www.globalapptesting.com/blog/how-to-improve-communication',
-                                             'https://www.globalapptesting.com/blog/spooky-software-bugs',
-                                             'https://www.globalapptesting.com/blog/page/15',
-                                             'https://www.globalapptesting.com/blog/page/0',
-                                             'https://www.globalapptesting.com/engineering/author/damian-mamla',
-                                             'https://www.globalapptesting.com/engineering/author/adam-mazur',
-                                             'https://www.globalapptesting.com/engineering/author/tomasz-wrona',
-                                             'https://www.globalapptesting.com/engineering/author/jakub-niwa',
-                                             'https://www.globalapptesting.com/engineering/author/jan-jędrychowski',
-                                             'https://www.globalapptesting.com/engineering/author/wojtek-olearczyk',
-                                             'https://www.globalapptesting.com/engineering/author/michal-forys',
-                                             'https://www.globalapptesting.com/engineering/page/0'], 'incoming_links_count': 1},
-        'maximum_incoming_links': {'links': ['https://www.globalapptesting.com/pricing',
-                                             'https://www.globalapptesting.com/contact',
-                                             'https://www.globalapptesting.com/privacy-policy'], 'incoming_links_count': 361}
-    }
-
-
-@pytest.fixture
 def expected_incoming_count_links() -> dict:
     return {'https://www.globalapptesting.com': 360, 'https://www.globalapptesting.com/product': 360, 'https://www.globalapptesting.com/platform/test-management': 360, 'https://www.globalapptesting.com/platform/test-execution': 360, 'https://www.globalapptesting.com/platform/test-results-analysis': 360, 'https://www.globalapptesting.com/platform/integrations': 360, 'https://www.globalapptesting.com/solutions': 360, 'https://www.globalapptesting.com/on-demand-test-case-execution-jira-integration': 316, 'https://www.globalapptesting.com/on-demand-test-case-execution-github-integration': 316, 'https://www.globalapptesting.com/on-demand-test-case-execution-testrail-integration': 316,
             'https://www.globalapptesting.com/on-demand-test-case-execution-zephyr-squad-integration': 316, 'https://www.globalapptesting.com/on-demand-test-case-execution-slack-integration': 316, 'https://www.globalapptesting.com/how-we-help/cio-cto': 360, 'https://www.globalapptesting.com/how-we-help/engineering-teams': 360, 'https://www.globalapptesting.com/how-we-help/qa-teams': 360, 'https://www.globalapptesting.com/how-we-help/increase-release-velocity': 360, 'https://www.globalapptesting.com/how-we-help/improve-product-quality': 360, 'https://www.globalapptesting.com/how-we-help/localise-qa-coverage': 360, 'https://www.globalapptesting.com/how-we-help/maximise-team-productivity': 360,
@@ -425,7 +368,6 @@ def test_convert_counters_to_graph_edges_tuples(web_parser_without_root: Webpage
 
     web_parser_without_root.map_dict = temp_map_dict
     obtained_graph_dict = web_parser_without_root.convert_counters_to_graph_edges()
-    print('obtained_graph_dict', obtained_graph_dict)
 
     for expected_tuple, obtained_tuple in zip(graph_edges, obtained_graph_dict['https://www.globalapptesting.com/']):
         # the expected tuples contain \n added by vscode beacause of auto formating, for this reason the comparision is done by elements
@@ -433,15 +375,15 @@ def test_convert_counters_to_graph_edges_tuples(web_parser_without_root: Webpage
             assert exp_element == obt_element
 
 
-def test_write_to_file(web_parser_without_root: WebpageParser, build_path: Callable[[], str], small_map_sample: dict):
+def test_private_write_to_file(web_parser_without_root: WebpageParser, build_path: Callable[[], str], small_map_sample: dict):
     '''
     Test the writing dict object to the json file.
     '''
 
     file_name = 'test_file'
     file_path = build_path(file_name)
-    web_parser_without_root.write_to_file(
-        data=small_map_sample, file_name=file_path)
+    web_parser_without_root._WebpageParser__write_to_file(data=small_map_sample,
+                                                          file_name=file_path)
 
     with open(file=build_path(file_name, 'json'), mode='r', encoding='utf8') as fhandle:
         try:
@@ -490,14 +432,14 @@ def test_write_graph_dict_to_json_file(web_parser_without_root: WebpageParser, e
                 f'Exception occured when trying to read from the json file with name={file_name}: {exc}')
 
 
-def test_load_from_json(web_parser_without_root: WebpageParser, build_path: Callable[[], str], expected_json_sample: json, write_to_json_file: Callable[[str, ], None]):
+def test_private_load_from_json(web_parser_without_root: WebpageParser, build_path: Callable[[], str], expected_json_sample: json, write_to_json_file: Callable[[str, ], None]):
     '''
     Test the correct loading of dictionary from json.
     '''
 
     file_name = 'test_load'
     write_to_json_file(file_name, expected_json_sample)
-    obtained_json = web_parser_without_root.load_from_json(
+    obtained_json = web_parser_without_root._WebpageParser__load_from_json(
         file_name=build_path(file_name))
     assert expected_json_sample == obtained_json
 
@@ -554,9 +496,9 @@ def test_get_webpage_statistics(web_parser_without_root: WebpageParser, build_pa
         file_name=build_path('test_map_dict_full'))
     web_parser_without_root.load_graph_dict_from_json(
         file_name=build_path('test_graph_dict_full'))
-    expected_statistic = '\nGeneral information about                  \n\nTotal web pages found:                     361\nHTTP 200:                                  354\nHTTP 404:                                  7\n\nTotal internal links:                      17409\nTotal external links:                      5207\nTotal dead links:                          86\nTotal phone links:                         25\nTotal email links:                         183\nTotal file links:                          36\n\nAverage number of internal links per page: 48\nAverage number of external links per page: 14\nAverage size (in bytes) per page:          97343'
+    expected_statistic = '\nGeneral information about                  \n\nTotal web pages found (unique links):      361\nHTTP 200:                                  354\nHTTP 404:                                  7\n\nTotal internal links (non-unique links):   17409\nDistance between the most distant pages:   379\n\nTotal external links:                      5207\nTotal dead links:                          86\nTotal phone links:                         25\nTotal email links:                         183\nTotal file links:                          36\n\nAverage number of internal links per page: 48\nAverage number of external links per page: 14\nAverage size (in bytes) per page:          97343'
     obtained_statistic = web_parser_without_root.get_webpage_statistics()
-    assert expected_statistic == obtained_statistic[:609]
+    assert expected_statistic == obtained_statistic[:657]
 
 
 def test_get_link_status_code(web_parser_without_root: WebpageParser,  temp_map_dict: dict):
@@ -570,14 +512,22 @@ def test_get_link_status_code(web_parser_without_root: WebpageParser,  temp_map_
     assert 200 == obtained_status_code
 
 
-def test_get_pages_with_min_max_links(web_parser_without_root: WebpageParser, temp_graph_dict_full: dict, expected_min_max_links: dict):
+def test_get_pages_with_min_max_links(web_parser_without_root: WebpageParser, temp_graph_dict_full: dict):
     '''
     Validate integrity of returned dictionary.
     '''
 
     web_parser_without_root.graph_dict = temp_graph_dict_full
     obtained_dict = web_parser_without_root.get_pages_with_min_max_links()
-    assert expected_min_max_links == obtained_dict
+
+    assert 'maximum_incoming_links' in obtained_dict
+    assert 'minimum_incoming_links' in obtained_dict
+    assert obtained_dict['maximum_incoming_links']['incoming_links_count'] == 361
+    assert obtained_dict['minimum_incoming_links']['incoming_links_count'] == 1
+    assert len(obtained_dict['maximum_incoming_links']
+               ['links']) == 3
+    assert len(obtained_dict['minimum_incoming_links']
+               ['links']) == 48
 
 
 def test_count_incoming_links(web_parser_without_root: WebpageParser, temp_graph_dict_full: dict, expected_incoming_count_links: dict):
@@ -588,3 +538,13 @@ def test_count_incoming_links(web_parser_without_root: WebpageParser, temp_graph
     web_parser_without_root.graph_dict = temp_graph_dict_full
     obtained_incoming_links_counter = web_parser_without_root.count_incoming_links()
     assert expected_incoming_count_links == obtained_incoming_links_counter
+
+
+def test_get_longest_path(web_parser_without_root: WebpageParser, temp_graph_dict_full: dict):
+    '''
+    Check if the value of method get_lingest_path is equal to expected one.
+    '''
+    web_parser_without_root.graph_dict = temp_graph_dict_full
+    obtained_longest_path = web_parser_without_root.get_longest_path()
+    expected_longest_path = 379
+    assert expected_longest_path == obtained_longest_path
