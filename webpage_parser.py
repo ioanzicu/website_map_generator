@@ -1,5 +1,6 @@
 import json
-from requests import get, head
+import sys
+from requests import get
 from bs4 import BeautifulSoup
 from httplib2 import Response
 from collections import Counter
@@ -41,12 +42,12 @@ class WebpageParser():
             - content length (in bytes)
         '''
         # len(response.content) - size in bytes
-        # len(response.text)    - size in characters 
+        # len(response.text)    - size in characters
 
         if not url:
             raise ArgumentNotProvided('url was not provided')
         response: Response = get(url=url)
-        
+
         return (response.text, response.status_code, len(response.content))
 
     def get_links_from_web_page(self, web_page, parser='html.parser'):
@@ -69,7 +70,7 @@ class WebpageParser():
          'dead_links':      Counter(),
          'phone_links':     Counter(),
          'email_links':     Counter(),
-         'image_links':     Counter()}
+         'file_links':     Counter()}
         '''
 
         if not isinstance(links, list):
@@ -82,7 +83,7 @@ class WebpageParser():
                     'dead_links': Counter(),
                     'phone_links': Counter(),
                     'email_links': Counter(),
-                    'image_links': Counter()}
+                    'file_links': Counter()}
 
         if not self.root_link:
             raise ValueError(
@@ -93,19 +94,20 @@ class WebpageParser():
         dead_links = []
         phone_links = []
         email_links = []
-        image_links = []
+        file_links = []
+        common_file_formats = ('.png', '.jpeg', '.gif', '.pdf',
+                               '.svg', '.mp4', '.doc', '.docx', '.txt', '.ppt', '.pptx')
         for link in links:
             link_host: str = link.get('href')
 
-
             if not link_host or link_host.startswith('javascript:;'):
                 continue
-            elif link_host.endswith('.png'):
-                image_links.append(link_host)
+            elif link_host.endswith(common_file_formats):
+                file_links.append(link_host)
             elif link_host.startswith('/'):
                 root = self.root_link
                 if self.root_link.endswith('/'):
-                    root = self.root_link[:-1] 
+                    root = self.root_link[:-1]
                 complete_link = root + link_host
                 internal_links.append(complete_link)
             elif link_host == '#':
@@ -125,7 +127,7 @@ class WebpageParser():
                 'dead_links':       Counter(dead_links),
                 'phone_links':      Counter(phone_links),
                 'email_links':      Counter(email_links),
-                'image_links':      Counter(image_links)}
+                'file_links':      Counter(file_links)}
 
     def extract_links_from_counter(self, counter_obj: Counter) -> list:
         '''
@@ -160,23 +162,25 @@ class WebpageParser():
                                                'dead_links': Counter(),
                                                'phone_links': Counter(),
                                                'email_links': Counter(),
-                                               'image_links': Counter(),
+                                               'file_links': Counter(),
                                                'HTTP_STATUS': 200,
                                                'page_size_bytes': 116577}
         }
         '''
         return self.build_dict_helper_iterative(self.root_link)
-    
+
     def build_dict_helper_recursive(self, link) -> dict:
         '''
         Does the same thing as iterative version but using recurion.
         '''
 
         # Perform get request
-        response, status_code, page_size_bytes = self.perform_get_request(url=link)
-        
+        response, status_code, page_size_bytes = self.perform_get_request(
+            url=link)
+
         # Extract links from html root page
         links = self.get_links_from_web_page(web_page=response)
+
         # Categorize links
         clean_links = self.extract_hrefs(links=links)
         clean_links.__setitem__('HTTP_STATUS', status_code)
@@ -211,26 +215,28 @@ class WebpageParser():
             element_link = stack.pop()
 
             # Perform get request
-            response, status_code, page_size_bytes = self.perform_get_request(url=element_link)
-            
+            response, status_code, page_size_bytes = self.perform_get_request(
+                url=element_link)
+
             # Extract links from html root page
             links = self.get_links_from_web_page(web_page=response)
+
             # Categorize links
             clean_links = self.extract_hrefs(links=links)
             clean_links.__setitem__('HTTP_STATUS', status_code)
             clean_links.__setitem__('page_size_bytes', page_size_bytes)
-            
+
             self.map_dict[element_link] = clean_links
-            
+
             # Extract internal links
             internal_links_only = self.extract_links_from_counter(
                 clean_links['internal_links'])
-            
+
             # Add to the stack links that were not queried yet
             for internal_link in internal_links_only:
                 if internal_link not in self.map_dict:
                     stack.append(internal_link)
-            
+
         return self.map_dict
 
     def convert_counters_to_graph_edges(self) -> dict:
@@ -242,11 +248,55 @@ class WebpageParser():
             self.build_dict_map()
 
         for key_root, value_dict in self.map_dict.items():
-            if key_root == 'HTTP_STATUS':
-                continue
             self.graph_dict[key_root] = [(key_root, destination_link, weight)
                                          for destination_link, weight in value_dict['internal_links'].items()]
         return self.graph_dict
+
+    def get_pages_with_min_max_links(self):
+        '''
+        Returns a list of page(s) with minimum and maximum number of links.
+        '''
+
+        incoming_links_counter = self.count_incoming_links()
+
+        min = sys.maxsize
+        max = 0
+        for key_link, incoming_count in incoming_links_counter.items():
+            if min > incoming_count:
+                min = incoming_count
+            if max < incoming_count:
+                max = incoming_count
+
+        min_links = []
+        max_links = []
+
+        for key_link, incoming_count in incoming_links_counter.items():
+            if min == incoming_count:
+                min_links.append(key_link)
+            elif max == incoming_count:
+                max_links.append(key_link)
+
+        return {
+            'minimum_incoming_links': {'links': min_links, 'incoming_links_count': min},
+            'maximum_incoming_links': {'links': max_links, 'incoming_links_count': max}
+        }
+
+    def count_incoming_links(self) -> dict:
+        '''
+        Count the number of incoming (inbound or backlinks) links for each internal link.
+        '''
+
+        if not self.graph_dict:
+            raise ValueError('The graph_dict is empty')
+
+        incoming_links_counter = dict.fromkeys(self.map_dict, 0)
+
+        for _, value_list in self.graph_dict.items():
+            for (_, destination, _) in value_list:
+                incoming_links_counter[destination] = incoming_links_counter.get(
+                    destination, 0) + 1
+
+        return incoming_links_counter
 
     def write_to_file(self, file_name: str = 'file', format: str = 'json', data: dict = {}) -> None:
         '''
@@ -315,7 +365,7 @@ class WebpageParser():
             dead_links     - number of dead links
             phone_links    - number of phone links
             email_links    - number of email links
-            image_links    - number of image links
+            file_links     - number of file links
             HTTP_STATUS    - HTTP status code
         '''
 
@@ -330,18 +380,21 @@ class WebpageParser():
         return {
             'internal_links': len(self.map_dict[link]['internal_links']),
             'external_links': len(self.map_dict[link]['external_links']),
-            'dead_links':  len(self.map_dict[link]['dead_links']),
-            'phone_links':  len(self.map_dict[link]['phone_links']),
-            'email_links':  len(self.map_dict[link]['email_links']),
-            'image_links': len(self.map_dict[link]['image_links']),
-            'HTTP_STATUS': self.map_dict[link]['HTTP_STATUS']
+            'dead_links':     len(self.map_dict[link]['dead_links']),
+            'phone_links':    len(self.map_dict[link]['phone_links']),
+            'email_links':    len(self.map_dict[link]['email_links']),
+            'file_links':     len(self.map_dict[link]['file_links']),
+            'HTTP_STATUS':    self.map_dict[link]['HTTP_STATUS']
         }
 
     def get_link_info_formatted_string(self, link: str) -> str:
         link_info: dict = self.get_link_info(link)
-        return f"<b>{link}</b><br/>HTTP STATUS: <b>{link_info['HTTP_STATUS']}</b><hr/><br/>Internal links: {link_info['internal_links']} <br/>External links: {link_info['external_links']} <br/>Dead links: {link_info['dead_links']} <br/>Phone links: {link_info['phone_links']} <br/>Email links: {link_info['email_links']} <br/>Image links: {link_info['image_links']}"
+        return f"<b>{link}</b><br/>HTTP STATUS: <b>{link_info['HTTP_STATUS']}</b><hr/><br/>Internal links: {link_info['internal_links']} <br/>External links: {link_info['external_links']} <br/>Dead links: {link_info['dead_links']} <br/>Phone links: {link_info['phone_links']} <br/>Email links: {link_info['email_links']} <br/>File links: {link_info['file_links']}"
 
     def get_link_status_code(self, link: str) -> int:
+        '''
+        Returns the HTTP status code for the given link.
+        '''
         if not self.map_dict:
             raise ValueError('The map_dict is empty')
 
@@ -351,6 +404,22 @@ class WebpageParser():
         return self.map_dict[link].get('HTTP_STATUS', 0)
 
     def get_webpage_statistics(self) -> str:
+        '''
+        Compute the basic metrics:
+            - total number of web pages found
+            - total number of internal links 
+            - total number of external links
+            - total number of dead / invalid links
+            - total numner of phone links 
+            - total numner of email links
+            - total numner of image links
+            - average number of internal links per page
+            - average number of external links per page
+            - average size (in bytes) per page
+            - minimum incoming links count and list of pages
+            - maximum incoming links count and list of pages
+        '''
+
         if not self.map_dict:
             return 'The map_dict is empty'
 
@@ -361,22 +430,20 @@ class WebpageParser():
         total_dead_links = 0
         total_phone_links = 0
         total_email_links = 0
-        total_image_links = 0
+        total_file_links = 0
         total_page_size_bytes = 0
         http_statuses = []
-        for key, value in self.map_dict.items():
-            if key == 'HTTP_STATUS':
-                continue
+        for _, value_dict in self.map_dict.items():
 
-            http_statuses.append(value['HTTP_STATUS'])
+            http_statuses.append(value_dict['HTTP_STATUS'])
 
-            total_internal_links += len(value['internal_links'])
-            total_external_links += len(value['external_links'])
-            total_dead_links += len(value['dead_links'])
-            total_phone_links += len(value['phone_links'])
-            total_email_links += len(value['email_links'])
-            total_image_links += len(value['image_links'])
-            total_page_size_bytes += value['page_size_bytes']
+            total_internal_links += len(value_dict['internal_links'])
+            total_external_links += len(value_dict['external_links'])
+            total_dead_links += len(value_dict['dead_links'])
+            total_phone_links += len(value_dict['phone_links'])
+            total_email_links += len(value_dict['email_links'])
+            total_file_links += len(value_dict['file_links'])
+            total_page_size_bytes += value_dict['page_size_bytes']
 
         average_internal_links_per_page = total_internal_links // total_webpages
         average_external_links_per_page = total_external_links // total_webpages
@@ -394,15 +461,35 @@ class WebpageParser():
         statistic_info += f'Total dead links:                          {total_dead_links}\n'
         statistic_info += f'Total phone links:                         {total_phone_links}\n'
         statistic_info += f'Total email links:                         {total_email_links}\n'
-        statistic_info += f'Total image links:                         {total_image_links}\n\n'
+        statistic_info += f'Total file links:                          {total_file_links}\n\n'
         statistic_info += f'Average number of internal links per page: {average_internal_links_per_page}\n'
         statistic_info += f'Average number of external links per page: {average_external_links_per_page}\n'
-        statistic_info += f'Average size (in bytes) of page:           {average_page_size_bytes}\n'
-        
+        statistic_info += f'Average size (in bytes) per page:          {average_page_size_bytes}\n'
+
+        incoming_links_dict = self.get_pages_with_min_max_links()
+        minimum_incoming_links = incoming_links_dict['minimum_incoming_links']
+        min_links_len = len(minimum_incoming_links["links"])
+
+        maximum_incoming_links = incoming_links_dict['maximum_incoming_links']
+        max_links_len = len(maximum_incoming_links["links"])
+
+        statistic_info += f'\n\nMinimum incoming links for {min_links_len} pages:       {minimum_incoming_links["incoming_links_count"]}\n\n'
+        for link in incoming_links_dict['minimum_incoming_links']['links']:
+            statistic_info += f'>>  HTTP: {self.get_link_status_code(link)}   {link}\n'
+
+        statistic_info += f'\nMaximum incoming links for {max_links_len} pages:         {maximum_incoming_links["incoming_links_count"]}\n\n'
+        for link in incoming_links_dict['maximum_incoming_links']['links']:
+            statistic_info += f'>>  HTTP: {self.get_link_status_code(link)}   {link}\n'
 
         return statistic_info
 
     def generate_and_save_graph(self) -> dict:
+        '''
+        1. Query provided root link
+        2. Build dictionary map
+        3. Convert dictionary map to dictionary graph
+        4. Save both dictionaries in json files 
+        '''
         self.build_dict_map()
         graph = self.convert_counters_to_graph_edges()
 

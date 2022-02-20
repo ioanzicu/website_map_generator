@@ -54,7 +54,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 116577
     },
@@ -113,7 +113,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 68467
     },
@@ -172,7 +172,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 74430
     },
@@ -240,7 +240,7 @@
             "mailto:privacy@globalapptesting.com": 2,
             "mailto:dpo@globalapptesting.com": 11
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 127235
     },
@@ -313,7 +313,7 @@
         "email_links": {
             "mailto:press@globalapptesting.com": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 97531
     },
@@ -379,7 +379,7 @@
             "mailto:info@globalapptesting.com": 1,
             "mailto:press@globalapptesting.com": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 65258
     },
@@ -439,7 +439,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 96301
     },
@@ -480,7 +480,6 @@
             "https://www.globalapptesting.com/security": 3,
             "https://www.globalapptesting.com/our-testers": 2,
             "https://www.globalapptesting.com/contact": 2,
-            "https://www.globalapptesting.com/hubfs/security/18920_Certificate_2020.pdf": 1,
             "https://www.globalapptesting.com/code-of-conduct": 2,
             "https://www.globalapptesting.com/privacy-policy": 2,
             "https://www.globalapptesting.com/terms-and-conditions": 2,
@@ -505,7 +504,9 @@
         "email_links": {
             "mailto:compliance@globalapptesting.com": 1
         },
-        "image_links": {},
+        "file_links": {
+            "/hubfs/security/18920_Certificate_2020.pdf": 1
+        },
         "HTTP_STATUS": 200,
         "page_size_bytes": 79990
     },
@@ -572,7 +573,7 @@
             "mailto:info@globalapptesting.com": 2,
             "mailto:dpo@globalapptesting.com": 3
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 103251
     },
@@ -638,7 +639,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 77452
     },
@@ -699,7 +700,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 93497
     },
@@ -761,7 +762,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 94016
     },
@@ -843,7 +844,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 91893
     },
@@ -928,7 +929,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 98510
     },
@@ -990,7 +991,6 @@
             "https://danashby.co.uk/": 1,
             "https://danashby.co.uk/2019/09/30/adapting-crosbys-4-absolutes-of-quality-into-a-software-context/": 1,
             "https://www.developsense.com/": 1,
-            "http://www.developsense.com/articles/2005-01-TestingWithoutAMap.pdf": 1,
             "https://techbeacon.com/": 1,
             "https://techbeacon.com/app-dev-testing/how-improve-your-agile-questioning-how-its-always-been-done": 1,
             "https://techbeacon.com/devops/3-keys-highly-effective-product-release": 1,
@@ -1028,7 +1028,9 @@
         "email_links": {
             "mailto:?subject=Top%2010%20QA%20Blogs%20to%20Follow%20in%202021&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Ftop-software-qa-blogs": 1
         },
-        "image_links": {},
+        "file_links": {
+            "http://www.developsense.com/articles/2005-01-TestingWithoutAMap.pdf": 1
+        },
         "HTTP_STATUS": 200,
         "page_size_bytes": 104580
     },
@@ -1101,7 +1103,7 @@
         "email_links": {
             "mailto:?subject=Bug%20causes%20Safari%20and%20iOS%20user%20data%20leak%20in%20real%20time&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fapple-bug-safari-ios": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 92309
     },
@@ -1176,7 +1178,7 @@
         "email_links": {
             "mailto:?subject=What%20On-Demand%20testing%20can%20do%20for%20you&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fdemand-testing-what-is-it": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 103695
     },
@@ -1235,7 +1237,6 @@
             "https://twitter.com/home?status=Observability+is+front+of+mind+for+devs+right+now%20https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fsoftware-observability": 1,
             "https://cta-redirect.hubspot.com/cta/redirect/540930/0412ad73-53ef-4805-9ec0-127592574103": 2,
             "https://cta-redirect.hubspot.com/cta/redirect/540930/72c09883-7a19-47a1-aab4-940a74766037": 2,
-            "https://newrelic.com/sites/default/files/2021-10/New_Relic_Report_2021_Observability_Forecast.pdf": 1,
             "https://go.globalapptesting.com/on-demand-test-case-execution-free-trial": 1,
             "#subscribe-to-blog": 1,
             "https://www.facebook.com/globalapptesting/": 1,
@@ -1248,7 +1249,9 @@
         "email_links": {
             "mailto:?subject=Observability%20is%20front%20of%20mind%20for%20devs%20right%20now&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fsoftware-observability": 1
         },
-        "image_links": {},
+        "file_links": {
+            "https://newrelic.com/sites/default/files/2021-10/New_Relic_Report_2021_Observability_Forecast.pdf": 1
+        },
         "HTTP_STATUS": 200,
         "page_size_bytes": 99775
     },
@@ -1326,7 +1329,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 84058
     },
@@ -1392,7 +1395,6 @@
             "https://twitter.com/home?status=QA+Process%3A+8+Tips+to+Improve+the+Process+to+Optimize+Results%20https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fqa-process": 1,
             "https://cta-redirect.hubspot.com/cta/redirect/540930/72c09883-7a19-47a1-aab4-940a74766037": 3,
             "https://cta-redirect.hubspot.com/cta/redirect/540930/0412ad73-53ef-4805-9ec0-127592574103": 3,
-            "https://cdn2.hubspot.net/hubfs/540930/7%20ways%20to%20improve%20your%20QA%20infographic%20FINAL.pdf": 1,
             "#subscribe-to-blog": 1,
             "https://www.facebook.com/globalapptesting/": 1,
             "https://www.linkedin.com/company/global-app-testing": 1,
@@ -1404,7 +1406,9 @@
         "email_links": {
             "mailto:?subject=QA%20Process%3A%208%20Tips%20to%20Improve%20the%20Process%20to%20Optimize%20Results&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fqa-process": 1
         },
-        "image_links": {},
+        "file_links": {
+            "https://cdn2.hubspot.net/hubfs/540930/7%20ways%20to%20improve%20your%20QA%20infographic%20FINAL.pdf": 1
+        },
         "HTTP_STATUS": 200,
         "page_size_bytes": 115372
     },
@@ -1489,7 +1493,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 98394
     },
@@ -1591,7 +1595,7 @@
         "email_links": {
             "mailto:?subject=The%20Women%20Who%20Changed%20The%20Tech%20World&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fthe-women-who-changed-the-tech-world": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 122203
     },
@@ -1650,7 +1654,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 116577
     },
@@ -1705,7 +1709,6 @@
             "https://testathon.co/": 2,
             "https://app.globalapptesting.com": 1,
             "https://go.globalapptesting.com/speak-to-us": 1,
-            "https://cdn2.hubspot.net/hubfs/540930/Dialogue%20Case%20Study.pdf": 1,
             "https://cta-redirect.hubspot.com/cta/redirect/540930/f629848d-40f8-4d5a-a7b7-105ad26d695c": 1,
             "https://www.facebook.com/globalapptesting/": 1,
             "https://www.linkedin.com/company/global-app-testing": 1,
@@ -1715,7 +1718,9 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {
+            "https://cdn2.hubspot.net/hubfs/540930/Dialogue%20Case%20Study.pdf": 1
+        },
         "HTTP_STATUS": 200,
         "page_size_bytes": 75756
     },
@@ -1776,7 +1781,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 73537
     },
@@ -1852,15 +1857,10 @@
             "https://go.globalapptesting.com/necessity-of-manual-testing-0": 1,
             "https://go.globalapptesting.com/prove-value-of-qa": 1,
             "https://go.globalapptesting.com/webinar-dont-ignore-qa": 1,
-            "https://go.globalapptesting.com/hubfs/Marketing/content/Case%20Study/Acasa%20-%20Case%20Study.pdf": 1,
             "https://go.globalapptesting.com/crowdsourced-testing-white-paper": 1,
-            "https://go.globalapptesting.com/hubfs/Marketing/content/Case%20Study/LiveSafe%20-%20Case%20Study.pdf": 1,
-            "https://go.globalapptesting.com/hubfs/Marketing/content/Case%20Study/PromoFarma%20-%20Case%20Study.pdf": 1,
             "https://go.globalapptesting.com/qa-solutions-buying-guide": 1,
-            "https://cdn2.hubspot.net/hubfs/540930/Marketing/content/Case%20Study/Facebook%20-%20Case%20Study.pdf": 1,
             "https://go.globalapptesting.com/exploratory-testing-enterprise-guide": 1,
             "https://go.globalapptesting.com/ebook-ultimate-guide-to-crowdsourced-testing": 1,
-            "https://cdn2.hubspot.net/hubfs/540930/Resources/cs_dialogue_FNL.pdf": 1,
             "https://www.facebook.com/globalapptesting/": 1,
             "https://www.linkedin.com/company/global-app-testing": 1,
             "https://twitter.com/qaops?lang=en": 1,
@@ -1871,7 +1871,13 @@
             "https://go.globalapptesting.com/how-to-build-a-culture-of-quality-remotely": 1
         },
         "email_links": {},
-        "image_links": {},
+        "file_links": {
+            "https://go.globalapptesting.com/hubfs/Marketing/content/Case%20Study/Acasa%20-%20Case%20Study.pdf": 1,
+            "https://go.globalapptesting.com/hubfs/Marketing/content/Case%20Study/LiveSafe%20-%20Case%20Study.pdf": 1,
+            "https://go.globalapptesting.com/hubfs/Marketing/content/Case%20Study/PromoFarma%20-%20Case%20Study.pdf": 1,
+            "https://cdn2.hubspot.net/hubfs/540930/Marketing/content/Case%20Study/Facebook%20-%20Case%20Study.pdf": 1,
+            "https://cdn2.hubspot.net/hubfs/540930/Resources/cs_dialogue_FNL.pdf": 1
+        },
         "HTTP_STATUS": 200,
         "page_size_bytes": 171412
     },
@@ -1946,7 +1952,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 102768
     },
@@ -2023,7 +2029,7 @@
         "email_links": {
             "mailto:?subject=Why%20Agile%20Testing%20That%20Microphone%20Was%20Critical&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fagile-testing-microphone-critical": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 115987
     },
@@ -2108,7 +2114,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 99200
     },
@@ -2184,7 +2190,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 81188
     },
@@ -2260,7 +2266,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 81141
     },
@@ -2336,7 +2342,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 82096
     },
@@ -2412,7 +2418,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 81563
     },
@@ -2491,7 +2497,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 87390
     },
@@ -2576,7 +2582,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 101133
     },
@@ -2661,9 +2667,9 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 101166
+        "page_size_bytes": 101165
     },
     "https://www.globalapptesting.com/blog/tester-for-a-day": {
         "internal_links": {
@@ -2731,7 +2737,7 @@
         "email_links": {
             "mailto:?subject=Tester%20for%20a%20day%21&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Ftester-for-a-day": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 94998
     },
@@ -2807,7 +2813,7 @@
         "email_links": {
             "mailto:?subject=What%20is%20Exploratory%20Testing%3F&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fwhat-is-exploratory-testing": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 104993
     },
@@ -2873,7 +2879,7 @@
             "mailto:info@globalapptesting.com": 1,
             "mailto:press@globalapptesting.com": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 65258
     },
@@ -2932,7 +2938,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 85057
     },
@@ -2993,7 +2999,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 95933
     },
@@ -3052,7 +3058,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 68677
     },
@@ -3113,7 +3119,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 96070
     },
@@ -3174,7 +3180,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 79600
     },
@@ -3235,7 +3241,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 95431
     },
@@ -3298,7 +3304,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 95519
     },
@@ -3359,7 +3365,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 95933
     },
@@ -3420,7 +3426,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 94766
     },
@@ -3481,7 +3487,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 95540
     },
@@ -3542,7 +3548,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 94830
     },
@@ -3603,7 +3609,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 97662
     },
@@ -3664,7 +3670,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 93701
     },
@@ -3725,7 +3731,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 94006
     },
@@ -3786,7 +3792,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 93179
     },
@@ -3845,7 +3851,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 119868
     },
@@ -3904,7 +3910,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 120555
     },
@@ -3963,7 +3969,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 119323
     },
@@ -4023,7 +4029,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 120059
     },
@@ -4083,7 +4089,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 120217
     },
@@ -4143,7 +4149,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 83595
     },
@@ -4203,7 +4209,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 104757
     },
@@ -4264,7 +4270,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 94824
     },
@@ -4325,7 +4331,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 100321
     },
@@ -4386,7 +4392,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 92255
     },
@@ -4447,7 +4453,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 97263
     },
@@ -4507,7 +4513,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 104757
     },
@@ -4568,7 +4574,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 96070
     },
@@ -4631,7 +4637,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 95519
     },
@@ -4707,7 +4713,7 @@
         "email_links": {
             "mailto:?subject=What%20Is%20Regression%20Testing%20and%20What%20Does%20It%20Have%20to%20Do%20with%20Cooking%3F&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fregression-testing-while-cooking-a-curry": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 112595
     },
@@ -4778,7 +4784,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 79393
     },
@@ -4866,7 +4872,7 @@
         "email_links": {
             "mailto:?subject=How%20to%20Build%20the%20Ultimate%20QA%20Strategy&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fhow-to-build-the-ultimate-qa-strategy": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 116611
     },
@@ -4932,7 +4938,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 82882
     },
@@ -5010,7 +5016,7 @@
         "email_links": {
             "mailto:?subject=3%20Ways%20to%20Succeed%20at%20Exploratory%20Testing&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2F3-elements-you-need-to-succeed-at-exploratory-testing": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 102202
     },
@@ -5095,7 +5101,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 99394
     },
@@ -5172,9 +5178,9 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 81204
+        "page_size_bytes": 81205
     },
     "https://www.globalapptesting.com/blog/topic/increasing-speed": {
         "internal_links": {
@@ -5257,7 +5263,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 101028
     },
@@ -5342,9 +5348,9 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 101063
+        "page_size_bytes": 101064
     },
     "https://www.globalapptesting.com/blog/why-is-automation-like-amusement-parks": {
         "internal_links": {
@@ -5415,7 +5421,7 @@
         "email_links": {
             "mailto:?subject=What%20Is%20Automation%20Testing%20and%20Why%20Is%20It%20like%20Amusement%20Parks%3F&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fwhy-is-automation-like-amusement-parks": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 98203
     },
@@ -5476,7 +5482,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 95933
     },
@@ -5547,7 +5553,7 @@
         "email_links": {
             "mailto:?subject=How%20to%20Implement%20Test%20Automation&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fhow-to-implement-test-automation-for-the-first-time": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 97383
     },
@@ -5628,7 +5634,7 @@
         "email_links": {
             "mailto:?subject=The%20Ultimate%20Guide%20to%20Software%20Testing&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fsoftware-testing": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 183325
     },
@@ -5717,7 +5723,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 102914
     },
@@ -5778,7 +5784,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 73854
     },
@@ -5849,7 +5855,7 @@
         "email_links": {
             "mailto:?subject=Earn%20Digital%20Applause%20%E2%80%95Draw%20More%20Customers%20to%20Your%20App&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fearn-digital-applause-draw-more-customers-to-your-app": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 105289
     },
@@ -5928,7 +5934,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 85812
     },
@@ -6013,7 +6019,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 101330
     },
@@ -6098,9 +6104,9 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 99917
+        "page_size_bytes": 99920
     },
     "https://www.globalapptesting.com/blog/topic/growth-via-qa": {
         "internal_links": {
@@ -6182,7 +6188,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 101724
     },
@@ -6268,7 +6274,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 100100
     },
@@ -6346,7 +6352,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 83235
     },
@@ -6431,7 +6437,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 102226
     },
@@ -6517,9 +6523,9 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 100849
+        "page_size_bytes": 100846
     },
     "https://www.globalapptesting.com/blog/topic/improving-quality/page/3": {
         "internal_links": {
@@ -6603,9 +6609,9 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 100428
+        "page_size_bytes": 100431
     },
     "https://www.globalapptesting.com/blog/topic/improving-quality/page/4": {
         "internal_links": {
@@ -6683,7 +6689,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 87552
     },
@@ -6768,9 +6774,9 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 102226
+        "page_size_bytes": 102227
     },
     "https://www.globalapptesting.com/blog/topic/improving-quality/page/1": {
         "internal_links": {
@@ -6853,9 +6859,9 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 102225
+        "page_size_bytes": 102226
     },
     "https://www.globalapptesting.com/blog/software-testing-qa-conferences-in-2020": {
         "internal_links": {
@@ -7133,7 +7139,7 @@
         "email_links": {
             "mailto:?subject=Software%20Testing%20%26amp%3B%20QA%20Conferences%20in%202020&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fsoftware-testing-qa-conferences-in-2020": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 246331
     },
@@ -7210,7 +7216,7 @@
         "email_links": {
             "mailto:?subject=Software%20Testing%20%26amp%3B%20QA%20Trends%20for%202020%20and%20the%20Next%20Decade&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fsoftware-testing-qa-trends-in-2020-and-the-next-decade": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 107921
     },
@@ -7285,7 +7291,7 @@
         "email_links": {
             "mailto:?subject=5%20Testing%20Trends%20Shaping%20QA%20in%202019&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2F5-testing-trends-that-will-shape-2019": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 99796
     },
@@ -7331,7 +7337,7 @@
             "mailto:info@globalapptesting.com": 1,
             "mailto:press@globalapptesting.com": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 72013
     },
@@ -7390,7 +7396,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 404,
         "page_size_bytes": 57212
     },
@@ -7451,7 +7457,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 96070
     },
@@ -7512,7 +7518,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 95431
     },
@@ -7588,15 +7594,10 @@
             "https://go.globalapptesting.com/necessity-of-manual-testing-0": 1,
             "https://go.globalapptesting.com/prove-value-of-qa": 1,
             "https://go.globalapptesting.com/webinar-dont-ignore-qa": 1,
-            "https://go.globalapptesting.com/hubfs/Marketing/content/Case%20Study/Acasa%20-%20Case%20Study.pdf": 1,
             "https://go.globalapptesting.com/crowdsourced-testing-white-paper": 1,
-            "https://go.globalapptesting.com/hubfs/Marketing/content/Case%20Study/LiveSafe%20-%20Case%20Study.pdf": 1,
-            "https://go.globalapptesting.com/hubfs/Marketing/content/Case%20Study/PromoFarma%20-%20Case%20Study.pdf": 1,
             "https://go.globalapptesting.com/qa-solutions-buying-guide": 1,
-            "https://cdn2.hubspot.net/hubfs/540930/Marketing/content/Case%20Study/Facebook%20-%20Case%20Study.pdf": 1,
             "https://go.globalapptesting.com/exploratory-testing-enterprise-guide": 1,
             "https://go.globalapptesting.com/ebook-ultimate-guide-to-crowdsourced-testing": 1,
-            "https://cdn2.hubspot.net/hubfs/540930/Resources/cs_dialogue_FNL.pdf": 1,
             "https://www.facebook.com/globalapptesting/": 1,
             "https://www.linkedin.com/company/global-app-testing": 1,
             "https://twitter.com/qaops?lang=en": 1,
@@ -7607,7 +7608,13 @@
             "https://go.globalapptesting.com/how-to-build-a-culture-of-quality-remotely": 1
         },
         "email_links": {},
-        "image_links": {},
+        "file_links": {
+            "https://go.globalapptesting.com/hubfs/Marketing/content/Case%20Study/Acasa%20-%20Case%20Study.pdf": 1,
+            "https://go.globalapptesting.com/hubfs/Marketing/content/Case%20Study/LiveSafe%20-%20Case%20Study.pdf": 1,
+            "https://go.globalapptesting.com/hubfs/Marketing/content/Case%20Study/PromoFarma%20-%20Case%20Study.pdf": 1,
+            "https://cdn2.hubspot.net/hubfs/540930/Marketing/content/Case%20Study/Facebook%20-%20Case%20Study.pdf": 1,
+            "https://cdn2.hubspot.net/hubfs/540930/Resources/cs_dialogue_FNL.pdf": 1
+        },
         "HTTP_STATUS": 200,
         "page_size_bytes": 171412
     },
@@ -7687,7 +7694,7 @@
         "email_links": {
             "mailto:?subject=Pillar%20Page%3A%20QA%20Testing%20v2&body=https%3A%2F%2Fwww.globalapptesting.com%2Fbest-practices-for-qa-testing": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 102815
     },
@@ -7746,7 +7753,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 404,
         "page_size_bytes": 57212
     },
@@ -7827,7 +7834,7 @@
         "email_links": {
             "mailto:?subject=The%20Ultimate%20Guide%20to%20Software%20Testing&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fsoftware-testing": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 183325
     },
@@ -7898,7 +7905,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 90278
     },
@@ -7977,7 +7984,7 @@
         "email_links": {
             "mailto:?subject=Pillar%20Page%3A%20Manual%20Testing&body=https%3A%2F%2Fwww.globalapptesting.com%2Fmanual-testing-best-practices": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 103656
     },
@@ -8059,7 +8066,7 @@
         "email_links": {
             "mailto:?subject=Can%20You%20Create%20the%20Perfect%20App%3F&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fperfect-app": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 97577
     },
@@ -8137,7 +8144,7 @@
         "email_links": {
             "mailto:?subject=6%20Steps%20on%20How%20to%20Improve%20Your%20App%20Store%20Rating&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2F6-step-guide-to-avoiding-one-star-reviews-of-your-app": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 112420
     },
@@ -8211,7 +8218,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 96559
     },
@@ -8279,7 +8286,7 @@
         "email_links": {
             "mailto:?subject=How%20to%20Cover%20an%20Expanding%20Universe%20of%20Device%20and%20OS%20complexity&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fhow-to-cover-an-expanding-universe-of-device-and-os-complexity": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 91583
     },
@@ -8351,7 +8358,7 @@
         "email_links": {
             "mailto:?subject=Empower%20Your%20Team%20%E2%80%94%20a%20story%20about%20the%20right%20team%20structure%20to%20achieve%20Continuous%20Delivery.&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fempower-your-team-a-story-about-the-right-team-structure-to-achieve-continuous-delivery": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 110499
     },
@@ -8427,7 +8434,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 82529
     },
@@ -8503,9 +8510,9 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 82564
+        "page_size_bytes": 82563
     },
     "https://www.globalapptesting.com/blog/the-true-cost-of-failing-to-put-your-customers-first": {
         "internal_links": {
@@ -8577,7 +8584,7 @@
         "email_links": {
             "mailto:?subject=The%20True%20Cost%20of%20Failing%20to%20Put%20Your%20Customers%20First&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fthe-true-cost-of-failing-to-put-your-customers-first": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 98829
     },
@@ -8654,7 +8661,7 @@
         "email_links": {
             "mailto:?subject=What%20is%20crowdsourced%20testing%3F&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fcrowdsourced-testing": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 117847
     },
@@ -8725,7 +8732,7 @@
         "email_links": {
             "mailto:?subject=Using%20APIs%20to%20Leverage%20Crowdtesting&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fusing-apis-to-leverage-crowdtesting": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 92650
     },
@@ -8816,7 +8823,7 @@
         "email_links": {
             "mailto:?subject=A%20Guide%20to%20Outsourced%20Software%20Testing&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fa-guide-to-outsourced-software-testing": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 119338
     },
@@ -8891,7 +8898,7 @@
         "email_links": {
             "mailto:?subject=What%E2%80%99s%20Slowing%20Down%20Your%20Release%20Cycle%3F&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fwhats-slowing-down-your-release-cycle": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 98776
     },
@@ -8980,7 +8987,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 102914
     },
@@ -9055,7 +9062,7 @@
         "email_links": {
             "mailto:?subject=Top%205%20Localization%20Challenges%20%28inc.%20zombies%3F%29&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Ftop-5-localization-challenges": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 100251
     },
@@ -9116,7 +9123,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 83183
     },
@@ -9194,7 +9201,7 @@
         "email_links": {
             "mailto:?subject=What%20is%20automation%20testing%3F&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fwhat-is-automation-testing": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 114045
     },
@@ -9267,7 +9274,7 @@
         "email_links": {
             "mailto:?subject=Unlock%20Team%20and%20Company%20Efficiencies%20with%20APIs&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Funlock-team-and-company-efficiencies-with-apis": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 94089
     },
@@ -9340,7 +9347,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 105058
     },
@@ -9413,7 +9420,7 @@
         "email_links": {
             "mailto:?subject=How%20Software%20Bugs%20Impact%20Your%20Company%20%5Binfographic%5D&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fhow-bugs-impact-your-company-infographic": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 93192
     },
@@ -9488,7 +9495,7 @@
         "email_links": {
             "mailto:?subject=Agile%20Manifesto%3A%20QA%20and%20Testing%20Takeaways&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fkey-qa-and-testing-takeaways-from-the-agile-manifesto": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 106024
     },
@@ -9564,7 +9571,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 81121
     },
@@ -9640,9 +9647,9 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 81154
+        "page_size_bytes": 81150
     },
     "https://www.globalapptesting.com/blog/the-critical-role-exploratory-testing-plays-in-agile-teams": {
         "internal_links": {
@@ -9722,7 +9729,7 @@
         "email_links": {
             "mailto:?subject=Exploratory%20Testing%20in%20Agile%20Teams&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fthe-critical-role-exploratory-testing-plays-in-agile-teams": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 104371
     },
@@ -9797,7 +9804,7 @@
         "email_links": {
             "mailto:?subject=QA%20Testing%3A%20Can%20You%20QA%20Everything%3F&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fcan-you-qa-everything": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 95527
     },
@@ -9869,7 +9876,7 @@
         "email_links": {
             "mailto:?subject=Software%20Testing%3A%20A%20Guide%20to%20Testing%20on%20New%20Devices&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fpixels-and-iphones-testing-on-new-devices": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 95881
     },
@@ -9946,7 +9953,7 @@
         "email_links": {
             "mailto:?subject=How%20to%20Use%20QA%20for%20Company%20Growth&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fhow-to-harness-the-power-of-qa-for-company-growth": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 99304
     },
@@ -10018,7 +10025,7 @@
         "email_links": {
             "mailto:?subject=QA%20in%202018%3A%20Everything%20CTO%27s%20Need%20To%20Know&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fwhat-ctos-must-know-about-qa-in-2018-infographic": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 91487
     },
@@ -10084,7 +10091,6 @@
             "https://twitter.com/home?status=QA+Process%3A+8+Tips+to+Improve+the+Process+to+Optimize+Results%20https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fqa-process": 1,
             "https://cta-redirect.hubspot.com/cta/redirect/540930/72c09883-7a19-47a1-aab4-940a74766037": 3,
             "https://cta-redirect.hubspot.com/cta/redirect/540930/0412ad73-53ef-4805-9ec0-127592574103": 3,
-            "https://cdn2.hubspot.net/hubfs/540930/7%20ways%20to%20improve%20your%20QA%20infographic%20FINAL.pdf": 1,
             "#subscribe-to-blog": 1,
             "https://www.facebook.com/globalapptesting/": 1,
             "https://www.linkedin.com/company/global-app-testing": 1,
@@ -10096,7 +10102,9 @@
         "email_links": {
             "mailto:?subject=QA%20Process%3A%208%20Tips%20to%20Improve%20the%20Process%20to%20Optimize%20Results&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fqa-process": 1
         },
-        "image_links": {},
+        "file_links": {
+            "https://cdn2.hubspot.net/hubfs/540930/7%20ways%20to%20improve%20your%20QA%20infographic%20FINAL.pdf": 1
+        },
         "HTTP_STATUS": 200,
         "page_size_bytes": 115372
     },
@@ -10173,7 +10181,7 @@
         "email_links": {
             "mailto:?subject=What%20is%20crowdsourced%20testing%3F&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fcrowdsourced-testing": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 117847
     },
@@ -10232,7 +10240,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 116577
     },
@@ -10327,7 +10335,7 @@
         "email_links": {
             "mailto:?subject=Why%20is%20Testing%20Important%20for%20Tech%20Startups%3F&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fwhy-is-testing-important-for-tech-startups": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 104893
     },
@@ -10401,7 +10409,7 @@
         "email_links": {
             "mailto:?subject=How%20to%20Increase%20Black%20Friday%20Cyber%20Monday%20Sales%20with%20Quality&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fhow-to-increase-e-commerce-sales-with-quality": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 112518
     },
@@ -10474,7 +10482,7 @@
         "email_links": {
             "mailto:?subject=The%20World%E2%80%99s%20First%20Computer%20Bug&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fthe-worlds-first-computer-bug-global-app-testing": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 96279
     },
@@ -10557,7 +10565,7 @@
         "email_links": {
             "mailto:?subject=How%20to%20Supercharge%20Your%20Testing%20Approach&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Ftesting-approach": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 99623
     },
@@ -10635,7 +10643,7 @@
         "email_links": {
             "mailto:?subject=What%20is%20automation%20testing%3F&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fwhat-is-automation-testing": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 114045
     },
@@ -10715,7 +10723,7 @@
         "email_links": {
             "mailto:?subject=When%20Should%20You%20Automate%20Your%20Software%20Testing%3F&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fwhen-should-you-automate-your-software-testing": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 102923
     },
@@ -10785,7 +10793,7 @@
         "email_links": {
             "mailto:?subject=The%20Issues%20That%20Tech%20Leaders%20Are%20Facing%20in%202020&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fthe-issues-that-tech-leaders-are-facing-in-2020": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 97543
     },
@@ -10863,7 +10871,7 @@
         "email_links": {
             "mailto:?subject=Software%20Testing%3A%20In-house%20vs.%20Crowd%20Testing&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fsoftware-testing-in-house-vs-crowd-testing": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 95265
     },
@@ -10937,7 +10945,7 @@
         "email_links": {
             "mailto:?subject=What%20a%20High%20Quality%20App%20Can%20Mean%20for%20Your%20Enterprise&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fwhat-to-do-when-you-have-a-poor-quality-enterprise-app": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 97139
     },
@@ -11004,7 +11012,6 @@
             "https://twitter.com/home?status=Agile+Testing%3A%C2%A0How+Can+Metrics+Help%3F%20https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fdoing-agile-testing-properly-how-metrics-can-help": 1,
             "https://www.sealights.io/test-metrics/agile-testing-metrics/": 1,
             "https://www.agilealliance.org/agile101/12-principles-behind-the-agile-manifesto/": 1,
-            "https://www.agilestrategicsolutions.com/wp-content/uploads/2014/09/Agile-Testing-Best-Practices.pdf": 1,
             "#subscribe-to-blog": 1,
             "https://www.facebook.com/globalapptesting/": 1,
             "https://www.linkedin.com/company/global-app-testing": 1,
@@ -11016,7 +11023,9 @@
         "email_links": {
             "mailto:?subject=Agile%20Testing%3A%C2%A0How%20Can%20Metrics%20Help%3F&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fdoing-agile-testing-properly-how-metrics-can-help": 1
         },
-        "image_links": {},
+        "file_links": {
+            "https://www.agilestrategicsolutions.com/wp-content/uploads/2014/09/Agile-Testing-Best-Practices.pdf": 1
+        },
         "HTTP_STATUS": 200,
         "page_size_bytes": 98915
     },
@@ -11091,7 +11100,7 @@
         "email_links": {
             "mailto:?subject=Why%20Making%20QA%20a%20Priority%20Is%20Important&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fwhy-is-this-hairdresser-so-slow": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 96628
     },
@@ -11162,7 +11171,7 @@
         "email_links": {
             "mailto:?subject=Why%20Are%20Testing%20Metrics%20So%20Important%3F&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Ftesting-metrics-how-to-demonstrate-the-value-of-testing-with-quantifiable-metrics": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 96123
     },
@@ -11242,7 +11251,7 @@
         "email_links": {
             "mailto:?subject=Continuous%20Integration%3A%20Definitions%2C%20Benefits%20%26amp%3B%20Essential%20Practices&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fwhat-is-continuous-integration": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 114378
     },
@@ -11312,7 +11321,7 @@
         "email_links": {
             "mailto:?subject=What%20Partnering%20with%20a%20QA%20Solution%C2%A0Means%20for%20Your%20Team&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fwhat-partnering-with-a-qa-solution-means-for-your-team": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 96718
     },
@@ -11418,7 +11427,7 @@
         "email_links": {
             "mailto:?subject=Everything%20There%20Is%20To%20Know%20About%20Automated%20Testing&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Feverything-there-is-to-know-about-automated-testing": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 129277
     },
@@ -11494,7 +11503,7 @@
         "email_links": {
             "mailto:?subject=Testing%20in%20Agile%3A%20What%20Are%20The%20Benefits%3F&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Ftesting-in-agile": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 96757
     },
@@ -11545,7 +11554,6 @@
             "https://testathon.co/": 2,
             "https://app.globalapptesting.com": 1,
             "https://go.globalapptesting.com/speak-to-us": 1,
-            "https://cdn2.hubspot.net/hubfs/540930/Resources/cs_dialogue_FNL.pdf": 1,
             "https://go.globalapptesting.com/ebook-ultimate-guide-to-crowdsourced-testing": 1,
             "https://go.globalapptesting.com/exploratory-testing-enterprise-guide": 1,
             "https://www.facebook.com/globalapptesting/": 1,
@@ -11559,7 +11567,9 @@
             "tel:44%200%20330%20058%203830": 1
         },
         "email_links": {},
-        "image_links": {},
+        "file_links": {
+            "https://cdn2.hubspot.net/hubfs/540930/Resources/cs_dialogue_FNL.pdf": 1
+        },
         "HTTP_STATUS": 200,
         "page_size_bytes": 70797
     },
@@ -11632,7 +11642,7 @@
         "email_links": {
             "mailto:?subject=iOS%20vs.%20Android%3A%20The%20Bug%20Wars&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fbug-wars-gold-digger-edition": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 111353
     },
@@ -11710,7 +11720,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 85219
     },
@@ -11788,9 +11798,9 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 85251
+        "page_size_bytes": 85252
     },
     "https://www.globalapptesting.com/blog/is-software-development-like-manufacturing": {
         "internal_links": {
@@ -11870,7 +11880,7 @@
         "email_links": {
             "mailto:?subject=Software%20Development%20vs.%20Manufacturing&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fis-software-development-like-manufacturing": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 111950
     },
@@ -11948,7 +11958,7 @@
         "email_links": {
             "mailto:?subject=Zawgyi%20vs.%20Unicode%20%7C%20Global%20App%20Testing&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fzawgyi-vs-unicode": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 116198
     },
@@ -12040,7 +12050,7 @@
         "email_links": {
             "mailto:?subject=Mobile%20App%20Testing%20at%20Scale&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fmobile-app-testing-at-scale": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 142772
     },
@@ -12114,7 +12124,7 @@
         "email_links": {
             "mailto:?subject=3%20Characteristics%20of%20Top%20Performing%20Apps&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2F3-characteristics-of-top-performing-apps": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 97471
     },
@@ -12194,7 +12204,7 @@
         "email_links": {
             "mailto:?subject=How%20to%20Build%20a%20Mobile%20App%20That%20Customers%20Love&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fhow-to-build-a-mobile-app-that-customers-love": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 100532
     },
@@ -12276,7 +12286,7 @@
         "email_links": {
             "mailto:?subject=5%20Types%20of%20Software%20Testing%20You%20Need%20to%20Know&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Ftypes-of-software-testing": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 111105
     },
@@ -12337,7 +12347,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 97263
     },
@@ -12422,7 +12432,7 @@
         "email_links": {
             "mailto:?subject=How%20Do%20You%20Ensure%20Quality%20in%20the%20Software%20You%20Create%3F&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fhow-do-you-ensure-quality-in-the-software-you-create": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 110414
     },
@@ -12496,7 +12506,7 @@
         "email_links": {
             "mailto:?subject=4%20Ways%20to%20Create%20a%20Quality%20Culture%20in%20Your%20Company&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2F4-ways-to-create-a-quality-culture-in-your-company": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 99289
     },
@@ -12568,7 +12578,7 @@
         "email_links": {
             "mailto:?subject=Picking%20Apart%20Stack%20Overflow%3B%20What%20Bugs%20Developers%20The%20Most%3F&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fpicking-apart-stackoverflow-what-bugs-developers-the-most": 1
         },
-        "image_links": {
+        "file_links": {
             "https://www.globalapptesting.com/hubfs/_all_languages_bar_chart-min.png": 1,
             "https://www.globalapptesting.com/hubfs/javascript_python_timeline-min.png": 1,
             "https://www.globalapptesting.com/hubfs/_javascript-min.png": 1,
@@ -12669,7 +12679,7 @@
         "email_links": {
             "mailto:?subject=What%20is%20continuous%20testing%3F&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fwhat-is-continuous-testing": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 120465
     },
@@ -12750,7 +12760,7 @@
         "email_links": {
             "mailto:?subject=Remote%20Working%20has%20Changed%20Software%20Development%20Forever.%20Here%E2%80%99s%20Why%3A&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fremote-working-has-changed-software-development-forever.-heres-why": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 101345
     },
@@ -12821,7 +12831,7 @@
         "email_links": {
             "mailto:?subject=Upgrade%20Your%20QA%20Without%20Breaking%20the%20Bank&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fupgrade-your-qa-without-breaking-the-bank": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 97564
     },
@@ -12899,7 +12909,7 @@
         "email_links": {
             "mailto:?subject=What%20is%20automated%20QA%20testing%3F&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fautomated-qa-testing": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 105840
     },
@@ -12976,7 +12986,7 @@
         "email_links": {
             "mailto:?subject=Changing%20The%20Role%20of%20QA%20in%20your%20SDLC%20Process&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fthe-role-of-qa-in-your-sdlc-process": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 99952
     },
@@ -13050,7 +13060,7 @@
         "email_links": {
             "mailto:?subject=3%20Software%20Testing%20Methodologies%20To%20Consider&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fsoftware-testing-methodologies-": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 104456
     },
@@ -13129,7 +13139,7 @@
         "email_links": {
             "mailto:?subject=6%20Trends%20That%20Will%20Affect%20Mobile%20App%20Development&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fhow-to-work-future-mobile-trends-into-your-development-strategy": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 104143
     },
@@ -13215,7 +13225,7 @@
         "email_links": {
             "mailto:?subject=Is%20Your%20QA%20Team%20Prepared%20for%20Remote%20Working%3F&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fremote-working-qa-team-prepared": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 105657
     },
@@ -13291,7 +13301,7 @@
         "email_links": {
             "mailto:?subject=Is%20Crowd%20Testing%20Just%20Outsourcing%3F&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fis-crowdsourced-testing-outsourcing": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 97540
     },
@@ -13371,7 +13381,7 @@
         "email_links": {
             "mailto:?subject=4%20Tech%20Trends%20That%20Will%20Affect%20QA%20Testing%20in%202018&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2F4-technology-trends-that-will-affect-qa-testing-in-2018": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 106315
     },
@@ -13431,7 +13441,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 96301
     },
@@ -13509,7 +13519,7 @@
         "email_links": {
             "mailto:?subject=Time%20Management%20Techniques%3A%20The%20CTOs%20Guide&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Ftime-management-techniques": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 100032
     },
@@ -13582,7 +13592,7 @@
         "email_links": {
             "mailto:?subject=Top%206%20Skills%20Needed%20for%20Exploratory%20Testing&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fthe-6-skills-needed-for-exceptional-exploratory-testing": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 96700
     },
@@ -13663,7 +13673,7 @@
         "email_links": {
             "mailto:?subject=The%20Ultimate%20Guide%20to%20Software%20Testing&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fsoftware-testing": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 183325
     },
@@ -13724,7 +13734,6 @@
             "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2F5-qa-tips-every-proptech-company-needs-to-know": 1,
             "https://twitter.com/home?status=5+QA+Tips+for+Proptech+Companies%20https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2F5-qa-tips-every-proptech-company-needs-to-know": 1,
             "https://twitter.com/jamesdearsley?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor": 1,
-            "https://www.sbs.ox.ac.uk/sites/default/files/2018-07/PropTech3.0.pdf": 1,
             "https://www.sbs.ox.ac.uk/about-us/people/andrew-baum": 1,
             "http://pilabs.co.uk/": 1,
             "https://about.beauhurst.com/blog/proptech-startups-uk/": 1,
@@ -13747,7 +13756,9 @@
         "email_links": {
             "mailto:?subject=5%20QA%20Tips%20for%20Proptech%20Companies&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2F5-qa-tips-every-proptech-company-needs-to-know": 1
         },
-        "image_links": {},
+        "file_links": {
+            "https://www.sbs.ox.ac.uk/sites/default/files/2018-07/PropTech3.0.pdf": 1
+        },
         "HTTP_STATUS": 200,
         "page_size_bytes": 106967
     },
@@ -13806,7 +13817,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 404,
         "page_size_bytes": 57212
     },
@@ -13882,7 +13893,7 @@
         "email_links": {
             "mailto:?subject=Does%20Good%20QA%20Contribute%20to%20Good%20Cybersecurity%3F&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fdoes-good-qa-contribute-to-good-cybersecurity": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 95472
     },
@@ -13954,7 +13965,7 @@
         "email_links": {
             "mailto:?subject=Does%20Your%20QA%20Save%20Lives%3F%20%5BUpcoming%20QA%20Webinar%5D&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fdoes-your-qa-save-lives-upcoming-webinar": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 95199
     },
@@ -14013,7 +14024,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 404,
         "page_size_bytes": 57212
     },
@@ -14074,7 +14085,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 93497
     },
@@ -14144,7 +14155,7 @@
         "email_links": {
             "mailto:?subject=5%20key%20takeaways%20from%20Elastic%20QA&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2F5-key-takeaways-from-elastic-qa": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 93410
     },
@@ -14215,7 +14226,7 @@
         "email_links": {
             "mailto:?subject=Elastic%20QA%3A%20What%20is%20it%20and%20why%20do%20you%20need%20it%3F&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Felastic-qa-what-is-it-and-why-do-you-need-it": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 93456
     },
@@ -14326,7 +14337,7 @@
         "email_links": {
             "mailto:?subject=Beta%20Testing%20Software&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fbeta-testing-software": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 144807
     },
@@ -14396,7 +14407,7 @@
         "email_links": {
             "mailto:?subject=Global%20App%20Testing%20selected%20as%20one%20the%20leading%20late%20stage%20companies%20in%20Tech%20Nation%E2%80%99s%20Future%20Fifty&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fglobal-app-testing-part-of-tech-nation-future-fifty-9.0": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 91057
     },
@@ -14467,7 +14478,7 @@
         "email_links": {
             "mailto:?subject=Dealing%20with%20Unexpected%20Delays%20in%20Your%20Release%20Cycle&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fdealing-with-unexpected-delays-in-your-release-cycle": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 97120
     },
@@ -14544,7 +14555,7 @@
         "email_links": {
             "mailto:?subject=My%20App%20Retention%20Rates%20Are%20Falling%3A%20What%20Can%20I%20Do%3F&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fapp-retention": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 98496
     },
@@ -14617,7 +14628,7 @@
         "email_links": {
             "mailto:?subject=App%20Users%20Today%20Have%20No%20Time%20For%20Poor%20Quality%20%28We%20Asked%20Them%29&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fapp-users-today-have-no-time-for-poor-quality": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 96531
     },
@@ -14689,7 +14700,7 @@
         "email_links": {
             "mailto:?subject=Achieving%20Diversity%20in%20Software%20Testing&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fachieving-diversity-in-software-testing": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 97098
     },
@@ -14778,7 +14789,7 @@
         "email_links": {
             "mailto:?subject=A%20Framework%20for%20QA%20Test%20Planning&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fa-framework-for-qa-test-planning": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 108182
     },
@@ -14855,7 +14866,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 84050
     },
@@ -14932,7 +14943,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 84086
     },
@@ -15020,7 +15031,7 @@
         "email_links": {
             "mailto:?subject=5%20Critical%20Mistakes%20to%20Avoid%20in%20Your%20QA%20Testing%20Process&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2F5-critical-mistakes-to-avoid-in-your-qa-testing-process": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 109083
     },
@@ -15096,7 +15107,7 @@
         "email_links": {
             "mailto:?subject=What%20is%20the%20Real%20Cost%20of%20Software%20Bugs%3F&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fthe-real-cost-behind-missing-bugs": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 96099
     },
@@ -15166,7 +15177,7 @@
         "email_links": {
             "mailto:?subject=How%20to%20Avoid%20High-Impact%20Risks%20in%20QA%20Delivery&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fhow-to-avoid-high-impact-risks-in-qa-delivery": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 94011
     },
@@ -15236,7 +15247,7 @@
         "email_links": {
             "mailto:?subject=What%E2%80%99s%20Keeping%20Your%20QA%20Team%20Up%20at%20Night%3F&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fwhats-keeping-your-qa-team-up-at-night": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 97704
     },
@@ -15320,7 +15331,7 @@
         "email_links": {
             "mailto:?subject=5%20Ways%20to%20Achieve%205%20Star%20App%20Reviews&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fhow-to-achieve-5-star-app-reviews": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 99211
     },
@@ -15392,7 +15403,7 @@
         "email_links": {
             "mailto:?subject=Adjusting%20Your%20Tech%20Budget%20to%20Survive%20Uncertain%20Times&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fadjusting-your-tech-budget-to-survive-uncertain-times": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 98530
     },
@@ -15467,7 +15478,7 @@
         "email_links": {
             "mailto:?subject=When%20Bugs%20Take%20Over%20%28And%20How%20To%20Stop%20Them%29&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fwhen-bugs-take-over-and-how-to-stop-them": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 99358
     },
@@ -15545,7 +15556,7 @@
         "email_links": {
             "mailto:?subject=Software%20Testing%3A%20In-house%20vs.%20Crowd%20Testing&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fsoftware-testing-in-house-vs-crowd-testing": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 95265
     },
@@ -15632,7 +15643,7 @@
         "email_links": {
             "mailto:?subject=6%20Secrets%20of%20App%20Retention%20%7C%20Global%20App%20Testing&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fthe-6-secrets-of-app-stickiness": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 104909
     },
@@ -15712,7 +15723,7 @@
         "email_links": {
             "mailto:?subject=How%20to%20Not%20Be%20the%20Next%20Wirecard%20%28Why%20Product%20Quality%20Matters%29&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fhow-to-not-be-the-next-wirecard": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 98979
     },
@@ -15787,7 +15798,7 @@
         "email_links": {
             "mailto:?subject=The%20Software%20Bugs%20Affecting%20Young%20Drivers&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fthe-software-bugs-affecting-young-drivers": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 92757
     },
@@ -15888,7 +15899,7 @@
         "email_links": {
             "mailto:?subject=Ad%20Hoc%20Testing&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fad-hoc-testing": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 125605
     },
@@ -15960,7 +15971,7 @@
         "email_links": {
             "mailto:?subject=How%20to%20Write%20Better%20Bug%20Reports&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fbug-triage-is-it-delaying-your-releases": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 101328
     },
@@ -16034,7 +16045,7 @@
         "email_links": {
             "mailto:?subject=The%20Best%20Way%20to%20Work%20QA%20Into%20Your%20Agency&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fbest-way-work-qa-agency": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 95243
     },
@@ -16106,7 +16117,7 @@
         "email_links": {
             "mailto:?subject=When%20the%20Coffee%20Maker%20Breaks&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fwhen-the-coffee-maker-breaks": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 93250
     },
@@ -16188,7 +16199,7 @@
         "email_links": {
             "mailto:?subject=How%20to%20Prevent%20a%20%C2%A3212%20Million%20Software%20Bug&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fhow-to-prevent-a-212-million-bug": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 96873
     },
@@ -16259,7 +16270,7 @@
         "email_links": {
             "mailto:?subject=Meltdown%20%26amp%3B%20Spectre%20in%20Software%20Testing&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fwhat-do-meltdown-and-spectre-mean-for-software-testing": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 97508
     },
@@ -16318,7 +16329,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 404,
         "page_size_bytes": 57212
     },
@@ -16378,7 +16389,6 @@
             "https://twitter.com/home?status=Twitter%27s+Most+Trending+Emojis+will+Bring+Your+Apps+to+Life%20https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Ftwitters-most-trending-emojis-will-bring-your-apps-to-life": 1,
             "https://en.wikipedia.org/wiki/Shigetaka_Kurita": 1,
             "https://www.brandwatch.com/blog/the-most-popular-emojis/": 1,
-            "https://media.giphy.com/media/tvG2IjtrAgJOg/giphy.gif": 1,
             "#subscribe-to-blog": 1,
             "https://www.facebook.com/globalapptesting/": 1,
             "https://www.linkedin.com/company/global-app-testing": 1,
@@ -16390,7 +16400,9 @@
         "email_links": {
             "mailto:?subject=Twitter%27s%20Most%20Trending%20Emojis%20will%20Bring%20Your%20Apps%20to%20Life&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Ftwitters-most-trending-emojis-will-bring-your-apps-to-life": 1
         },
-        "image_links": {},
+        "file_links": {
+            "https://media.giphy.com/media/tvG2IjtrAgJOg/giphy.gif": 1
+        },
         "HTTP_STATUS": 200,
         "page_size_bytes": 109305
     },
@@ -16464,7 +16476,7 @@
             "mailto:?subject=Our%20First%20Quality%20Leaders%20Network%20Evening&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Four-first-quality-leaders-network-evening-global-app-testing": 1,
             "mailto:nick@globalapptesting.com": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 98623
     },
@@ -16547,7 +16559,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 95096
     },
@@ -16630,7 +16642,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 95130
     },
@@ -16705,7 +16717,7 @@
         "email_links": {
             "mailto:?subject=Mobile%20World%20Congress%202018%20%7C%20Our%20Guide&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fmobile-world-congress-2018": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 93514
     },
@@ -16776,7 +16788,7 @@
         "email_links": {
             "mailto:?subject=Don%27t%20Miss%20These%20MWC%20Americas%20talks&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fmwc-americas-ultimate-guide": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 98057
     },
@@ -16854,7 +16866,7 @@
         "email_links": {
             "mailto:?subject=Your%20Ultimate%20Guide%20to%20the%20National%20Software%20Testing%20Conference&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fyour-ultimate-guide-to-the-national-software-testing-conference": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 95698
     },
@@ -16924,7 +16936,7 @@
             "mailto:?subject=Our%20First%20Quality%20Leaders%20Network%20%27Breakfast%20of%20Champions%27&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Four-first-quality-leaders-network-breakfast": 1,
             "mailto:nick@globalapptesting.com": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 96480
     },
@@ -16994,7 +17006,7 @@
         "email_links": {
             "mailto:?subject=The%20Quality%20Leaders%20Network%20EdTech%20%27Breakfast%20of%20Champions%27&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fquality-leaders-network-edtech-breakfast-of-champions": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 96243
     },
@@ -17070,7 +17082,7 @@
         "email_links": {
             "mailto:?subject=MWC%202020%20-%20Unmissable%20Events%2C%20Talks%20%26amp%3B%20Workshops&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fmwc-2020-unmissable-events-talks-workshops": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 94822
     },
@@ -17140,7 +17152,7 @@
         "email_links": {
             "mailto:?subject=Quality%20Leaders%20Network%20Breakfast%20of%20Champions%20%7C%20Testing%20Trends&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Ftesting-trends-breakfast-of-champions": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 94767
     },
@@ -17224,7 +17236,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 101724
     },
@@ -17308,7 +17320,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 101723
     },
@@ -17385,7 +17397,7 @@
         "email_links": {
             "mailto:?subject=How%20to%20Build%20the%20Perfect%20Mobile%20App&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2F7-strategies-build-the-perfect-app": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 101372
     },
@@ -17476,7 +17488,7 @@
         "email_links": {
             "mailto:?subject=A%20Guide%20to%20Outsourced%20Software%20Testing&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fa-guide-to-outsourced-software-testing": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 119338
     },
@@ -17552,7 +17564,7 @@
         "email_links": {
             "mailto:?subject=3%20Essential%20App%20Discoverability%20Strategies&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2F3-essential-app-discoverability-strategies-for-the-ios-11-app-store": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 99375
     },
@@ -17632,7 +17644,7 @@
         "email_links": {
             "mailto:?subject=Developing%20Apps%20for%20the%20Internet%20of%20Things&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fdeveloping-apps-internet-of-things-iot": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 103244
     },
@@ -17710,9 +17722,9 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 83496
+        "page_size_bytes": 83494
     },
     "https://www.globalapptesting.com/blog/topic/qaops/page/0": {
         "internal_links": {
@@ -17795,7 +17807,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 101330
     },
@@ -17880,7 +17892,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 101330
     },
@@ -17953,7 +17965,7 @@
         "email_links": {
             "mailto:?subject=Leading%20Quality%2C%20a%20Revolutionary%20New%20Book%20for%20the%20Software%20Industry&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fbook-announcement-leading-quality": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 96370
     },
@@ -18044,7 +18056,7 @@
         "email_links": {
             "mailto:?subject=How%20to%20Run%20a%20Comprehensive%20Mobile%20App%20Test&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fhow-to-run-a-comprehensive-mobile-app-test": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 110976
     },
@@ -18121,7 +18133,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 83314
     },
@@ -18198,9 +18210,9 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 83346
+        "page_size_bytes": 83347
     },
     "https://www.globalapptesting.com/blog/top-10-mobile-usability-testing-methods-every-qa-tester-should-know": {
         "internal_links": {
@@ -18285,7 +18297,7 @@
         "email_links": {
             "mailto:?subject=Top%2010%20Mobile%20Usability%20Testing%20Methods%20Every%20QA%20Tester%20Should%20Know&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Ftop-10-mobile-usability-testing-methods-every-qa-tester-should-know": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 111329
     },
@@ -18359,7 +18371,7 @@
         "email_links": {
             "mailto:?subject=The%20Remote%20Testing%20Checklist%3A%205%20Questions%20To%20Ask%20Yourself&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fthe-remote-testing-checklist": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 98208
     },
@@ -18434,7 +18446,7 @@
         "email_links": {
             "mailto:?subject=Remote%20Testing%3A%20Making%20The%20Switch&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fremote-testing-making-the-switch": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 99139
     },
@@ -18508,7 +18520,7 @@
         "email_links": {
             "mailto:?subject=Should%20You%20Be%20Testing%20In%20Production%3F&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Ftesting-in-production": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 97171
     },
@@ -18614,7 +18626,7 @@
         "email_links": {
             "mailto:?subject=Everything%20There%20Is%20To%20Know%20About%20Automated%20Testing&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Feverything-there-is-to-know-about-automated-testing": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 129277
     },
@@ -18694,7 +18706,7 @@
         "email_links": {
             "mailto:?subject=Continuous%20Integration%3A%20Definitions%2C%20Benefits%20%26amp%3B%20Essential%20Practices&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fwhat-is-continuous-integration": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 114378
     },
@@ -18780,7 +18792,7 @@
         "email_links": {
             "mailto:?subject=What%20is%20continuous%20testing%3F&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fwhat-is-continuous-testing": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 120465
     },
@@ -18861,7 +18873,7 @@
         "email_links": {
             "mailto:?subject=The%20Ultimate%20Guide%20to%20Software%20Testing&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fsoftware-testing": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 183325
     },
@@ -18940,9 +18952,9 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 85844
+        "page_size_bytes": 85845
     },
     "https://www.globalapptesting.com/blog/how-quality-became-a-growth-driver": {
         "internal_links": {
@@ -19013,7 +19025,7 @@
         "email_links": {
             "mailto:?subject=How%20Quality%20Became%20a%20Growth%20Driver&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fhow-quality-became-a-growth-driver": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 96651
     },
@@ -19075,7 +19087,6 @@
             "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fhow-to-get-your-app-approved-by-the-app-store": 1,
             "https://twitter.com/home?status=How+to+Get+Your+App+On+the+App+Store%20https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fhow-to-get-your-app-approved-by-the-app-store": 1,
             "https://developer.apple.com/app-store/review/guidelines/": 1,
-            "https://devimages-cdn.apple.com/app-store/review/guidelines/App-Review-Guidelines-The-Comic-Book.pdf": 1,
             "https://incipia.co/post/app-marketing/study-of-the-top-100-app-store-app-descriptions/": 1,
             "http://appreviewtimes.com/": 1,
             "https://developer.apple.com/design/": 1,
@@ -19092,7 +19103,9 @@
         "email_links": {
             "mailto:?subject=How%20to%20Get%20Your%20App%20On%20the%20App%20Store&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fhow-to-get-your-app-approved-by-the-app-store": 1
         },
-        "image_links": {},
+        "file_links": {
+            "https://devimages-cdn.apple.com/app-store/review/guidelines/App-Review-Guidelines-The-Comic-Book.pdf": 1
+        },
         "HTTP_STATUS": 200,
         "page_size_bytes": 108231
     },
@@ -19151,7 +19164,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 404,
         "page_size_bytes": 57212
     },
@@ -19236,9 +19249,9 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 99391
+        "page_size_bytes": 99394
     },
     "https://www.globalapptesting.com/blog/author/tony-dolan/page/1": {
         "internal_links": {
@@ -19321,7 +19334,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 99394
     },
@@ -19380,7 +19393,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 404,
         "page_size_bytes": 57212
     },
@@ -19452,7 +19465,7 @@
         "email_links": {
             "mailto:?subject=More%20Than%20Just%20Values&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fmore-than-just-values": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 96000
     },
@@ -19522,7 +19535,7 @@
         "email_links": {
             "mailto:?subject=Announcing%3A%20Our%20New%20Krakow%20Office%21&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fannouncing-global-app-testing-tech-talk-episode-1": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 92939
     },
@@ -19591,7 +19604,7 @@
         "email_links": {
             "mailto:?subject=What%20We%27ve%20Been%20Working%20On%20April%202019%3A%20Usability%20Improvements&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fwhat-weve-been-working-on-usability-improvements": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 95547
     },
@@ -19667,7 +19680,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 80681
     },
@@ -19743,9 +19756,9 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 80714
+        "page_size_bytes": 80709
     },
     "https://www.globalapptesting.com/blog/topic/events/page/0": {
         "internal_links": {
@@ -19822,7 +19835,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 87423
     },
@@ -19917,7 +19930,7 @@
         "email_links": {
             "mailto:?subject=EuroSTAR%20Conference%202019%2C%20Prague%20-%20The%20Complete%20Guide&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Feurostar-conference-2020-prague-the-complete-guide": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 122262
     },
@@ -19993,9 +20006,9 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 81596
+        "page_size_bytes": 81593
     },
     "https://www.globalapptesting.com/blog/topic/engineering/page/0": {
         "internal_links": {
@@ -20069,7 +20082,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 82129
     },
@@ -20145,9 +20158,9 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 81174
+        "page_size_bytes": 81171
     },
     "https://www.globalapptesting.com/blog/topic/beta-testing/page/0": {
         "internal_links": {
@@ -20221,9 +20234,9 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 81220
+        "page_size_bytes": 81221
     },
     "https://www.globalapptesting.com/blog/author/nick-roberts/page/2": {
         "internal_links": {
@@ -20307,7 +20320,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 99584
     },
@@ -20388,7 +20401,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 88998
     },
@@ -20473,7 +20486,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 99200
     },
@@ -20558,7 +20571,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 99200
     },
@@ -20629,7 +20642,7 @@
         "email_links": {
             "mailto:?subject=Help%21%20I%20Can%27t%20Recreate%20My%20Customer%27s%20Bugs&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Frecreate-customers-bugs": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 95748
     },
@@ -20690,7 +20703,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 74100
     },
@@ -20776,7 +20789,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 96866
     },
@@ -20861,9 +20874,9 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 99960
+        "page_size_bytes": 99961
     },
     "https://www.globalapptesting.com/blog/author/fahim-sachedina/page/4": {
         "internal_links": {
@@ -20947,9 +20960,9 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 99927
+        "page_size_bytes": 99930
     },
     "https://www.globalapptesting.com/blog/author/fahim-sachedina/page/5": {
         "internal_links": {
@@ -21027,9 +21040,9 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 87346
+        "page_size_bytes": 87347
     },
     "https://www.globalapptesting.com/blog/author/fahim-sachedina/page/0": {
         "internal_links": {
@@ -21112,9 +21125,9 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 98394
+        "page_size_bytes": 98393
     },
     "https://www.globalapptesting.com/blog/author/fahim-sachedina/page/1": {
         "internal_links": {
@@ -21197,7 +21210,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 98394
     },
@@ -21261,7 +21274,6 @@
             "https://futuretodayinstitute.com/trend/5g-triggers-a-surge-of-new-businesses/": 1,
             "https://signtr.info/click?redirect=https%3A%2F%2Forangesoft.co%2F&dID=1590147807786&linkName=Orangesoft": 2,
             "https://www.qualcomm.com/": 1,
-            "https://www.pwc.com/gx/en/issues/analytics/assets/pwc-ai-analysis-sizing-the-prize-report.pdf": 1,
             "#subscribe-to-blog": 1,
             "https://www.facebook.com/globalapptesting/": 1,
             "https://www.linkedin.com/company/global-app-testing": 1,
@@ -21273,7 +21285,9 @@
         "email_links": {
             "mailto:?subject=4%20Tech%20Trends%20for%202020%20and%20Beyond&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Ftech-trends-for-2020-and-beyond": 1
         },
-        "image_links": {},
+        "file_links": {
+            "https://www.pwc.com/gx/en/issues/analytics/assets/pwc-ai-analysis-sizing-the-prize-report.pdf": 1
+        },
         "HTTP_STATUS": 200,
         "page_size_bytes": 101514
     },
@@ -21394,7 +21408,7 @@
         "email_links": {
             "mailto:?subject=Automated%20Functional%20Testing&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fautomated-functional-testing": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 143960
     },
@@ -21483,7 +21497,7 @@
         "email_links": {
             "mailto:?subject=Business%20continuity%20software%20-%20A%20major%20asset%20to%20business%20continuity%20planning&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fbusiness-continuity-planning-software-release": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 120769
     },
@@ -21610,7 +21624,7 @@
         "email_links": {
             "mailto:?subject=The%20Ultimate%20Guide%20to%20Smoke%20Testing&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fthe-ultimate-guide-to-smoke-testing": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 147873
     },
@@ -21690,7 +21704,7 @@
         "email_links": {
             "mailto:?subject=3%20Alternatives%20to%20Hiring%20Internal%20QA&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2F4-alternatives-to-hiring-internal-qa": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 98172
     },
@@ -21770,7 +21784,7 @@
         "email_links": {
             "mailto:?subject=Benefits%20of%20On-Demand%20QA%20for%20B2C%20Companies&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fbenefits-of-on-demand-qa": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 101383
     },
@@ -21848,9 +21862,9 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 84090
+        "page_size_bytes": 84091
     },
     "https://www.globalapptesting.com/blog/page/2": {
         "internal_links": {
@@ -21933,7 +21947,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 101189
     },
@@ -22019,7 +22033,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 97511
     },
@@ -22105,9 +22119,9 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 97003
+        "page_size_bytes": 97004
     },
     "https://www.globalapptesting.com/blog/page/5": {
         "internal_links": {
@@ -22191,7 +22205,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 97263
     },
@@ -22277,7 +22291,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 96911
     },
@@ -22363,9 +22377,9 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 97966
+        "page_size_bytes": 97964
     },
     "https://www.globalapptesting.com/blog/page/8": {
         "internal_links": {
@@ -22449,9 +22463,9 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 99844
+        "page_size_bytes": 99841
     },
     "https://www.globalapptesting.com/blog/page/9": {
         "internal_links": {
@@ -22534,9 +22548,9 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 100002
+        "page_size_bytes": 100005
     },
     "https://www.globalapptesting.com/blog/page/10": {
         "internal_links": {
@@ -22619,9 +22633,9 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 100033
+        "page_size_bytes": 100034
     },
     "https://www.globalapptesting.com/blog/page/11": {
         "internal_links": {
@@ -22705,7 +22719,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 99903
     },
@@ -22791,7 +22805,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 99912
     },
@@ -22877,7 +22891,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 99910
     },
@@ -22963,9 +22977,9 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 100084
+        "page_size_bytes": 100085
     },
     "https://www.globalapptesting.com/blog/page/15": {
         "internal_links": {
@@ -23044,9 +23058,9 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 89210
+        "page_size_bytes": 89213
     },
     "https://www.globalapptesting.com/blog/page/0": {
         "internal_links": {
@@ -23129,7 +23143,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 98510
     },
@@ -23214,7 +23228,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 98510
     },
@@ -23283,7 +23297,7 @@
         "email_links": {
             "mailto:?subject=3%20Spooky%20Software%20Bugs%3A%20Halloween%20Special&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fspooky-software-bugs": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 97271
     },
@@ -23359,7 +23373,7 @@
         "email_links": {
             "mailto:?subject=How%20to%20Improve%20Communication%20in%20Your%20Tech%20Company&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fhow-to-improve-communication": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 96679
     },
@@ -23434,7 +23448,7 @@
         "email_links": {
             "mailto:?subject=You%20Can%20Scale%20Your%20QA%20Team%20Globally%20Without%20Hiring%20Anyone%3A%20Here%E2%80%99s%20How&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fscale-your-qa-team-globally": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 97606
     },
@@ -23519,7 +23533,7 @@
         "email_links": {
             "mailto:?subject=Building%20a%20Positive%20Remote%20Company%20Culture&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fremote-tips-on-building-a-positive-company-culture": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 105832
     },
@@ -23589,7 +23603,7 @@
         "email_links": {
             "mailto:?subject=Why%20Your%20Releases%20Keep%20Getting%20Delayed%20%E2%80%93%20and%20What%20to%20Do%20About%20It&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fwhy-your-releases-keep-getting-delayed-and-what-to-do-about-it": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 96486
     },
@@ -23658,7 +23672,7 @@
         "email_links": {
             "mailto:?subject=Using%20QA%20to%20Seek%20and%20Destroy%20Technical%20Debt&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fusing-qa-to-seek-and-destroy-technical-debt": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 104376
     },
@@ -23746,7 +23760,7 @@
         "email_links": {
             "mailto:?subject=Top%20Tech%20Blogs%20to%20Read%20in%202020&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Ftop-tech-blogs-to-read-in-2020": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 110300
     },
@@ -23816,7 +23830,7 @@
         "email_links": {
             "mailto:?subject=Worry%20less.%20Test%20more%3A%20Announcing%20ISO%2027001%20Certification&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fannouncing-iso-27001-certification": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 94755
     },
@@ -23889,7 +23903,7 @@
         "email_links": {
             "mailto:?subject=Apple%27s%20%27Surprise%27%20Update%20Causes%20Bug%20Fears&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fapples-surprise-update-causes-bug-fears": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 95138
     },
@@ -23962,7 +23976,7 @@
         "email_links": {
             "mailto:?subject=Exploratory%20Testing%20Week%3A%20The%20Highlights%F0%9F%8E%99&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fexploratory-testing-week-the-highlights": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 94196
     },
@@ -24031,7 +24045,7 @@
         "email_links": {
             "mailto:?subject=The%20Ultimate%20QA%20Testing%20Handbook%20Highlights&body=https%3A%2F%2Fwww.globalapptesting.com%2Fblog%2Fthe-ultimate-qa-testing-handbook-highlights": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 94854
     },
@@ -24102,7 +24116,7 @@
         "email_links": {
             "mailto:?subject=What%20Is%20Event%20Storming%3F%20How%20Is%20It%20Key%20to%20Agile%20Strategy%20Success%3F&body=https%3A%2F%2Fwww.globalapptesting.com%2Fengineering%2Fevent-storming-agile-success": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 96252
     },
@@ -24177,9 +24191,9 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 78895
+        "page_size_bytes": 78897
     },
     "https://www.globalapptesting.com/blog/topic/ruby/page/0": {
         "internal_links": {
@@ -24252,9 +24266,9 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 78929
+        "page_size_bytes": 78931
     },
     "https://www.globalapptesting.com/engineering/lets-take-a-closer-look-at-the-tests-created-in-rspec": {
         "internal_links": {
@@ -24330,7 +24344,7 @@
         "email_links": {
             "mailto:?subject=Tired%20of%20complex%20RSpecs%3F%20%60Let%27s%20not%60%20to%20the%20rescue&body=https%3A%2F%2Fwww.globalapptesting.com%2Fengineering%2Flets-take-a-closer-look-at-the-tests-created-in-rspec": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 98660
     },
@@ -24400,7 +24414,7 @@
         "email_links": {
             "mailto:?subject=5%20Best%20Practices%20to%20Accelerate%20Code%20Review&body=https%3A%2F%2Fwww.globalapptesting.com%2Fengineering%2F5-best-practices-to-accelerate-code-review": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 99642
     },
@@ -24475,9 +24489,9 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 78970
+        "page_size_bytes": 78967
     },
     "https://www.globalapptesting.com/blog/topic/data-science/page/0": {
         "internal_links": {
@@ -24550,7 +24564,7 @@
         },
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 79003
     },
@@ -24625,7 +24639,7 @@
         "email_links": {
             "mailto:?subject=Designing%20an%20interface%20for%20hierarchical%20environments&body=https%3A%2F%2Fwww.globalapptesting.com%2Fengineering%2Fdesigning-an-interface-for-hierarchical-environments": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 98539
     },
@@ -24699,7 +24713,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 72261
     },
@@ -24770,7 +24784,7 @@
         "email_links": {
             "mailto:?subject=Reinforcement%20Learning%20for%20Web%20Testing%20at%20Global%20App%20Testing&body=https%3A%2F%2Fwww.globalapptesting.com%2Fengineering%2Freinforcement-learning-for-web-testing-at-global-app-testing": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 87013
     },
@@ -24843,7 +24857,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 72375
     },
@@ -24918,7 +24932,7 @@
         "email_links": {
             "mailto:?subject=Rails%20Monolith%20Modularisation%20with%20CQRS&body=https%3A%2F%2Fwww.globalapptesting.com%2Fengineering%2Frails-monolith-modularisation-with-cqrs": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 97733
     },
@@ -24991,7 +25005,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 72323
     },
@@ -25066,7 +25080,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 72199
     },
@@ -25140,7 +25154,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 74093
     },
@@ -25215,7 +25229,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 76509
     },
@@ -25291,7 +25305,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 78656
     },
@@ -25372,7 +25386,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 89649
     },
@@ -25453,7 +25467,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 89682
     },
@@ -25526,7 +25540,7 @@
         "email_links": {
             "mailto:?subject=When%20GAT%20Containerised%20Krak%C3%B3w%20-%20Tech%20Talk%20%231&body=https%3A%2F%2Fwww.globalapptesting.com%2Fengineering%2Fwhen-gat-containerised-krakow": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 91640
     },
@@ -25600,7 +25614,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 74450
     },
@@ -25674,9 +25688,9 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 74483
+        "page_size_bytes": 74482
     },
     "https://www.globalapptesting.com/engineering/careers": {
         "internal_links": {
@@ -25734,7 +25748,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 89026
     },
@@ -25807,7 +25821,7 @@
         "email_links": {
             "mailto:?subject=Design%20the%20unknown%20%28with%20the%20help%20of%20Event%20Storming%29&body=https%3A%2F%2Fwww.globalapptesting.com%2Fengineering%2Fdesign-the-unknown-with-the-help-of-event-storming": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 102061
     },
@@ -25882,7 +25896,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 74607
     },
@@ -25957,7 +25971,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 74640
     },
@@ -26052,7 +26066,7 @@
         "email_links": {
             "mailto:?subject=Implementing%20Packwerk%20to%20delimit%20bounded%20contexts&body=https%3A%2F%2Fwww.globalapptesting.com%2Fengineering%2Fimplementing-packwerk-to-delimit-bounded-contexts": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 111297
     },
@@ -26126,7 +26140,7 @@
         "email_links": {
             "mailto:?subject=GAT%20TechTalk%20%234%20%28DDD%20in%20Ruby%29%20-%2020th%20May%202021&body=https%3A%2F%2Fwww.globalapptesting.com%2Fengineering%2Fgat-techtalk-4-ddd-in-ruby": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 85590
     },
@@ -26200,7 +26214,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 72418
     },
@@ -26274,9 +26288,9 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 72451
+        "page_size_bytes": 72450
     },
     "https://www.globalapptesting.com/engineering/activerecord-models-how-to-remove-data-in-gdpr-compliant-way": {
         "internal_links": {
@@ -26352,7 +26366,7 @@
         "email_links": {
             "mailto:?subject=ActiveRecord%20models%3A%20How%20to%20remove%20data%20in%20GDPR%20compliant%20way&body=https%3A%2F%2Fwww.globalapptesting.com%2Fengineering%2Factiverecord-models-how-to-remove-data-in-gdpr-compliant-way": 1
         },
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 98173
     },
@@ -26426,7 +26440,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 72464
     },
@@ -26500,7 +26514,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 72497
     },
@@ -26576,7 +26590,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 78689
     },
@@ -26651,7 +26665,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 76545
     },
@@ -26725,9 +26739,9 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 74125
+        "page_size_bytes": 74126
     },
     "https://www.globalapptesting.com/engineering/tag/increasing-speed/page/0": {
         "internal_links": {
@@ -26800,7 +26814,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 72232
     },
@@ -26873,7 +26887,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 72356
     },
@@ -26946,9 +26960,9 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 72405
+        "page_size_bytes": 72408
     },
     "https://www.globalapptesting.com/engineering/author/tomasz-wrona/page/0": {
         "internal_links": {
@@ -27020,7 +27034,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 72294
     },
@@ -27095,7 +27109,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 72352
     },
@@ -27170,9 +27184,9 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 72382
+        "page_size_bytes": 72385
     },
     "https://www.globalapptesting.com/engineering/author/damian-mamla": {
         "internal_links": {
@@ -27244,7 +27258,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 72458
     },
@@ -27318,7 +27332,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 72491
     },
@@ -27392,9 +27406,9 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
-        "page_size_bytes": 72621
+        "page_size_bytes": 72622
     },
     "https://www.globalapptesting.com/engineering/page/0": {
         "internal_links": {
@@ -27474,7 +27488,7 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 91896
     },
@@ -27556,18 +27570,8 @@
         "dead_links": {},
         "phone_links": {},
         "email_links": {},
-        "image_links": {},
+        "file_links": {},
         "HTTP_STATUS": 200,
         "page_size_bytes": 91896
-    },
-    "https://www.globalapptesting.com/hubfs/security/18920_Certificate_2020.pdf": {
-        "internal_links": {},
-        "external_links": {},
-        "dead_links": {},
-        "phone_links": {},
-        "email_links": {},
-        "image_links": {},
-        "HTTP_STATUS": 200,
-        "page_size_bytes": 1005883
     }
 }
