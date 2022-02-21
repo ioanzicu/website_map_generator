@@ -1,7 +1,7 @@
 import networkx as nx
 import matplotlib.pyplot as plt
 from pyvis.network import Network
-from webpage_parser import WebpageParser
+from app.webpage_parser import WebpageParser
 
 
 def show_graph(parser: WebpageParser, root_link: str) -> None:

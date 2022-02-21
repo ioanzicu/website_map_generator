@@ -1,10 +1,11 @@
-import json
 import sys
 from requests import get
 from bs4 import BeautifulSoup
 from httplib2 import Response
 from collections import Counter
 from collections import deque
+from app.dfs import DFS
+from app.file_manager import FileManager
 
 
 class ArgumentNotProvided(ValueError):
@@ -12,7 +13,7 @@ class ArgumentNotProvided(ValueError):
 
 
 class WebpageParser():
-    def __init__(self, root_link: str) -> None:
+    def __init__(self, root_link: str, file_manager: FileManager, DFS: DFS) -> None:
 
         if not isinstance(root_link, str):
             raise ValueError(
@@ -21,10 +22,10 @@ class WebpageParser():
         self.root_link: str = root_link
         self.root_domain: str = root_link.split(
             '.')[1] if self.root_link else ''
+        self.file_manager = file_manager
         self.map_dict: dict = {}
         self.graph_dict: dict = {}
-        self.visited: dict = {}
-        self.node_dependencies: dict = {}
+        self.DFS = DFS
 
     def __str__(self) -> str:
         return f'WebpageParser(root_link={self.root_link})'
@@ -305,20 +306,6 @@ class WebpageParser():
 
         return incoming_links_counter
 
-    def __write_to_file(self, file_name: str = 'file', format: str = 'json', data: dict = {}) -> None:
-        '''
-        Write data to a file.
-        '''
-        if not data:
-            raise ValueError('The data is empty')
-
-        with open(f'{file_name}.{format}', mode='w', encoding="utf8") as fhandle:
-            try:
-                json.dump(data, fhandle, indent=4)
-            except Exception as exc:
-                print(
-                    f'Exception occured when trying to write to json file with name={file_name}.{format}: {exc}')
-
     def write_map_dict_to_json_file(self, file_name: str = 'map_dict') -> None:
         '''
         Write / Dump the map dict into json file.
@@ -326,7 +313,8 @@ class WebpageParser():
 
         if not self.map_dict:
             raise ValueError('The map_dict is empty')
-        self.__write_to_file(file_name=file_name, data=self.map_dict)
+        self.file_manager.write_to_file(
+            file_name=file_name, data=self.map_dict)
 
     def write_graph_dict_to_json_file(self, file_name: str = 'graph_dict') -> None:
         '''
@@ -335,33 +323,21 @@ class WebpageParser():
 
         if not self.graph_dict:
             raise ValueError('The graph_dict is empty')
-        self.__write_to_file(file_name=file_name, data=self.graph_dict)
-
-    def __load_from_json(self, file_name: str) -> dict:
-        '''
-        Load the dictionary from a json file.
-        '''
-        with open(f'{file_name}.json', mode='r', encoding="utf8") as fhandle:
-            try:
-                return json.loads(fhandle.read())
-            except Exception as exc:
-                print(
-                    f'Exception occured when trying to read from the json file with name={file_name}: {exc}')
-
-        return self.graph_dict
+        self.file_manager.write_to_file(
+            file_name=file_name, data=self.graph_dict)
 
     def load_map_dict_from_json(self, file_name: str) -> dict:
         '''
         Load the map dictionary from a json file.
         '''
-        self.map_dict = self.__load_from_json(file_name=file_name)
+        self.map_dict = self.file_manager.load_from_json(file_name=file_name)
         return self.map_dict
 
     def load_graph_dict_from_json(self, file_name: str) -> dict:
         '''
         Load the graph dictionary from a json file.
         '''
-        self.graph_dict = self.__load_from_json(file_name=file_name)
+        self.graph_dict = self.file_manager.load_from_json(file_name=file_name)
         return self.graph_dict
 
     def get_link_info(self, link: str) -> dict:
@@ -453,7 +429,8 @@ class WebpageParser():
             total_file_links += len(value_dict['file_links'])
             total_page_size_bytes += value_dict['page_size_bytes']
 
-        longest_path = self.get_longest_path()
+        self.DFS = self.DFS(self.graph_dict)
+        longest_path = self.DFS.get_longest_path()
         average_internal_links_per_page = total_internal_links // total_webpages
         average_external_links_per_page = total_external_links // total_webpages
         average_page_size_bytes = total_page_size_bytes // total_webpages
@@ -507,41 +484,3 @@ class WebpageParser():
         self.write_graph_dict_to_json_file()
         self.write_map_dict_to_json_file()
         return graph
-
-    def get_longest_path(self) -> int:
-
-        if not self.graph_dict:
-            raise ValueError('The graph_dict is empty')
-
-        self.visited = dict.fromkeys(self.graph_dict, False)
-        # node connections
-        self.node_dependencies = dict.fromkeys(self.graph_dict, 0)
-
-        # Iterate over each node
-        for current_node in self.graph_dict.keys():
-            # call dfs if it was not visited yet
-            if not self.visited[current_node]:
-                self.dfs(current_node=current_node)
-
-        longest_path = 0
-        # find the longest path
-        for dependency in self.node_dependencies.values():
-            longest_path = max(dependency, longest_path)
-        return longest_path
-
-    def dfs(self, current_node: str) -> None:
-
-        # recursion base case
-        if self.visited[current_node]:
-            return
-
-        self.visited[current_node] = True
-
-        # recurrently check each neighbor
-        for _, neighbor_node, _ in self.graph_dict[current_node]:
-            if not self.visited[neighbor_node]:
-                self.dfs(current_node=neighbor_node)
-
-            # get the maximum value - the longest path between current and neighbor node
-            self.node_dependencies[current_node] = max(self.node_dependencies[current_node],
-                                                       self.node_dependencies[neighbor_node] + 1)

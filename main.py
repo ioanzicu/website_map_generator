@@ -1,13 +1,14 @@
-from webpage_parser import WebpageParser
-from helpers import show_graph
+from app.webpage_parser import WebpageParser, FileManager, DFS
+from app.helpers import show_graph
 
 
 if __name__ == '__main__':
 
-    local_data = False
+    local_data = True
 
     root: str = 'https://www.globalapptesting.com'
-    webparser = WebpageParser(root_link=root)
+    webparser = WebpageParser(
+        root_link=root, file_manager=FileManager(), DFS=DFS)
 
     if not local_data:
         print('Geather data from the internet...')
