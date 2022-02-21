@@ -8,7 +8,7 @@ class DFS():
     def get_longest_path(self) -> int:
 
         if not self.adj_list_graph:
-            raise ValueError('The graph_dict is empty')
+            raise ValueError('The adj_list_graph is empty')
 
         self.visited = dict.fromkeys(self.adj_list_graph, False)
         # node connections
@@ -27,7 +27,7 @@ class DFS():
         return longest_path
 
     def dfs(self, current_node: str) -> None:
-        '''Depth First Search'''
+        '''Depth First Search - recursive version'''
 
         # recursion base case
         if self.visited[current_node]:

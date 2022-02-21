@@ -1,3 +1,4 @@
+import heapq
 import networkx as nx
 import matplotlib.pyplot as plt
 from pyvis.network import Network
@@ -40,3 +41,29 @@ def show_graph(parser: WebpageParser, root_link: str) -> None:
     nt.barnes_hut(gravity=-20000000, central_gravity=0, spring_length=4000,
                   spring_strength=0.001, damping=0.75, overlap=0.75)
     nt.show(f'{root_link.split(".")[1]}_map.html')
+
+
+def dijsktra(adj_list_graph: dict, start_node: str, target_node: str):
+    '''Shortest path, iterative version - dijsktra algorithm'''
+    if not adj_list_graph:
+        raise ValueError('The adj_list_graph is empty')
+
+    node_dependencies = {start_node: 0}
+    parent = {start_node: None}
+    priority_queue = [(0, start_node)]
+    visited = set()
+    while priority_queue:
+        distance, current_node = heapq.heappop(priority_queue)
+        if current_node in visited:
+            continue
+        if current_node == target_node:
+            break
+        visited.add(current_node)
+        for _, neighbor_node, _ in adj_list_graph[current_node]:
+            if neighbor_node not in node_dependencies or node_dependencies[neighbor_node] > distance + 1:
+                node_dependencies[neighbor_node] = distance + 1
+                parent[neighbor_node] = current_node
+                heapq.heappush(
+                    priority_queue, (node_dependencies[neighbor_node], neighbor_node))
+
+    return parent, node_dependencies
