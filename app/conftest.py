@@ -2,19 +2,21 @@ import os
 import pytest
 import json
 from typing import Callable, Counter, Optional
-from app.webpage_parser import WebpageParser, FileManager, DFS
+from app.webpage_parser import WebpageParser
+from app.file_manager import FileManager
+from app.graph import Graph
 
 
 @pytest.fixture
 def web_parser() -> WebpageParser:
     '''Returns a WebpageParser object with root link'''
-    return WebpageParser('https://www.globalapptesting.com/', FileManager(), DFS)
+    return WebpageParser('https://www.globalapptesting.com/', FileManager())
 
 
 @pytest.fixture
 def web_parser_without_root() -> WebpageParser:
     '''Returns a WebpageParser object without root link'''
-    return WebpageParser('', FileManager(), DFS)
+    return WebpageParser('', FileManager())
 
 
 @pytest.fixture
@@ -28,8 +30,13 @@ def file_manager():
 
 
 @pytest.fixture
-def dfs():
-    return DFS
+def non_initialized_graph():
+    return Graph
+
+
+@pytest.fixture
+def initialized_graph(temp_adj_list_graph_full, file_manager):
+    return Graph(adj_list_graph=temp_adj_list_graph_full, file_manager=file_manager)
 
 
 @pytest.fixture
@@ -52,7 +59,7 @@ def graph_edges() -> list:
 
 
 @ pytest.fixture
-def temp_graph_dict() -> dict:
+def temp_adj_list_graph() -> dict:
     return {'https://www.globalapptesting.com/': [('https://www.globalapptesting.com', 'https://www.globalapptesting.com', 1), ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/product', 7),
                                                   ('https://www.globalapptesting.com', 'https://www.globalapptesting.com/platform/test-management', 2), (
                                                       'https://www.globalapptesting.com', 'https://www.globalapptesting.com/platform/test-execution', 2),
@@ -62,8 +69,8 @@ def temp_graph_dict() -> dict:
 
 
 @pytest.fixture
-def temp_graph_dict_full(build_path) -> dict:
-    file_name = 'test_graph_dict_full'
+def temp_adj_list_graph_full(build_path) -> dict:
+    file_name = 'test_adj_list_graph_full'
     file_path = build_path(file_name, 'json')
     with open(file=file_path, mode='r', encoding='utf8') as fhandle:
         try:
@@ -166,7 +173,7 @@ def expected_json() -> dict:
 
 
 @pytest.fixture
-def write_to_json_file(build_path):
+def write_to_json_file(build_path) -> None:
 
     def inner_func(file_name: str, expected_json_sample: json):
         file_path = build_path(file_name, 'json')

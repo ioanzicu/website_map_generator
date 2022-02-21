@@ -185,26 +185,6 @@ def test_write_map_dict_to_json_file(web_parser_without_root: WebpageParser, bui
                 f'Exception occured when trying to read from the json file with name={file_name}: {exc}')
 
 
-def test_write_graph_dict_to_json_file(web_parser_without_root: WebpageParser, expected_json, build_path: Callable[[], str], temp_graph_dict: dict):
-    '''
-    Test the writing graph_dict object to the json file.
-    '''
-
-    web_parser_without_root.graph_dict = temp_graph_dict
-    web_parser_without_root.write_graph_dict_to_json_file(
-        file_name=build_path('test_graph_dict'))
-
-    file_name = 'test_graph_dict'
-    file_path = build_path(file_name, 'json')
-    with open(file=file_path, mode='r', encoding='utf8') as fhandle:
-        try:
-            obtained_json = json.load(fhandle)
-            assert expected_json == obtained_json
-        except Exception as exc:
-            print(
-                f'Exception occured when trying to read from the json file with name={file_name}: {exc}')
-
-
 def test_load_map_dict_from_json(web_parser_without_root: WebpageParser, build_path: Callable[[], str], expected_json_sample: json, write_to_json_file: Callable[[str, ], None]):
     '''
     Test the correct loading of the map dictionary from json.
@@ -213,18 +193,6 @@ def test_load_map_dict_from_json(web_parser_without_root: WebpageParser, build_p
     file_name = 'test_load_map_dict'
     write_to_json_file(file_name, expected_json_sample)
     obtained_json = web_parser_without_root.load_map_dict_from_json(
-        file_name=build_path(file_name))
-    assert expected_json_sample == obtained_json
-
-
-def test_load_graph_dict_from_json(web_parser_without_root: WebpageParser, build_path: Callable[[], str], expected_json_sample: json, write_to_json_file: Callable[[str, ], None]):
-    '''
-    Test the correct loading of the graph dictionary from json.
-    '''
-
-    file_name = 'test_load_graph_dict'
-    write_to_json_file(file_name, expected_json_sample)
-    obtained_json = web_parser_without_root.load_graph_dict_from_json(
         file_name=build_path(file_name))
     assert expected_json_sample == obtained_json
 
@@ -248,20 +216,6 @@ def test_get_link_info(web_parser_without_root: WebpageParser,  temp_map_dict: d
     assert expected_dict == obtained_dict
 
 
-def test_get_webpage_statistics(web_parser_without_root: WebpageParser, build_path: Callable[[], str]):
-    '''
-    Validate the webpage statistic values and format.
-    '''
-
-    web_parser_without_root.load_map_dict_from_json(
-        file_name=build_path('test_map_dict_full'))
-    web_parser_without_root.load_graph_dict_from_json(
-        file_name=build_path('test_graph_dict_full'))
-    expected_statistic = '\nGeneral information about                  \n\nTotal web pages found (unique links):      361\nHTTP 200:                                  354\nHTTP 404:                                  7\n\nTotal internal links (non-unique links):   17409\nDistance between the most distant pages:   379\n\nTotal external links:                      5207\nTotal dead links:                          86\nTotal phone links:                         25\nTotal email links:                         183\nTotal file links:                          36\n\nAverage number of internal links per page: 48\nAverage number of external links per page: 14\nAverage size (in bytes) per page:          97343'
-    obtained_statistic = web_parser_without_root.get_webpage_statistics()
-    assert expected_statistic == obtained_statistic[:657]
-
-
 def test_get_link_status_code(web_parser_without_root: WebpageParser,  temp_map_dict: dict):
     '''
     Check if the returned HTTP status code is correct.
@@ -271,31 +225,3 @@ def test_get_link_status_code(web_parser_without_root: WebpageParser,  temp_map_
     obtained_status_code = web_parser_without_root.get_link_status_code(
         'https://www.globalapptesting.com/')
     assert 200 == obtained_status_code
-
-
-def test_get_pages_with_min_max_links(web_parser_without_root: WebpageParser, temp_graph_dict_full: dict):
-    '''
-    Validate integrity of returned dictionary.
-    '''
-
-    web_parser_without_root.graph_dict = temp_graph_dict_full
-    obtained_dict = web_parser_without_root.get_pages_with_min_max_links()
-
-    assert 'maximum_incoming_links' in obtained_dict
-    assert 'minimum_incoming_links' in obtained_dict
-    assert obtained_dict['maximum_incoming_links']['incoming_links_count'] == 361
-    assert obtained_dict['minimum_incoming_links']['incoming_links_count'] == 1
-    assert len(obtained_dict['maximum_incoming_links']
-               ['links']) == 3
-    assert len(obtained_dict['minimum_incoming_links']
-               ['links']) == 48
-
-
-def test_count_incoming_links(web_parser_without_root: WebpageParser, temp_graph_dict_full: dict, expected_incoming_count_links: dict):
-    '''
-    Validate integrity of returned dictionary.
-    '''
-
-    web_parser_without_root.graph_dict = temp_graph_dict_full
-    obtained_incoming_links_counter = web_parser_without_root.count_incoming_links()
-    assert expected_incoming_count_links == obtained_incoming_links_counter

@@ -1,10 +1,8 @@
-import sys
 from requests import get
 from bs4 import BeautifulSoup
 from httplib2 import Response
 from collections import Counter
 from collections import deque
-from app.dfs import DFS
 from app.file_manager import FileManager
 
 
@@ -13,7 +11,7 @@ class ArgumentNotProvided(ValueError):
 
 
 class WebpageParser():
-    def __init__(self, root_link: str, file_manager: FileManager, DFS: DFS) -> None:
+    def __init__(self, root_link: str, file_manager: FileManager) -> None:
 
         if not isinstance(root_link, str):
             raise ValueError(
@@ -22,10 +20,9 @@ class WebpageParser():
         self.root_link: str = root_link
         self.root_domain: str = root_link.split(
             '.')[1] if self.root_link else ''
-        self.file_manager = file_manager
         self.map_dict: dict = {}
-        self.graph_dict: dict = {}
-        self.DFS = DFS
+        self.adj_list_graph: dict = {}
+        self.file_manager = file_manager
 
     def __str__(self) -> str:
         return f'WebpageParser(root_link={self.root_link})'
@@ -33,8 +30,8 @@ class WebpageParser():
     def get_map_dict(self) -> dict:
         return self.map_dict
 
-    def get_graph_dict(self) -> dict:
-        return self.graph_dict
+    def get_adj_list_graph(self) -> dict:
+        return self.adj_list_graph
 
     def perform_get_request(self, url: str = '') -> tuple:
         '''
@@ -249,62 +246,16 @@ class WebpageParser():
 
     def convert_counters_to_graph_edges(self) -> dict:
         '''
-        Convert Counters objects to graph edges in tuple datatype.
+        Convert Counters objects to graph edges in tuple data type.
         '''
 
         if not self.map_dict:
             self.build_dict_map()
 
         for key_root, value_dict in self.map_dict.items():
-            self.graph_dict[key_root] = [(key_root, destination_link, weight)
-                                         for destination_link, weight in value_dict['internal_links'].items()]
-        return self.graph_dict
-
-    def get_pages_with_min_max_links(self):
-        '''
-        Returns a list of page(s) with minimum and maximum number of links.
-        '''
-
-        incoming_links_counter = self.count_incoming_links()
-
-        min = sys.maxsize
-        max = 0
-        for key_link, incoming_count in incoming_links_counter.items():
-            if min > incoming_count:
-                min = incoming_count
-            if max < incoming_count:
-                max = incoming_count
-
-        min_links = []
-        max_links = []
-
-        for key_link, incoming_count in incoming_links_counter.items():
-            if min == incoming_count:
-                min_links.append(key_link)
-            elif max == incoming_count:
-                max_links.append(key_link)
-
-        return {
-            'minimum_incoming_links': {'links': min_links, 'incoming_links_count': min},
-            'maximum_incoming_links': {'links': max_links, 'incoming_links_count': max}
-        }
-
-    def count_incoming_links(self) -> dict:
-        '''
-        Count the number of incoming (inbound or backlinks) links for each internal link.
-        '''
-
-        if not self.graph_dict:
-            raise ValueError('The graph_dict is empty')
-
-        incoming_links_counter = dict.fromkeys(self.graph_dict, 0)
-
-        for _, value_list in self.graph_dict.items():
-            for (_, destination, _) in value_list:
-                incoming_links_counter[destination] = incoming_links_counter.get(
-                    destination, 0) + 1
-
-        return incoming_links_counter
+            self.adj_list_graph[key_root] = [(key_root, destination_link, weight)
+                                             for destination_link, weight in value_dict['internal_links'].items()]
+        return self.adj_list_graph
 
     def write_map_dict_to_json_file(self, file_name: str = 'map_dict') -> None:
         '''
@@ -316,29 +267,12 @@ class WebpageParser():
         self.file_manager.write_to_file(
             file_name=file_name, data=self.map_dict)
 
-    def write_graph_dict_to_json_file(self, file_name: str = 'graph_dict') -> None:
-        '''
-        Write / Dump the graph dict into json file.
-        '''
-
-        if not self.graph_dict:
-            raise ValueError('The graph_dict is empty')
-        self.file_manager.write_to_file(
-            file_name=file_name, data=self.graph_dict)
-
     def load_map_dict_from_json(self, file_name: str) -> dict:
         '''
         Load the map dictionary from a json file.
         '''
         self.map_dict = self.file_manager.load_from_json(file_name=file_name)
         return self.map_dict
-
-    def load_graph_dict_from_json(self, file_name: str) -> dict:
-        '''
-        Load the graph dictionary from a json file.
-        '''
-        self.graph_dict = self.file_manager.load_from_json(file_name=file_name)
-        return self.graph_dict
 
     def get_link_info(self, link: str) -> dict:
         '''
@@ -386,101 +320,17 @@ class WebpageParser():
 
         return self.map_dict[link].get('HTTP_STATUS', 0)
 
-    def get_webpage_statistics(self) -> str:
-        '''
-        Compute the basic metrics:
-            - total number of web pages found
-            - total number of internal links 
-            - total number of external links
-            - total number of dead / invalid links
-            - total numner of phone links 
-            - total numner of email links
-            - total numner of image links
-            - average number of internal links per page
-            - average number of external links per page
-            - average size (in bytes) per page
-            - minimum incoming links count and list of pages
-            - maximum incoming links count and list of pages
-            - distance between the most distant subpages (longest path)
-        '''
-
-        if not self.map_dict:
-            return 'The map_dict is empty'
-
-        total_webpages = len(self.map_dict.keys())
-
-        total_internal_links = 0
-        total_external_links = 0
-        total_dead_links = 0
-        total_phone_links = 0
-        total_email_links = 0
-        total_file_links = 0
-        total_page_size_bytes = 0
-        http_statuses = []
-        for _, value_dict in self.map_dict.items():
-
-            http_statuses.append(value_dict['HTTP_STATUS'])
-
-            total_internal_links += len(value_dict['internal_links'])
-            total_external_links += len(value_dict['external_links'])
-            total_dead_links += len(value_dict['dead_links'])
-            total_phone_links += len(value_dict['phone_links'])
-            total_email_links += len(value_dict['email_links'])
-            total_file_links += len(value_dict['file_links'])
-            total_page_size_bytes += value_dict['page_size_bytes']
-
-        self.DFS = self.DFS(self.graph_dict)
-        longest_path = self.DFS.get_longest_path()
-        average_internal_links_per_page = total_internal_links // total_webpages
-        average_external_links_per_page = total_external_links // total_webpages
-        average_page_size_bytes = total_page_size_bytes // total_webpages
-
-        statistic_info = f'\nGeneral information about                  {self.root_link}\n'
-        statistic_info += f'\nTotal web pages found (unique links):      {total_webpages}\n'
-
-        http_counter = Counter(http_statuses)
-        for http_status, count in http_counter.items():
-            statistic_info += f'HTTP {http_status}:                                  {count}\n'
-
-        statistic_info += f'\nTotal internal links (non-unique links):   {total_internal_links}\n'
-        statistic_info += f'Distance between the most distant pages:   {longest_path}\n\n'
-
-        statistic_info += f'Total external links:                      {total_external_links}\n'
-        statistic_info += f'Total dead links:                          {total_dead_links}\n'
-        statistic_info += f'Total phone links:                         {total_phone_links}\n'
-        statistic_info += f'Total email links:                         {total_email_links}\n'
-        statistic_info += f'Total file links:                          {total_file_links}\n\n'
-        statistic_info += f'Average number of internal links per page: {average_internal_links_per_page}\n'
-        statistic_info += f'Average number of external links per page: {average_external_links_per_page}\n'
-        statistic_info += f'Average size (in bytes) per page:          {average_page_size_bytes}\n'
-
-        incoming_links_dict = self.get_pages_with_min_max_links()
-        minimum_incoming_links = incoming_links_dict['minimum_incoming_links']
-        min_links_len = len(minimum_incoming_links["links"])
-
-        maximum_incoming_links = incoming_links_dict['maximum_incoming_links']
-        max_links_len = len(maximum_incoming_links["links"])
-
-        statistic_info += f'\n\nMinimum incoming links for {min_links_len} pages:       {minimum_incoming_links["incoming_links_count"]}\n\n'
-        for link in incoming_links_dict['minimum_incoming_links']['links']:
-            statistic_info += f'>>  HTTP: {self.get_link_status_code(link)}   {link}\n'
-
-        statistic_info += f'\nMaximum incoming links for {max_links_len} pages:         {maximum_incoming_links["incoming_links_count"]}\n\n'
-        for link in incoming_links_dict['maximum_incoming_links']['links']:
-            statistic_info += f'>>  HTTP: {self.get_link_status_code(link)}   {link}\n'
-
-        return statistic_info
-
-    def generate_and_save_graph(self) -> dict:
+    def generate_and_save_map_dict(self) -> dict:
         '''
         1. Query provided root link
         2. Build dictionary map
-        3. Convert dictionary map to dictionary graph
-        4. Save both dictionaries in json files 
-        '''
-        self.build_dict_map()
-        graph = self.convert_counters_to_graph_edges()
+        3. Convert dictionary map to dictionary representation of adjacent list graph
+        4. Save map dictionary in a json file 
 
-        self.write_graph_dict_to_json_file()
+        returns adj_list_graph
+        '''
+
+        self.build_dict_map()
+        adj_graph = self.convert_counters_to_graph_edges()
         self.write_map_dict_to_json_file()
-        return graph
+        return adj_graph
